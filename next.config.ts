@@ -1,12 +1,11 @@
 import type { NextConfig } from "next";
 
-const isStaticExport = process.env.NEXT_EXPORT === "1";
-
+// The site is 100% static (no API routes, no server components), so every
+// build produces a full static export in `out/`. This works for plain
+// `npm run build`, `npm run build:cf`, and Cloudflare's build pipeline alike.
 const nextConfig: NextConfig = {
-  // Static export only activates via `npm run build:cf` (Cloudflare Pages).
-  // Plain `npm run build` / `next dev` behave exactly as before.
-  output: isStaticExport ? "export" : undefined,
-  ...(isStaticExport ? { images: { unoptimized: true } } : {}),
+  output: "export",
+  images: { unoptimized: true },
   reactStrictMode: false,
 };
 

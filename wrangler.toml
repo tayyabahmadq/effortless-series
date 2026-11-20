@@ -1,9 +1,0 @@
-name = "effortless-series"
-compatibility_date = "2025-01-01"
-
-# Static-assets Worker: serves the `out/` directory produced by
-# `npm run build:cf` directly from Cloudflare's CDN. Works with the
-# default `npx wrangler deploy` build pipeline.
-[assets]
-directory = "./out"
-not_found_handling = "404-page"
