@@ -55,13 +55,21 @@ Or without GitHub: `npm i -g netlify-cli && netlify deploy --build --prod`.
 
 ---
 
-## Option 3 — Cloudflare Pages
+## Option 3 — Cloudflare Pages (static export)
 
 1. Push to GitHub (steps 1–3 above).
 2. **dash.cloudflare.com** → free account (no card) → **Workers & Pages →
-   Create → Pages → Connect to Git**.
-3. Framework preset: **Next.js** → Deploy.
-   Live at `https://<name>.pages.dev`.
+   Create → Pages → Connect to Git** → pick this repo.
+3. Set the build settings:
+   - **Framework preset:** None (or Next.js)
+   - **Build command:** `npm run build:cf`
+   - **Build output directory:** `out`
+4. Deploy → live at `https://<name>.pages.dev`.
+
+Why these settings: `build:cf` produces a fully static export (the site is
+100% client-side — no API routes, no server), and the included
+`wrangler.toml` points Cloudflare Pages at the `out` directory. No Node
+server runs on Cloudflare; the static files are served from its CDN.
 
 ---
 

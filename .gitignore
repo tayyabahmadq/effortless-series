@@ -8,3 +8,8 @@ tsconfig.tsbuildinfo
 *.tsbuildinfo
 .vercel/
 
+
+# local workspace snapshots / attachments
+workspace-c077dc4e-*
+*.tar
+
