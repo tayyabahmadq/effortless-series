@@ -55,21 +55,27 @@ Or without GitHub: `npm i -g netlify-cli && netlify deploy --build --prod`.
 
 ---
 
-## Option 3 — Cloudflare Pages (static export)
+## Option 3 — Cloudflare (Workers with static assets)
+
+The site deploys as pure static files served from Cloudflare's CDN — no
+Node server runs on Cloudflare.
 
 1. Push to GitHub (steps 1–3 above).
-2. **dash.cloudflare.com** → free account (no card) → **Workers & Pages →
-   Create → Pages → Connect to Git** → pick this repo.
-3. Set the build settings:
-   - **Framework preset:** None (or Next.js)
+2. **dash.cloudflare.com** → **Workers & Pages → Create → Worker →
+   Connect to Git** → pick this repo.
+3. Build settings:
    - **Build command:** `npm run build:cf`
-   - **Build output directory:** `out`
-4. Deploy → live at `https://<name>.pages.dev`.
+   - **Deploy command:** `npx wrangler deploy` (the default)
+4. Deploy → live at `https://effortless-series.<your-subdomain>.workers.dev`.
 
-Why these settings: `build:cf` produces a fully static export (the site is
-100% client-side — no API routes, no server), and the included
-`wrangler.toml` points Cloudflare Pages at the `out` directory. No Node
-server runs on Cloudflare; the static files are served from its CDN.
+The included `wrangler.toml` tells Wrangler to serve the `out` directory
+(produced by `build:cf`) as static assets, with `404.html` as the
+not-found page.
+
+Already have a **Pages** project instead? Keep it, then in its build
+settings use Build command `npm run build:cf`, Build output directory
+`out`, and **leave the Deploy command empty** — Pages uploads `out/`
+itself; the `wrangler.toml` above does not interfere with Pages.
 
 ---
 
