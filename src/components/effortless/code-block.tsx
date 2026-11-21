@@ -17,6 +17,9 @@ const KEYWORDS: Record<string, string[]> = {
   python: ["def", "class", "return", "if", "elif", "else", "for", "while", "import", "from", "as", "try", "except", "finally", "raise", "with", "lambda", "yield", "pass", "break", "continue", "and", "or", "not", "in", "is", "None", "True", "False", "self", "print", "async", "await", "global", "assert"],
   yaml: ["true", "false", "null", "on", "off", "yes", "no"],
   json: ["true", "false", "null"],
+  php: ["echo", "print", "function", "return", "if", "elseif", "else", "for", "foreach", "while", "do", "switch", "case", "break", "continue", "default", "class", "extends", "implements", "interface", "abstract", "public", "private", "protected", "static", "new", "use", "namespace", "try", "catch", "finally", "throw", "isset", "empty", "require", "include", "require_once", "include_once", "as", "array", "null", "true", "false", "self", "parent", "this", "instanceof", "clone", "const", "global", "yield", "and", "or", "not", "xor", "die", "exit", "header", "session_start", "session_destroy", "count", "strlen", "substr", "trim", "explode", "implode", "str_replace", "htmlspecialchars", "filter_var", "mysqli_query", "mysqli_connect", "mysqli_report", "setcookie"],
+  html: [],
+  xml: [],
 };
 
 const TOKEN_RE =

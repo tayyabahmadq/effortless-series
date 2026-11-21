@@ -22,29 +22,26 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "The Effortless Series · 13 Books for the 2026 Software Engineer",
+  title: "Effortless Series Academic Library — RGPV Syllabus & Study Content",
   description:
-    "If I were to start my career in Software engineering in 2026, this is how I would have done it effortlessly. Thirteen books, 182 chapters, one goal: make you the engineer who ships things that do not fall over. By Tayyab Ahmed, AI and Weight-Space Engineer.",
+    "The Effortless Series Academic Library: the complete RGPV 2022 B.Tech curriculum — 40 branches, 1500+ subjects, organized as syllabus → chapter cards → topic cards → exam-ready content. Includes the Effortless Series: 13 books, 182 chapters for the 2026 software engineer.",
   keywords: [
-    "software engineering",
-    "system design",
-    "databases",
-    "encryption",
-    "authentication",
-    "security",
-    "networking",
-    "scaling",
-    "deployment",
-    "monitoring",
-    "Tayyab Ahmed",
+    "RGPV",
+    "RGPV syllabus",
+    "RGPV 2022 curriculum",
+    "B.Tech",
+    "academic library",
+    "AI and Data Science",
+    "study content",
+    "exam preparation",
     "Effortless Series",
-    "2026",
+    "software engineering",
   ],
   authors: [{ name: "Tayyab Ahmed" }],
   openGraph: {
-    title: "The Effortless Series · 13 Books for the 2026 Software Engineer",
+    title: "Effortless Series Academic Library",
     description:
-      "Thirteen books, 182 chapters, one goal: make you the engineer who ships things that do not fall over.",
+      "The complete RGPV 2022 curriculum as an interactive study library — 40 branches, 1500+ subjects, chapter cards → topic cards → content.",
     type: "website",
   },
 };

@@ -1,13 +1,15 @@
 "use client";
 
 import { motion, useScroll, useSpring } from "framer-motion";
-import { BookOpen, Search, CheckCircle2 } from "lucide-react";
+import { BookOpen, Search, CheckCircle2, GraduationCap } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
+import Link from "next/link";
 import { books } from "@/lib/books-data";
 import { useReaderStore } from "@/store/reader-store";
 import { useMounted } from "@/hooks/use-mounted";
 
 const navItems = [
+  { label: "Academic Library", href: "/" },
   { label: "Overview", href: "#overview" },
   { label: "Books", href: "#books" },
   { label: "Layers", href: "#layers" },
@@ -79,15 +81,25 @@ export function Navigation() {
           </a>
 
           <nav className="hidden md:flex items-center gap-1">
-            {navItems.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="px-3.5 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors rounded-md hover:bg-muted/40"
-              >
-                {item.label}
-              </a>
-            ))}
+            {navItems.map((item) =>
+              item.href.startsWith("/") ? (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="px-3.5 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors rounded-md hover:bg-muted/40"
+                >
+                  {item.label}
+                </Link>
+              ) : (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className="px-3.5 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors rounded-md hover:bg-muted/40"
+                >
+                  {item.label}
+                </a>
+              )
+            )}
           </nav>
 
           <div className="flex items-center gap-2">
@@ -97,12 +109,20 @@ export function Navigation() {
                 {readCount}/{totalChapters} read
               </span>
             )}
+            <Link
+              href="/"
+              className="hidden sm:flex items-center gap-2 px-3 py-1.5 text-xs font-medium text-red-400 hover:text-red-300 border border-red-600/30 rounded-md hover:bg-red-600/10 transition-all"
+              title="RGPV Academic Library — 40 branches, 1500+ subjects"
+            >
+              <GraduationCap className="w-3.5 h-3.5" />
+              <span>Academic Library</span>
+            </Link>
             <a
               href="#books"
               className="hidden sm:flex items-center gap-2 px-3 py-1.5 text-xs text-muted-foreground hover:text-foreground border border-border/60 rounded-md hover:border-red-600/40 transition-all"
             >
               <Search className="w-3 h-3" />
-              <span>Browse the library</span>
+              <span>Browse</span>
             </a>
             <button
               onClick={() => {
