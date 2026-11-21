@@ -149,6 +149,21 @@ function ExamQuestionsBlock({
                 )}
               </p>
             </div>
+            {item.appearances && item.appearances.length > 0 && (
+              <div className="mt-2 flex flex-wrap items-center gap-1.5 ml-1 sm:ml-3">
+                <span className="text-[10px] uppercase tracking-[0.15em] font-semibold text-amber-600/90 dark:text-amber-400/90">
+                  PYQ
+                </span>
+                {item.appearances.map((session, j) => (
+                  <span
+                    key={j}
+                    className="rounded-md border border-amber-500/25 bg-amber-500/10 px-1.5 py-0.5 text-[10px] font-medium text-amber-700 dark:text-amber-400/90 tabular-nums"
+                  >
+                    {session}
+                  </span>
+                ))}
+              </div>
+            )}
             {item.outline && item.outline.length > 0 && (
               <ul className="mt-2 ml-1 sm:ml-3 space-y-1">
                 {item.outline.map((pt, j) => (

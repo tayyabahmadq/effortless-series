@@ -36,13 +36,20 @@ export interface AcadTable {
 /**
  * An exam-style question attached to a section.  `outline` lists the points
  * the examiner expects — enough scaffolding to write a full 7-mark answer.
- * Do NOT invent RGPV year/session citations; leave `year` unset unless the
- * question is a verified past-paper question.
+ *
+ * PYQ provenance: questions taken from the official RGPV question-paper
+ * archive (rgpvonline scrape, Jun 2022 - Jun 2026 sessions) carry
+ * `appearances` — every session in which that question (or a near-identical
+ * one) appeared, e.g. ["Jun 2023", "Dec 2024"].  The legacy single-string
+ * `year` field remains for unverified/hand-authored citations and is still
+ * rendered when set.  Only cite sessions you can trace to an actual paper.
  */
 export interface ExamQuestion {
   q: string;
   marks: number;
   year?: string;
+  /** Verified PYQ sessions in which this question appeared, newest last. */
+  appearances?: string[];
   outline?: string[];
 }
 
