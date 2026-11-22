@@ -22,9 +22,9 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Effortless Series Academic Library — RGPV Syllabus & Study Content",
+  title: "RGPV Digital Library — Syllabus, Study Content, Certifications & Careers",
   description:
-    "The Effortless Series Academic Library: the complete RGPV 2022 B.Tech curriculum — 40 branches, 1500+ subjects, organized as syllabus → chapter cards → topic cards → exam-ready content. Includes the Effortless Series: 13 books, 182 chapters for the 2026 software engineer.",
+    "The RGPV Digital Library: the complete RGPV 2022 B.Tech curriculum — 40 branches, 1,578 subjects, organized as syllabus → chapter cards → topic cards → exam-ready content — plus free certifications and live government, PSU and industry career portals.",
   keywords: [
     "RGPV",
     "RGPV syllabus",
@@ -34,14 +34,14 @@ export const metadata: Metadata = {
     "AI and Data Science",
     "study content",
     "exam preparation",
-    "Effortless Series",
-    "software engineering",
+    "free certifications",
+    "RGPV jobs",
   ],
   authors: [{ name: "Tayyab Ahmed" }],
   openGraph: {
-    title: "Effortless Series Academic Library",
+    title: "RGPV Digital Library",
     description:
-      "The complete RGPV 2022 curriculum as an interactive study library — 40 branches, 1500+ subjects, chapter cards → topic cards → content.",
+      "The complete RGPV 2022 curriculum as an interactive study library — 40 branches, 1,578 subjects, chapter cards → topic cards → content.",
     type: "website",
   },
 };

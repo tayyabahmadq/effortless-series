@@ -2,31 +2,14 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { GraduationCap, BookOpen } from "lucide-react";
+import { GraduationCap } from "lucide-react";
 
 /**
- * Site-wide header for the "Effortless Series Academic Library".
- *
- * Two tabs: the Academic Library (the RGPV university browser — primary)
- * and The Effortless Series (the 13-book career series — secondary, at
- * /series).
+ * Site-wide header for the RGPV pages. The Effortless Series is no longer
+ * linked from the navigation — it moves to its own surface later, while
+ * /series itself stays reachable by URL.
  */
 export function LibraryNav({ active }: { active: "library" | "series" }) {
-  const tabs = [
-    {
-      key: "library" as const,
-      href: "/",
-      label: "Academic Library",
-      icon: <GraduationCap className="w-3.5 h-3.5" />,
-    },
-    {
-      key: "series" as const,
-      href: "/series",
-      label: "The Effortless Series",
-      icon: <BookOpen className="w-3.5 h-3.5" />,
-    },
-  ];
-
   return (
     <header className="sticky top-0 z-40 bg-background/80 backdrop-blur-xl border-b border-border/40">
       <div className="max-w-6xl mx-auto px-5 sm:px-8">
@@ -47,7 +30,7 @@ export function LibraryNav({ active }: { active: "library" | "series" }) {
             </motion.div>
             <div className="hidden sm:flex flex-col leading-none">
               <span className="font-serif text-sm font-semibold tracking-wide text-foreground">
-                Effortless Series
+                Effortless
               </span>
               <span className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
                 Academic Library
@@ -56,23 +39,18 @@ export function LibraryNav({ active }: { active: "library" | "series" }) {
           </Link>
 
           <nav className="flex items-center gap-1.5">
-            {tabs.map((t) => (
-              <Link
-                key={t.key}
-                href={t.href}
-                className={`flex items-center gap-2 px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium rounded-md transition-all border ${
-                  active === t.key
-                    ? "text-red-400 border-red-600/30 bg-red-600/10"
-                    : "text-muted-foreground hover:text-foreground border-transparent hover:bg-muted/30"
-                }`}
-              >
-                {t.icon}
-                <span className="hidden sm:inline">{t.label}</span>
-                <span className="sm:hidden">
-                  {t.key === "library" ? "Library" : "Series"}
-                </span>
-              </Link>
-            ))}
+            <Link
+              href="/"
+              className={`flex items-center gap-2 px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium rounded-md transition-all border ${
+                active === "library"
+                  ? "text-red-400 border-red-600/30 bg-red-600/10"
+                  : "text-muted-foreground hover:text-foreground border-transparent hover:bg-muted/30"
+              }`}
+            >
+              <GraduationCap className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">Academic Library</span>
+              <span className="sm:hidden">Library</span>
+            </Link>
           </nav>
         </div>
       </div>
