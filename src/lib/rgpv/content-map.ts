@@ -130,11 +130,77 @@ import { it803a } from "@/lib/academics/subject-it-803-a";
 import { it803b } from "@/lib/academics/subject-it-803-b";
 import { it803c } from "@/lib/academics/subject-it-803-c";
 import { it803d } from "@/lib/academics/subject-it-803-d";
+// Priority-branch rebrands of identical RGPV syllabi
+import { ec803b } from "@/lib/academics/subject-ec-803-b";
+import { me702b } from "@/lib/academics/subject-me-702-b";
+import { me803d } from "@/lib/academics/subject-me-803-d";
+import { ce604b } from "@/lib/academics/subject-ce-604-b";
+import { ce703a } from "@/lib/academics/subject-ce-703-a";
+import { ce803a } from "@/lib/academics/subject-ce-803-a";
+import { cy301 } from "@/lib/academics/subject-cy-301";
+import { cy303 } from "@/lib/academics/subject-cy-303";
+import { cy304 } from "@/lib/academics/subject-cy-304";
+import { cy305 } from "@/lib/academics/subject-cy-305";
+import { cy403 } from "@/lib/academics/subject-cy-403";
+import { cy404 } from "@/lib/academics/subject-cy-404";
+import { cy405 } from "@/lib/academics/subject-cy-405";
+import { cy504b } from "@/lib/academics/subject-cy-504-b";
+import { cy504c } from "@/lib/academics/subject-cy-504-c";
+import { cy701 } from "@/lib/academics/subject-cy-701";
+import { cy703d } from "@/lib/academics/subject-cy-703-d";
+// Cyber Security — authored CY subjects
+import { cy302 } from "@/lib/academics/subject-cy-302";
+import { cy402 } from "@/lib/academics/subject-cy-402";
+import { cy406 } from "@/lib/academics/subject-cy-406";
+import { cy501 } from "@/lib/academics/subject-cy-501";
+import { cy503a } from "@/lib/academics/subject-cy-503-a";
+import { cy503b } from "@/lib/academics/subject-cy-503-b";
+import { cy503c } from "@/lib/academics/subject-cy-503-c";
+import { cy504a } from "@/lib/academics/subject-cy-504-a";
+import { cy702a } from "@/lib/academics/subject-cy-702-a";
+import { cy703a } from "@/lib/academics/subject-cy-703-a";
+import { cy703b } from "@/lib/academics/subject-cy-703-b";
+import { cy703c } from "@/lib/academics/subject-cy-703-c";
+import { cy801 } from "@/lib/academics/subject-cy-801";
+import { cy802b } from "@/lib/academics/subject-cy-802-b";
+import { cy802c } from "@/lib/academics/subject-cy-802-c";
+// Cyber Security — authored sem 6 subjects
+import { cy601 } from "@/lib/academics/subject-cy-601";
+import { cy603a } from "@/lib/academics/subject-cy-603-a";
+import { cy603b } from "@/lib/academics/subject-cy-603-b";
+import { cy603c } from "@/lib/academics/subject-cy-603-c";
+import { cy604a } from "@/lib/academics/subject-cy-604-a";
+import { cy604b } from "@/lib/academics/subject-cy-604-b";
+import { cy604c } from "@/lib/academics/subject-cy-604-c";
+import { cy605 } from "@/lib/academics/subject-cy-605";
+// ECE — authored subjects
+import { ec302 } from "@/lib/academics/subject-ec-302";
+import { ec303 } from "@/lib/academics/subject-ec-303";
+import { ec304 } from "@/lib/academics/subject-ec-304";
+import { ec305 } from "@/lib/academics/subject-ec-305";
+import { ec402 } from "@/lib/academics/subject-ec-402";
+import { ec403 } from "@/lib/academics/subject-ec-403";
+import { ec404 } from "@/lib/academics/subject-ec-404";
+import { ec405 } from "@/lib/academics/subject-ec-405";
+import { ec501 } from "@/lib/academics/subject-ec-501";
+import { ec502 } from "@/lib/academics/subject-ec-502";
+import { ec601 } from "@/lib/academics/subject-ec-601";
+import { ec602 } from "@/lib/academics/subject-ec-602";
+import { ec701 } from "@/lib/academics/subject-ec-701";
+import { ec801 } from "@/lib/academics/subject-ec-801";
+import { ec802a } from "@/lib/academics/subject-ec-802-a";
+import { ec802b } from "@/lib/academics/subject-ec-802-b";
+import { ec803a } from "@/lib/academics/subject-ec-803-a";
+import { ec803c } from "@/lib/academics/subject-ec-803-c";
 
 const AD = "ai-and-data-science";
 const CSE = "computer-science-and-engineering";
 const AL = "ai-and-machine-learning";
 const IT = "information-technology";
+const EC = "electronics-and-communication";
+const ME = "mechanical-engineering";
+const CE = "civil-engineering";
+const CY = "cyber-security";
 const FY = "first-year-common";
 
 /** First-year subject objects reused across every B.Tech branch's Sem 1-2. */
@@ -309,6 +375,73 @@ export const subjectContentMap: Record<string, AcademicSubject> = {
   [`${IT}/8/it-803-b`]: it803b,
   [`${IT}/8/it-803-c`]: it803c,
   [`${IT}/8/it-803-d`]: it803d,
+
+  // ===== Electronics & Communication =====
+  [`${EC}/3/ec-302`]: ec302,
+  [`${EC}/3/ec-303`]: ec303,
+  [`${EC}/3/ec-304`]: ec304,
+  [`${EC}/3/ec-305`]: ec305,
+  [`${EC}/4/ec-402`]: ec402,
+  [`${EC}/4/ec-403`]: ec403,
+  [`${EC}/4/ec-404`]: ec404,
+  [`${EC}/4/ec-405`]: ec405,
+  [`${EC}/5/ec-501`]: ec501,
+  [`${EC}/5/ec-502`]: ec502,
+  [`${EC}/6/ec-601`]: ec601,
+  [`${EC}/6/ec-602`]: ec602,
+  [`${EC}/7/ec-701`]: ec701,
+  [`${EC}/8/ec-801`]: ec801,
+  [`${EC}/8/ec-802-a`]: ec802a,
+  [`${EC}/8/ec-802-b`]: ec802b,
+  [`${EC}/8/ec-803-a`]: ec803a,
+  [`${EC}/8/ec-803-b`]: ec803b,
+  [`${EC}/8/ec-803-c`]: ec803c,
+
+  // ===== Mechanical Engineering (rebrands) =====
+  [`${ME}/7/me-702-b`]: me702b,
+  [`${ME}/8/me-803-d`]: me803d,
+
+  // ===== Civil Engineering (rebrands) =====
+  [`${CE}/6/ce-604-b`]: ce604b,
+  [`${CE}/7/ce-703-a`]: ce703a,
+  [`${CE}/8/ce-803-a`]: ce803a,
+
+  // ===== Cyber Security (rebrands) =====
+  [`${CY}/3/cy-301`]: cy301,
+  [`${CY}/3/cy-302`]: cy302,
+  [`${CY}/3/cy-303`]: cy303,
+  [`${CY}/3/cy-304`]: cy304,
+  [`${CY}/3/cy-305`]: cy305,
+  [`${CY}/4/cy-402`]: cy402,
+  [`${CY}/4/cy-403`]: cy403,
+  [`${CY}/4/cy-404`]: cy404,
+  [`${CY}/4/cy-405`]: cy405,
+  [`${CY}/4/cy-406`]: cy406,
+  [`${CY}/5/cy-501`]: cy501,
+  [`${CY}/5/cy-503-a`]: cy503a,
+  [`${CY}/5/cy-503-b`]: cy503b,
+  [`${CY}/5/cy-503-c`]: cy503c,
+  [`${CY}/5/cy-504-a`]: cy504a,
+  [`${CY}/5/cy-504-b`]: cy504b,
+  [`${CY}/5/cy-504-c`]: cy504c,
+  [`${CY}/6/cy-601`]: cy601,
+  [`${CY}/6/cy-603-a`]: cy603a,
+  [`${CY}/6/cy-603-b`]: cy603b,
+  [`${CY}/6/cy-603-c`]: cy603c,
+  [`${CY}/6/cy-604-a`]: cy604a,
+  [`${CY}/6/cy-604-b`]: cy604b,
+  [`${CY}/6/cy-604-c`]: cy604c,
+  [`${CY}/6/cy-605`]: cy605,
+  [`${CY}/7/cy-701`]: cy701,
+  [`${CY}/7/cy-702-a`]: cy702a,
+  [`${CY}/7/cy-703-a`]: cy703a,
+  [`${CY}/7/cy-703-b`]: cy703b,
+  [`${CY}/7/cy-703-c`]: cy703c,
+  [`${CY}/7/cy-703-d`]: cy703d,
+  // Semester VIII
+  [`${CY}/8/cy-801`]: cy801,
+  [`${CY}/8/cy-802-b`]: cy802b,
+  [`${CY}/8/cy-802-c`]: cy802c,
 };
 
 /** Slugs of the subjects with full content - used for badges. */

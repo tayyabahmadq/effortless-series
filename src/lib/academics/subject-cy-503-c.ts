@@ -1,0 +1,2928 @@
+import type { AcademicSubject } from "./types";
+
+export const cy503c: AcademicSubject = {
+  id: "cy-503-c",
+  code: "CY-503(C)",
+  title: "Data Security",
+  semester: "V Semester",
+  program: "RGPV · Cyber Security",
+  tagline:
+    "Every topic of the syllabus as one connected story: the mathematical ground (probability, information, complexity, number theory) under classical and DES-family symmetric systems, the asymmetric systems from RSA and its variants to Merkle-Hellman, ElGamal and curves, the stream-cipher machinery from one-time pads and LFSRs to alternating-step and shrinking generators, digital signatures from Lamport to DSA and blindness, and secret sharing with PRNG theory.",
+  description:
+    "Five units walk from cryptography's history and mathematical background through classical ciphers (Caesar, affine, substitution, transposition, homophonic, Vigenere, Beaufort) and the DES family (product ciphers, Lucifer), into public-key systems (PKCS concept, RSA variants, primality testing, RSA security, Merkle-Hellman, ElGamal, ECC), stream ciphers (OTP, synchronous/self-synchronizing, FSRs, linear complexity, NLFSR-based generators), digital signatures (Rabin, Lamport, Matyas-Meyer, RSA, ElGamal, DSS, blind), and secret sharing (Shamir, Blakley, modular) with PRNG theory and tests.",
+  accentColor: "#14b8a6",
+  emoji: "DS",
+  unitCount: 5,
+  totalSections: 35,
+  units: [
+    {
+      number: 1,
+      roman: "I",
+      title: "Introduction, Mathematical Background and Classical Systems",
+      summary:
+        "Unit I lays the subject's ground: the history of cryptography, the mathematical background - probability, information theory, complexity theory, number theory - and the classical symmetric systems from Caesar and affine through substitution, transposition, homophonic and polyalphabetic ciphers to the DES family of product ciphers, Lucifer and DES.",
+      chapter: {
+        number: "01",
+        title: "Ground and Classical Ciphers",
+        intro:
+          "Unit I covers the history of cryptography, probability and information theory, complexity and number theory, the classical ciphers (Caesar, affine, monoalphabetic substitution, transposition, homophonic substitution, Vigenere, Beaufort), and the DES family - product ciphers, Lucifer and DES.",
+        inOneBreath:
+          "Entropy prices information; complexity prices computation; number theory prices factoring and logs. Classical ciphers fall in order: shift by exhaustion, substitution by frequency, transposition by anagramming, polyalphabetic by Kasiski. The DES family applies Shannon's product-cipher doctrine - confusion and diffusion cascaded - turning Lucifer's design into the 56-bit standard whose break taught key-length discipline.",
+        sections: [
+          {
+            number: "1.1",
+            title: "History of cryptography",
+            body: [
+              "Cryptography's history is a three-act story. Act one - classical (antiquity to 1949): transposition and substitution ciphers serving diplomacy and war, from Caesar's shift through Vigenere (broken by Kasiski, 1863) to the mechanical rotor era (Enigma, broken with the bombe - 1940s). Act two - the Shannon era (1949): Claude Shannon's 'Communication Theory of Secrecy Systems' formalized perfect secrecy, entropy, and the product-cipher doctrine of confusion and diffusion - the theory everything modern rests on.",
+              "Act three - the modern era (1976 onward): Diffie-Hellman's 'New Directions in Cryptography' introduced public-key ideas (1976); RSA followed (1977-78); DES standardized (1977) brought the first government-grade symmetric standard; Merkle-Hellman (1978) attempted knapsack-based public keys (broken 1982); AES (2001) standardized the current block cipher. The lesson arc: each period's ciphers were broken by the next period's mathematics - frequency analysis killed substitution, computation killed DES's key length, and lattice reductions killed knapsacks.",
+              "A worked timeline table fixes the exam's expected recall: 50-60 BC Caesar shift; 1863 Kasiski breaks Vigenere; 1917 Vernam's one-time pad (perfect secrecy, proven by Shannon 1949); 1949 Shannon's theory; 1976 Diffie-Hellman; 1977 DES + RSA; 1982 Shamir breaks Merkle-Hellman; 2001 AES. Each date pairs an invention with the mathematics that eventually tested it - the exam's 'history of cryptography' answer is this table plus the arc sentence.",
+              "Exam framing: expect 'trace the history of cryptography' and 'Shannon's contributions'. Give the three acts, the dated table, and the arc sentence. The Shannon-doctrine sentence (confusion + diffusion through product ciphers) links directly to section 1.7's DES family.",
+            ],
+            keyTerms: [
+              { term: "Shannon era", definition: "1949 - formal secrecy theory: entropy, perfect secrecy, product ciphers." },
+              { term: "Confusion and diffusion", definition: "Obscuring key-message relation and spreading statistics - Shannon's design doctrine." },
+              { term: "Product cipher", definition: "Cascaded substitution and permutation rounds - the modern block-cipher shape." },
+              { term: "Rotor era", definition: "Mechanical polyalphabetic machines (Enigma) broken by computation and cribs." },
+              { term: "Public-key era", definition: "1976 onward - Diffie-Hellman, RSA, key distribution without prior secrets." },
+            ],
+            table: {
+              caption: "The dated timeline the exam expects.",
+              headers: ["Date", "Event", "Significance"],
+              rows: [
+                ["c. 50 BC", "Caesar shift", "first named substitution cipher"],
+                ["1863", "Kasiski test", "polyalphabetic period exposed"],
+                ["1917/1949", "Vernam OTP / Shannon proof", "perfect secrecy formalized"],
+                ["1976", "Diffie-Hellman", "public-key key distribution"],
+                ["1977", "DES + RSA", "symmetric standard + public-key cryptosystem"],
+                ["1982", "Shamir breaks Merkle-Hellman", "lattice attack on knapsacks"],
+                ["2001", "AES (Rijndael)", "current block-cipher standard"],
+              ],
+            },
+            bullets: [
+              "Three acts: classical (substitution/rotors), Shannon theory, modern public-key.",
+              "Each era's ciphers fell to the next era's mathematics.",
+              "Shannon: entropy, perfect secrecy, confusion-diffusion doctrine.",
+              "Product ciphers (substitution + permutation cascades) are the doctrine's product.",
+              "1976-77 is the hinge: Diffie-Hellman, DES, RSA in two years.",
+              "Kerckhoffs' principle (1883) predates and governs them all.",
+            ],
+            diagram: {
+              kind: "flow",
+              title: "The historical arc",
+              caption: "Invention, attack, repair - the engine of the timeline.",
+              steps: [
+                { label: "Substitution era", note: "Caesar to Vigenere - frequency analysis kills it" },
+                { label: "Mechanical era", note: "rotors - computation and cribs kill it" },
+                { label: "Theory era", note: "Shannon formalizes what secrecy can mean" },
+                { label: "Public-key era", note: "distribution solved; hardness becomes the question" },
+                { label: "Standardization", note: "DES -> AES - public review as the quality gate" },
+              ],
+            },
+            callout: {
+              type: "tip",
+              title: "Invention, attack, repair",
+              body: "The arc sentence that organizes history answers: 'cryptography advances by invention, attack, repair - Kasiski's attack forced polyalphabetic refinement, computation forced longer keys, lattice reduction killed knapsacks; every exam cipher in this unit is one stop on that arc'. Attach the dated table and the answer is complete.",
+            },
+            examQuestions: [
+              {
+                q: "Trace the history of cryptography through its classical, Shannon-era and modern phases, with a dated timeline of key events.",
+                marks: 14,
+                outline: [
+                  "Classical: Caesar, substitution, transposition, Vigenere",
+                  "Kasiski (1863) breaks polyalphabetic period",
+                  "Mechanical: rotor machines (Enigma) broken by computation",
+                  "Shannon (1949): entropy, perfect secrecy, product ciphers",
+                  "Diffie-Hellman (1976): public-key distribution",
+                  "DES and RSA (1977): standards and cryptosystems",
+                  "AES (2001): the reviewed modern standard; knapsacks broken 1982",
+                ],
+              },
+              {
+                q: "State Shannon's two design concepts and explain how modern block ciphers embody them.",
+                marks: 7,
+                outline: [
+                  "Confusion: complex key-to-ciphertext relation (S-boxes)",
+                  "Diffusion: statistics spread across the block (mixing layers)",
+                  "Product ciphers cascade both per round - AES's round structure",
+                ],
+              },
+            ],
+          },
+          {
+            number: "1.2",
+            title: "Probability and information theory",
+            body: [
+              "Probability theory supplies the attacker's calculus: events, distributions, independence, conditional probability, and Bayes' theorem (posterior beliefs updated by evidence - the cryptanalyst's engine). Cryptographic application: the probability a random key is correct (1/|K|), the probability distribution of English letters (e is about 12.7% - the frequency-analysis fuel), and conditional probabilities updating plaintext guesses as ciphertext accumulates.",
+              "A worked entropy computation fixes information theory: H = -sum p(x) log2 p(x) measures uncertainty in bits. English letters (non-uniform): H is about 4.1 bits (vs 4.7 uniform over 26); with digram/trigram structure, real English is about 1.5 bits per letter - redundancy R = 1 - H/H0 (about 0.75 for English: most of the 4.7-bit capacity is redundant). The unicity distance follows: n0 = log2|K| / (R * log2|P|) - the amount of ciphertext after which only one key is consistent; for a 26-key Caesar cipher with English's redundancy, n0 is about 2-3 letters - the mathematics of why classical ciphers fall so fast.",
+              "Perfect secrecy's information-theoretic statement closes the section: H(M | C) = H(M) - the ciphertext adds no information about the message (section 1.6 of cryptography subjects; the OTP meets it, at the |K| >= |M| cost). The exam's framing: define entropy, compute one H, define redundancy and unicity distance, and connect to perfect secrecy - four terms, one table, one formula each.",
+              "Exam framing: expect 'information theory in cryptography: entropy, redundancy, unicity distance'. Give the entropy formula with one worked H, the redundancy computation, and the unicity-distance application to a small key space.",
+            ],
+            keyTerms: [
+              { term: "Entropy (H)", definition: "H = -sum p log2 p - average uncertainty in bits." },
+              { term: "Redundancy (R)", definition: "1 - H/H0 - the fraction of message capacity that is predictable." },
+              { term: "Unicity distance", definition: "n0 = log2|K| / (R log2|P|) - ciphertext needed to pin the key." },
+              { term: "Bayes' theorem", definition: "Posterior beliefs updated by evidence - the cryptanalyst's update rule." },
+              { term: "Perfect secrecy", definition: "H(M | C) = H(M) - ciphertext reveals nothing." },
+            ],
+            table: {
+              caption: "English-letter entropy, stage by stage.",
+              headers: ["Model", "Entropy per letter", "Meaning"],
+              rows: [
+                ["Uniform over 26", "4.7 bits", "maximum possible uncertainty"],
+                ["Single-letter frequencies", "about 4.1 bits", "non-uniformity already leaks"],
+                ["Real English (digrams+)", "about 1.5 bits", "structure dominates"],
+                ["Redundancy R", "about 0.75", "75% of capacity is predictable"],
+              ],
+            },
+            bullets: [
+              "Entropy: -sum p log2 p - the uncertainty measure in bits.",
+              "English: 4.7 uniform -> about 1.5 real bits per letter.",
+              "Redundancy about 75% - the cryptanalyst's lever.",
+              "Unicity distance: ciphertext needed to determine the key uniquely.",
+              "Caesar's 26-key space + 75% redundancy -> unicity about 2-3 letters.",
+              "Perfect secrecy: H(M | C) = H(M) - the OTP's information-theoretic form.",
+            ],
+            diagram: {
+              kind: "flow",
+              title: "From redundancy to the unicity distance",
+              caption: "The chain that explains why classical ciphers fall fast.",
+              steps: [
+                { label: "Measure H(P)", note: "entropy of the plaintext language" },
+                { label: "Compute redundancy", note: "R = 1 - H/H0" },
+                { label: "Key space size", note: "log2|K| - Caesar: about 4.7 bits" },
+                { label: "Unicity distance", note: "n0 = log2|K| / (R log2|P|)" },
+                { label: "Consequence", note: "a few letters pin the key - exhaustion begins" },
+              ],
+            },
+            callout: {
+              type: "exam",
+              title: "Unicity distance is the hidden exam number",
+              body: "The quantitative sentence: 'with 75% redundancy, a tiny key space needs only a few ciphertext letters before a unique key is consistent - the unicity distance explains why frequency analysis works at all'. Compute one n0 in the answer; the formula-to-consequence chain is the marking scheme.",
+            },
+            examQuestions: [
+              {
+                q: "Explain entropy, redundancy and the unicity distance with formulas and one worked computation for English text and a small key space.",
+                marks: 14,
+                outline: [
+                  "Entropy: H = -sum p log2 p",
+                  "English: 4.7 uniform -> about 1.5 real bits per letter",
+                  "Redundancy R = 1 - H/H0, about 0.75",
+                  "Unicity distance: n0 = log2|K| / (R log2|P|)",
+                  "Worked: Caesar, |K| = 26 -> a few letters suffice",
+                  "Bayes updates: posterior plaintext beliefs sharpen with ciphertext",
+                  "Perfect secrecy: H(M | C) = H(M) - the OTP bound",
+                ],
+              },
+              {
+                q: "Why does high plaintext redundancy help cryptanalysis?",
+                marks: 7,
+                outline: [
+                  "Redundant structure lets wrong keys be rejected",
+                  "Only keys yielding plausible language survive",
+                  "Unicity distance shrinks as redundancy grows",
+                ],
+              },
+            ],
+          },
+          {
+            number: "1.3",
+            title: "Complexity theory and number theory for cryptography",
+            body: [
+              "Complexity theory prices attacks: problems are classified by growth - constant/logarithmic/polynomial (P: solvable fast) vs exponential; NP contains problems checkable fast; NP-complete problems (subset-sum, SAT) are the hard core - if any has a fast solution, all do. Cryptography's design principle: build schemes whose breaking reduces to a problem believed outside P (factoring, discrete log) while encryption stays polynomial - the asymmetry is the entire public-key idea (Unit II's ground).",
+              "A worked growth comparison fixes the pricing: an algorithm at n^2 steps vs one at 2^n steps - at n = 100: 10^4 vs 10^30 operations; doubling the key from 128 to 256 bits doubles polynomial work but squares-to-exponentials the attacker's brute force. The exam's vocabulary: polynomial vs exponential, P vs NP, NP-completeness (and the caveat that average-case hardness, not worst-case, is what cryptography needs - Merkle-Hellman's lesson: NP-complete worst case, broken average case).",
+              "Number theory supplies the constructions: modular arithmetic (Z_n, Z_p*), gcd/extended Euclid (inverses), Fermat/Euler theorems (a^(p-1) = 1 mod p; a^phi(n) = 1 mod n), primality and factorization, quadratic residues, and the discrete-log setting. A worked inverse: 3^-1 mod 26 = 9 (3*9 = 27 = 1 mod 26) - the affine cipher's decryption constant (section 1.4) and RSA's d-from-e operation in miniature.",
+              "Exam framing: expect 'complexity theory's role in cryptography' and 'number theory background'. Give the P/NP/NP-complete vocabulary with the growth comparison, the average-case caveat, and the number-theory toolkit with one worked inverse.",
+            ],
+            keyTerms: [
+              { term: "P / NP", definition: "Solvable fast vs checkable fast - the complexity classes." },
+              { term: "NP-complete", definition: "The hard core - SAT, subset-sum; worst-case hard." },
+              { term: "Average-case hardness", definition: "What cryptography actually needs - worst-case hardness is insufficient." },
+              { term: "Extended Euclid", definition: "Computes gcd and modular inverses - the keygen engine." },
+              { term: "Fermat/Euler theorems", definition: "a^(p-1) = 1 mod p; a^phi(n) = 1 mod n - correctness backbones." },
+            ],
+            table: {
+              caption: "Growth classes at n = 100 - why exponentials lose.",
+              headers: ["Growth", "At n = 100", "Meaning"],
+              rows: [
+                ["n^2 (polynomial)", "10^4 steps", "feasible - the defender's budget"],
+                ["2^n (exponential)", "10^30 steps", "infeasible - the attacker's wall"],
+                ["n^3", "10^6 steps", "still polynomial - acceptable"],
+                ["2^(n/2)", "10^15 steps", "birthday-scale - the collision price"],
+              ],
+            },
+            bullets: [
+              "P: polynomial-solvable; NP: polynomial-checkable.",
+              "NP-complete: subset-sum, SAT - the hard core.",
+              "Cryptography needs average-case hardness - Merkle-Hellman's caution.",
+              "Doubling key length doubles defender work, squares attacker work.",
+              "Extended Euclid computes inverses (3^-1 = 9 mod 26).",
+              "Fermat/Euler underpin RSA and the classical decryption algebra.",
+            ],
+            diagram: {
+              kind: "pyramid",
+              title: "The complexity ladder (easiest at top)",
+              caption: "Schemes live low; attacks must face the wall.",
+              tiers: [
+                { label: "P - polynomial", note: "encryption/decryption live here" },
+                { label: "NP", note: "verification of a break is fast" },
+                { label: "NP-complete", note: "subset-sum - worst-case hard" },
+                { label: "Believed beyond P", note: "factoring, DLP - the assumptions" },
+              ],
+            },
+            callout: {
+              type: "warning",
+              title: "Worst-case hardness is not enough",
+              body: "The Merkle-Hellman caveat (Unit II's payoff): 'subset-sum is NP-complete in the worst case, yet Merkle-Hellman fell in polynomial time on its average case - cryptographic hardness must hold for the scheme's own distributions, not for abstract problem classes'. State the caveat wherever complexity theory is asked.",
+            },
+            examQuestions: [
+              {
+                q: "Explain complexity theory's role in cryptography: the P/NP/NP-complete vocabulary, the polynomial-vs-exponential growth comparison, and the average-case-hardness caveat.",
+                marks: 14,
+                outline: [
+                  "P: fast solvable; NP: fast checkable",
+                  "NP-complete: SAT, subset-sum - worst-case hard",
+                  "Growth: n^2 = 10^4 vs 2^n = 10^30 at n = 100",
+                  "Key doubling: defender 2x, attacker ~quadratic-to-exponential",
+                  "Design principle: breaking reduces to believed-hard problems",
+                  "Caveat: average-case hardness is what schemes need",
+                  "Merkle-Hellman: NP-complete basis, still broken (1982)",
+                ],
+              },
+              {
+                q: "Compute the modular inverse of 3 modulo 26 via extended Euclid.",
+                marks: 7,
+                outline: [
+                  "26 = 8*3 + 2; 3 = 1*2 + 1; 2 = 2*1",
+                  "Back-substitute: 1 = 3 - 2 = 3 - (26 - 8*3) = 9*3 - 26",
+                  "Inverse = 9 (3*9 = 27 = 1 mod 26)",
+                ],
+              },
+            ],
+          },
+          {
+            number: "1.4",
+            title: "Classical ciphers I - Caesar, affine, monoalphabetic substitution",
+            body: [
+              "The classical substitution family. Caesar: shift each letter by k (E(x) = x + k mod 26) - 26 keys, exhausted instantly. Affine: E(x) = (a*x + b) mod 26 with gcd(a, 26) = 1 - key space 12 * 26 = 312 (12 valid a-values coprime to 26); decryption needs a^-1: D(y) = a^-1 (y - b) mod 26. Monoalphabetic substitution: an arbitrary permutation of the alphabet - 26! keys (about 2^88), defeated not by exhaustion but by frequency analysis: e (12.7%), t, a, o anchor the mapping; doubled letters and short words finish it.",
+              "A worked affine walkthrough fixes the algebra: key (a = 5, b = 8); plaintext 'h' (7): 5*7 + 8 = 43 mod 26 = 17 = 'r'; decryption: a^-1 = 21 (5*21 = 105 = 1 mod 26), so D(17) = 21*(17 - 8) = 189 mod 26 = 189 - 182 = 7 = 'h'. The key-space accounting: 12 possible a (1, 3, 5, 7, 9, 11, 15, 17, 19, 21, 23, 25) times 26 b = 312 keys - brute-forceable by hand, and frequency analysis finishes it anyway.",
+              "The family's shared lesson completes the section: all three preserve letter identities positionally - the statistical structure of the language passes through the cipher untouched; key-space size (312 vs 2^88) does not change the verdict. The exam's framing: define each cipher, compute one affine round trip, and state the shared structural leak. The gcd(a, 26) = 1 invertibility condition is the affine question's free mark.",
+              "Exam framing: expect 'Caesar, affine and monoalphabetic substitution with cryptanalysis'. Give the three definitions, the affine walkthrough with the 312-key count, and the frequency-analysis verdict.",
+            ],
+            keyTerms: [
+              { term: "Caesar cipher", definition: "E(x) = x + k mod 26 - 26 keys, exhausted instantly." },
+              { term: "Affine cipher", definition: "E(x) = (a x + b) mod 26 with gcd(a, 26) = 1 - 312 keys." },
+              { term: "Affine inverse", definition: "D(y) = a^-1 (y - b) mod 26 - requires the gcd condition." },
+              { term: "Monoalphabetic substitution", definition: "Alphabet permutation - 26! keys, still frequency-preserving." },
+              { term: "Frequency analysis", definition: "Matching ciphertext statistics to language - e anchors at 12.7%." },
+            ],
+            table: {
+              caption: "The substitution family's key spaces and defeats.",
+              headers: ["Cipher", "Key space", "Defeat"],
+              rows: [
+                ["Caesar", "26", "exhaustion in seconds"],
+                ["Affine", "12 x 26 = 312", "exhaustion or frequency analysis"],
+                ["Monoalphabetic", "26! (about 2^88)", "frequency analysis + cribs"],
+              ],
+            },
+            bullets: [
+              "Caesar: pure shift; affine: linear map; monoalphabetic: permutation.",
+              "Affine invertibility: gcd(a, 26) = 1 - 12 valid multipliers.",
+              "Worked: a = 5, b = 8; 'h' -> 'r' -> 'h' with a^-1 = 21.",
+              "26! keys do not save substitution - structure leaks through.",
+              "Frequency analysis: e/t/a/o anchor the mapping; cribs finish.",
+              "Shared lesson: positional letter identity preservation is the leak.",
+            ],
+            diagram: {
+              kind: "flow",
+              title: "One affine round trip",
+              caption: "Encryption, and decryption through the modular inverse.",
+              steps: [
+                { label: "Plaintext letter", note: "x = 7 ('h')" },
+                { label: "Encrypt", note: "(5*7 + 8) mod 26 = 17 ('r')" },
+                { label: "Invert key", note: "a^-1 = 21 (5*21 = 1 mod 26)" },
+                { label: "Decrypt", note: "21*(17 - 8) mod 26 = 7 ('h')" },
+                { label: "Lesson", note: "gcd(a, 26) = 1 made the inverse exist" },
+              ],
+            },
+            callout: {
+              type: "exam",
+              title: "The gcd condition is the free mark",
+              body: "The affine question's checkpoint: 'a must be coprime to 26 - twelve valid values - or decryption's inverse does not exist'. Then the worked round trip with a = 5, b = 8 and a^-1 = 21; examiners grade the inverse computation as the algebra proof.",
+            },
+            examQuestions: [
+              {
+                q: "Describe the Caesar, affine and monoalphabetic substitution ciphers with their key spaces, and demonstrate one affine encryption-decryption round trip including the inverse computation.",
+                marks: 14,
+                outline: [
+                  "Caesar: E(x) = x + k; 26 keys",
+                  "Affine: E(x) = (a x + b) mod 26; gcd(a, 26) = 1",
+                  "12 valid a-values x 26 -> 312 keys",
+                  "Worked: a = 5, b = 8; 'h' -> 'r'",
+                  "a^-1 = 21 mod 26 (5*21 = 105 = 1)",
+                  "Decrypt: 21*(17 - 8) = 189 mod 26 = 7 = 'h'",
+                  "Monoalphabetic: 26! keys, defeated by frequency analysis",
+                ],
+              },
+              {
+                q: "Why does a 26! key space fail to secure monoalphabetic substitution?",
+                marks: 7,
+                outline: [
+                  "Letter frequencies pass through positionally",
+                  "'e' at 12.7% anchors the mapping",
+                  "Cribs (short words, doubles) complete the key",
+                ],
+              },
+            ],
+          },
+          {
+            number: "1.5",
+            title: "Classical ciphers II - transposition and homophonic substitution",
+            body: [
+              "Transposition ciphers rearrange letters without changing them - the columnar transposition is the canonical form: write plaintext in rows of width k, read out by columns in a key-determined order. The key is the permutation (k! orderings); security rests on rearrangement, so letter frequencies survive untouched - the cryptanalyst's tell is unchanged frequencies plus broken digram statistics; anagramming plus the anagram/crib method (searching for known words across columns) recovers the width and permutation.",
+              "A worked columnar walkthrough: key 'HACK' (width 4, column order by alphabetical rank: A/C/H/K -> columns 2/3/1/4); plaintext 'ATTACKATDAWN' fills rows: ATTA / CKAT / DAWN; reading column 2 (T K A), column 3 (T A N), column 1 (A C D), column 4 (A T W) gives ciphertext 'TKATANACDATW'. Decryption re-fills columns by the same order - the round trip demonstrates the permutation algebra.",
+              "Homophonic substitution maps each plaintext letter to one of several ciphertext symbols (e.g., 'e' gets 12 homophones) - flattening the frequency profile: each symbol appears about equally often, defeating naive frequency analysis. The costs: larger alphabet (key size grows), and structure beyond single letters (digrams, words, spaces) still leaks - homophones delay, not defeat, statistical attack. The exam's framing: transposition changes positions, substitution changes identities; homophones flatten frequencies but not structure.",
+              "Exam framing: expect 'transposition and homophonic substitution with analysis'. Give the columnar walkthrough with the key-order reading, and the homophonic flattening with its residual leak.",
+            ],
+            keyTerms: [
+              { term: "Columnar transposition", definition: "Rows of width k, read out by key-ordered columns - k! keys." },
+              { term: "Positional preservation", definition: "Transposition changes positions only - frequencies survive." },
+              { term: "Homophonic substitution", definition: "Multiple ciphertext symbols per plaintext letter - flattened frequencies." },
+              { term: "Anagram attack", definition: "Reassembling transposed text via probable words." },
+              { term: "Residual leak", definition: "Digram/word structure surviving homophones." },
+            ],
+            table: {
+              caption: "Substitution vs transposition at a glance.",
+              headers: ["Property", "Substitution family", "Transposition family"],
+              rows: [
+                ["What changes", "letter identities", "letter positions"],
+                ["Frequencies", "preserved (unless homophonic)", "preserved exactly"],
+                ["Key shape", "alphabet mapping", "column permutation"],
+                ["Classic attack", "frequency analysis", "anagramming + cribs"],
+                ["Worked example", "affine (a=5, b=8)", "columnar key 'HACK'"],
+              ],
+            },
+            bullets: [
+              "Transposition: rearrange positions; identities unchanged.",
+              "Columnar walkthrough: key 'HACK' -> 'TKATANACDATW'.",
+              "k! key space; anagramming + cribs defeat it.",
+              "Homophones flatten single-letter frequencies.",
+              "Digram/word structure leaks anyway - homophones delay, not defeat.",
+              "Combined systems (substitute then transpose) preview product ciphers (1.7).",
+            ],
+            diagram: {
+              kind: "flow",
+              title: "Columnar transposition round trip",
+              caption: "Write in rows, read by key-ordered columns, refill to decrypt.",
+              steps: [
+                { label: "Key 'HACK'", note: "width 4; column order A/C/H/K" },
+                { label: "Write rows", note: "ATTA / CKAT / DAWN" },
+                { label: "Read columns", note: "col2, col3, col1, col4 -> TKATANACDATW" },
+                { label: "Decrypt", note: "refill columns by order, read rows" },
+                { label: "Attack", note: "unchanged frequencies -> anagram search" },
+              ],
+            },
+            callout: {
+              type: "tip",
+              title: "Positions versus identities",
+              body: "The organizing sentence: 'substitution changes what each letter is; transposition changes where each letter sits - both leave the letter-frequency profile intact, which is exactly what the attacks exploit'. Then the two worked examples; the pairing structures the classical-cipher answer.",
+            },
+            examQuestions: [
+              {
+                q: "Explain the columnar transposition cipher with a worked encryption and the anagram attack, and explain homophonic substitution's frequency-flattening and residual weakness.",
+                marks: 14,
+                outline: [
+                  "Columnar: rows of width k; read by key-ordered columns",
+                  "Worked: key 'HACK'; 'ATTACKATDAWN' -> 'TKATANACDATW'",
+                  "Key space k!; positions change, identities do not",
+                  "Frequencies survive exactly - the tell",
+                  "Attack: anagramming with probable words/cribs",
+                  "Homophones: several symbols per letter flatten counts",
+                  "Residual: digram/word structure still leaks",
+                ],
+              },
+              {
+                q: "Why does combining substitution with transposition strengthen a classical cipher?",
+                marks: 7,
+                outline: [
+                  "Substitution destroys identities; transposition destroys positions",
+                  "Single-letter frequency analysis no longer suffices",
+                  "The combination is Shannon's product-cipher seed (1.7)",
+                ],
+              },
+            ],
+          },
+          {
+            number: "1.6",
+            title: "Polyalphabetic ciphers - Vigenere and Beaufort",
+            body: [
+              "Polyalphabetic ciphers apply shifting alphabets cyclically: the Vigenere cipher adds the key letter mod 26 (E(x) = x + k_i mod 26, key cycling per position); the Beaufort variant subtracts (E(x) = k_i - x mod 26) - and its reciprocal variant (Beaufort variant: x - k_i) makes encryption and decryption the same operation. With key length L, the key space is 26^L, and single-letter frequency analysis collapses - the three centuries of 'indecipherable' reputation.",
+              "A worked pair walkthrough fixes the contrast: plaintext 'HELLO' with key 'CAT'. Vigenere: h+c=J, e+a=E, l+t=E, l+c=N, o+a=O -> 'JEENO'. Beaufort: c-h=-5=21=v, a-e=-4=22=w, t-l=8=i, c-l=-9=17=r, a-o=-14=12=m -> 'VWIRM'. Cryptanalysis: the Kasiski test (GCD of repeated-segment gaps) reveals L; the index of coincidence confirms it; then per-column analysis reduces to L Caesar problems - L-shift solve each column independently.",
+              "The Beaufort detail completes the section: because Beaufort's cipher is self-reciprocal (encrypt = decrypt with the same operation), it simplifies implementation; its frequency analysis matches Vigenere's once L is known. The exam's framing: define both ciphers with formulas, run the paired walkthrough, and give the Kasiski/IC cryptanalysis chain. The self-reciprocal note is the Beaufort question's free mark.",
+              "Exam framing: expect 'Vigenere and Beaufort with cryptanalysis'. Give both formulas, the paired 'HELLO'/'CAT' walkthrough, and the Kasiski + index-of-coincidence + column analysis chain.",
+            ],
+            keyTerms: [
+              { term: "Vigenere cipher", definition: "E(x) = x + k_i mod 26 with cycling key - polyalphabetic." },
+              { term: "Beaufort cipher", definition: "E(x) = k_i - x mod 26 - self-reciprocal variant." },
+              { term: "Kasiski test", definition: "GCD of repeated-segment gaps reveals the key length." },
+              { term: "Index of coincidence", definition: "Measures letter-distribution flatness - confirms the period." },
+              { term: "Column analysis", definition: "Per-key-position Caesar solving once L is known." },
+            ],
+            table: {
+              caption: "The paired walkthrough, letter by letter.",
+              headers: ["Plain", "Key", "Vigenere (x + k)", "Beaufort (k - x)"],
+              rows: [
+                ["H (7)", "C (2)", "9 = J", "21 = v"],
+                ["E (4)", "A (0)", "4 = E", "22 = w"],
+                ["L (11)", "T (19)", "4 = E", "8 = i"],
+                ["L (11)", "C (2)", "13 = N", "17 = r"],
+                ["O (14)", "A (0)", "14 = O", "12 = m"],
+                ["Ciphertext", "-", "JEENO", "VWIRM"],
+              ],
+            },
+            bullets: [
+              "Vigenere adds; Beaufort subtracts (key - plain).",
+              "Beaufort is self-reciprocal - one operation both ways.",
+              "Key space 26^L; single-letter analysis collapses.",
+              "Kasiski: repeat-gap GCD reveals L.",
+              "Index of coincidence peaks at the true period.",
+              "Column analysis: L independent Caesar problems.",
+            ],
+            diagram: {
+              kind: "flow",
+              title: "Breaking a polyalphabetic cipher",
+              caption: "Find the period, then divide and conquer.",
+              steps: [
+                { label: "Observe repeats", note: "Kasiski: gap GCD suggests L" },
+                { label: "Confirm period", note: "index of coincidence peaks at L" },
+                { label: "Split columns", note: "position i mod L -> column i" },
+                { label: "Solve columns", note: "L Caesar ciphers by frequency" },
+                { label: "Reassemble", note: "key recovered; plaintext falls" },
+              ],
+            },
+            callout: {
+              type: "exam",
+              title: "Quote the self-reciprocal property",
+              body: "The Beaufort differentiator: 'Beaufort is self-reciprocal - ciphertext = key - plaintext, and the same operation decrypts; Vigenere needs the inverse shift'. Then the paired JEENO/VWIRM walkthrough; the side-by-side table demonstrates both formulas in one shot.",
+            },
+            examQuestions: [
+              {
+                q: "Explain the Vigenere and Beaufort ciphers with formulas, encrypt 'HELLO' under key 'CAT' with both, and describe the complete cryptanalysis (Kasiski, index of coincidence, column analysis).",
+                marks: 14,
+                outline: [
+                  "Vigenere: E(x) = x + k_i mod 26",
+                  "Beaufort: E(x) = k_i - x mod 26 - self-reciprocal",
+                  "Worked: HELLO/CAT -> JEENO (Vigenere)",
+                  "Worked: HELLO/CAT -> VWIRM (Beaufort)",
+                  "Key space 26^L; single-letter frequency defeated",
+                  "Kasiski: repeat-gap GCD; IC confirms the period",
+                  "Column analysis: L Caesar problems, solved per column",
+                ],
+              },
+              {
+                q: "Why is the index of coincidence used alongside the Kasiski test?",
+                marks: 7,
+                outline: [
+                  "Kasiski needs visible repeats - short texts may lack them",
+                  "IC measures distribution flatness statistically",
+                  "IC peaks at the true period even without repeats",
+                ],
+              },
+            ],
+          },
+          {
+            number: "1.7",
+            title: "The DES family - product ciphers, Lucifer and DES",
+            body: [
+              "The DES family is Shannon's doctrine made concrete. Product ciphers: cascade substitution (confusion) and permutation (diffusion) stages - the round structure; Lucifer (IBM, 1970s, Feistel's team): the direct ancestor - a 64-bit block cipher with 128-bit keys and 16 product-cipher rounds of substitutions and permutations, hardware-oriented (the LUCIFER paper's S-boxes and permutations became DES's skeleton).",
+              "A worked design-evolution walkthrough: Lucifer's 128-bit key was trimmed to 56 bits (48-bit subkeys after permutation choice) for DES; the Feistel structure retained (L' = R, R' = L XOR F(k_i, R) - invertible rounds without invertible F); eight S-boxes (6-in/4-out) supply the only nonlinearity; 16 rounds reach full diffusion. The design controversy (the syllabus's history): the NSA-influenced S-box design and the key-length trim fueled suspicion - later vindicated as differential-cryptanalysis resistance (the S-boxes were optimized against attacks unpublished until 1990).",
+              "DES's cryptanalysis ledger completes the family story: exhaustive search broke the 56-bit key (Deep Crack, 1998); differential and linear cryptanalysis demonstrated academic weaknesses but needed impractical chosen-plaintext volumes; 3DES (EDE) extended key length but inherited the 64-bit block birthday cap (about 2^32 blocks - Sweet32). The exam's framing sentence: Lucifer -> DES is the product-cipher doctrine industrialized - and its key-length compromise is the cautionary lesson AES's open competition answered.",
+              "Exam framing: expect 'product ciphers, Lucifer and the DES family'. Define the product-cipher structure, walk Lucifer-to-DES evolution with the Feistel equation, and give the cryptanalysis ledger. The 'doctrine industrialized' sentence is the summary mark.",
+            ],
+            keyTerms: [
+              { term: "Product cipher", definition: "Cascaded substitution + permutation rounds - Shannon's doctrine." },
+              { term: "Lucifer", definition: "IBM's 128-bit-key predecessor of DES - Feistel structure with S-boxes." },
+              { term: "Feistel round", definition: "L' = R, R' = L XOR F(k, R) - invertible without invertible F." },
+              { term: "DES parameters", definition: "64-bit block, 56-bit key, 16 rounds, 48-bit subkeys." },
+              { term: "Sweet32", definition: "The 64-bit-block birthday cap limiting 3DES's safe data volume." },
+            ],
+            table: {
+              caption: "Lucifer to DES - the design deltas.",
+              headers: ["Property", "Lucifer", "DES"],
+              rows: [
+                ["Block", "64 bits", "64 bits"],
+                ["Key", "128 bits", "56 bits"],
+                ["Rounds", "16 product rounds", "16 Feistel rounds"],
+                ["Nonlinearity", "S-boxes + permutations", "eight 6-in/4-out S-boxes"],
+                ["Status", "research ancestor", "standard 1977; retired by key length"],
+              ],
+            },
+            bullets: [
+              "Product cipher = substitution (confusion) + permutation (diffusion) cascaded.",
+              "Lucifer: 128-bit key, 16 rounds - the direct ancestor.",
+              "DES: key trimmed to 56; Feistel structure retained.",
+              "Round equation: L' = R, R' = L XOR F(k_i, R).",
+              "S-box controversy vindicated by differential-cryptanalysis resistance.",
+              "Ledger: exhaustive search killed the key; 3DES inherited the block cap.",
+            ],
+            diagram: {
+              kind: "layers",
+              title: "One DES round (top of the 16-round stack)",
+              caption: "The product-cipher doctrine in a single layer.",
+              layers: [
+                { label: "Round input (L, R)", note: "64-bit block as two halves" },
+                { label: "Expand + XOR subkey", note: "32 -> 48 bits; key mixing (confusion)" },
+                { label: "S-boxes", note: "eight 6-in/4-out substitutions - nonlinearity" },
+                { label: "Permutation + XOR + swap", note: "diffusion; L' = R, R' = L XOR F" },
+              ],
+            },
+            callout: {
+              type: "exam",
+              title: "Doctrine industrialized - with one compromise",
+              body: "The summary sentence: 'Lucifer-to-DES industrialized Shannon's product-cipher doctrine - and the 128-to-56-bit key trim is the cautionary lesson: structure survived review, key length did not; AES's open competition was the answer'. Quote the Feistel equation and the Deep Crack verdict as the anchors.",
+            },
+            examQuestions: [
+              {
+                q: "Explain product ciphers, the Lucifer design and the DES family: the doctrine, the design evolution with the Feistel round equation, the S-box controversy, and the cryptanalysis ledger.",
+                marks: 14,
+                outline: [
+                  "Product cipher: cascaded substitution + permutation (Shannon)",
+                  "Lucifer: 64-bit block, 128-bit key, 16 rounds - ancestor",
+                  "DES: 56-bit key, 48-bit subkeys, eight S-boxes",
+                  "Feistel round: L' = R, R' = L XOR F(k_i, R)",
+                  "Invertibility without invertible F - the design gift",
+                  "S-box controversy vindicated by differential resistance",
+                  "Ledger: 2^56 search (1998); 3DES birthday cap (Sweet32)",
+                ],
+              },
+              {
+                q: "Why is the Feistel structure valuable regardless of the round function?",
+                marks: 7,
+                outline: [
+                  "The old half is stored - inversion needs no inverse of F",
+                  "Any F works; security comes from rounds and F's quality",
+                  "Decryption reuses the same circuit with reversed subkeys",
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    },
+    {
+      number: 2,
+      roman: "II",
+      title: "Asymmetric (Public) Key Cryptographic Systems",
+      summary:
+        "Unit II builds the public-key half: the PKCS concept, the RSA cryptosystem with its variants and security analysis, primality testing, the Merkle-Hellman knapsack and its fall, ElGamal, and elliptic-curve cryptography.",
+      chapter: {
+        number: "02",
+        title: "RSA, Knapsacks and Curves",
+        intro:
+          "Unit II covers the concept of public-key cryptosystems, the RSA cryptosystem and its variants, primality testing, the security of RSA, the Merkle-Hellman knapsack and its security, ElGamal, and elliptic-curve cryptography.",
+        inOneBreath:
+          "Public key = trapdoor one-way functions: RSA rides factoring, Merkle-Hellman rode subset-sum (fell to lattices), ElGamal and ECC ride discrete logs. Primality testing (Miller-Rabin) builds keys; RSA's security lives in padding and parameter discipline; curves deliver 128-bit security at 256 bits.",
+        sections: [
+          {
+            number: "2.1",
+            title: "The concept of public-key cryptosystems",
+            body: [
+              "A public-key cryptosystem (PKCS) rests on the trapdoor one-way function: a function easy to compute, infeasible to invert - unless one holds a secret trapdoor. The architecture: each user publishes a public key (the forward function's parameters) and keeps a private key (the trapdoor); anyone encrypts to the public key; only the trapdoor decrypts. Symmetric cryptography needed a pre-shared secret; public key removes that precondition - the 1976 revolution.",
+              "A worked asymmetry table fixes the four constructions the syllabus surveys: RSA - trapdoor = factorization of n (multiply easy, factor hard); Merkle-Hellman - trapdoor = superincreasing knapsack (public weights hide it); ElGamal - trapdoor = discrete log (g^x easy, x hard); ECC - trapdoor = elliptic-curve discrete log (point multiplication easy, reverse hard). Each scheme is one hardness assumption plus one trapdoor discipline - the exam's expected mapping.",
+              "The composition principle completes the concept: public key solves distribution and signatures but is slow - so hybrids compose it (public key ferries session keys; symmetric carries data - Unit-cryptography's pattern). The security-methodology point: PKCS security is conditional - each scheme's guarantee is exactly the hardness assumption's survival, re-examined as mathematics and hardware advance (quantum's Shor algorithm threatens all four).",
+              "Exam framing: expect 'concept of public-key cryptosystems'. Define the trapdoor function, give the four-construction mapping, and state the composition and conditionality principles. The 'asymmetry is the design' sentence is the concept mark.",
+            ],
+            keyTerms: [
+              { term: "PKCS", definition: "Public-key cryptosystem - published forward function, secret trapdoor." },
+              { term: "Trapdoor function", definition: "One-way without the secret, invertible with it." },
+              { term: "Hardness assumption", definition: "The computational problem whose difficulty the scheme rents." },
+              { term: "Hybrid composition", definition: "Public key ferries session keys; symmetric carries bulk data." },
+              { term: "Conditional security", definition: "Guarantees survive only while the assumption holds." },
+            ],
+            table: {
+              caption: "The four PKCS constructions mapped.",
+              headers: ["Scheme", "Easy direction", "Hard direction", "Trapdoor"],
+              rows: [
+                ["RSA", "n = p*q; c = m^e", "factor n", "p, q (d = e^-1 mod phi)"],
+                ["Merkle-Hellman", "public knapsack sums", "solve hard subset-sum", "superincreasing weights"],
+                ["ElGamal", "g^x, g^y", "discrete log", "exponent x"],
+                ["ECC", "Q = kP on curve", "ECDLP", "scalar k"],
+              ],
+            },
+            bullets: [
+              "Trapdoor one-way functions are the PKCS primitive.",
+              "Publish forward, hold trapdoor - key distribution solved.",
+              "Four constructions: RSA, Merkle-Hellman, ElGamal, ECC.",
+              "Each rents one hardness assumption - conditionality.",
+              "Hybrid composition: slow public key, fast symmetric carrier.",
+              "Quantum (Shor) threatens all four assumptions - the horizon note.",
+            ],
+            diagram: {
+              kind: "fork",
+              title: "One trapdoor, four expressions",
+              caption: "The same architectural idea, four hardness assumptions.",
+              start: "Public-key cryptosystem",
+              branches: [
+                { label: "Factoring family", outcome: "RSA - multiply easy, factor hard", good: true },
+                { label: "Knapsack family", outcome: "Merkle-Hellman - sums easy, subset-sum hard (fell 1982)", good: false },
+                { label: "Discrete-log family", outcome: "ElGamal/DH - exponentiate easy, log hard", good: true },
+                { label: "Curve family", outcome: "ECC - point multiply easy, ECDLP hard; smallest keys", good: true },
+              ],
+            },
+            callout: {
+              type: "exam",
+              title: "Asymmetry is the design",
+              body: "The concept sentence: 'a PKCS is an asymmetry machine - work that anyone may do (encrypt/verify) and work only the key-holder may undo (decrypt/sign); the four surveyed schemes are four hardness assumptions wearing that one shape'. Then the mapping table.",
+            },
+            examQuestions: [
+              {
+                q: "Explain the concept of public-key cryptosystems: trapdoor one-way functions, the public/private architecture, and the mapping of RSA, Merkle-Hellman, ElGamal and ECC onto it.",
+                marks: 14,
+                outline: [
+                  "Trapdoor function: easy forward, hard reverse, secret inverter",
+                  "Public key published; private key held",
+                  "Distribution solved without pre-shared secrets",
+                  "RSA: factoring trapdoor",
+                  "Merkle-Hellman: superincreasing knapsack trapdoor",
+                  "ElGamal/ECC: discrete-log trapdoors",
+                  "Hybrid composition + conditional security stated",
+                ],
+              },
+              {
+                q: "Why is public-key cryptography always composed with symmetric crypto in practice?",
+                marks: 7,
+                outline: [
+                  "Public-key operations are orders of magnitude slower",
+                  "Message-size limits on raw public-key encryption",
+                  "Hybrid: public key ferries session keys; symmetric carries data",
+                ],
+              },
+            ],
+          },
+          {
+            number: "2.2",
+            title: "The RSA cryptosystem",
+            body: [
+              "RSA is the factoring-based PKCS. Key generation: choose primes p, q (by Miller-Rabin, section 2.4); n = pq; phi(n) = (p-1)(q-1); choose e with gcd(e, phi) = 1; compute d = e^-1 mod phi. Public key (n, e); private key (n, d) (or p, q, d). Encryption: c = m^e mod n; decryption: m = c^d mod n - correct because ed = 1 + k*phi makes c^d = m^(ed) = m mod n (Euler's theorem).",
+              "A worked toy walkthrough: p = 3, q = 11 -> n = 33, phi = 20; e = 3 -> d = 7 (3*7 = 21 = 1 mod 20); m = 4 -> c = 4^3 = 64 mod 33 = 31; decrypt: 31^7 mod 33 = 4 - recovered. The CRT speedup: decrypt mod p and mod q separately (m_p = c^d mod p using d mod (p-1)), then recombine - about 4x faster, the standard implementation optimization. Signing is the same algebra in reverse (Unit IV's RSA signatures).",
+              "The deployment discipline completes the section: textbook RSA encrypts directly and is deterministic/malleable - real RSA pads (OAEP for encryption, PSS for signatures - the random-oracle-proven forms); key sizes at 128-bit security: 3072-bit modulus; primes must be independently generated (shared primes break everything - the GCD batch attack). The exam's framing: RSA's correctness is Euler's theorem; its security is factoring; its deployment safety is padding + parameters.",
+              "Exam framing: expect 'RSA cryptosystem with a worked example'. Give keygen/enc/dec with the Euler correctness argument, the toy walkthrough, and the CRT/padding deployment notes.",
+            ],
+            keyTerms: [
+              { term: "RSA keygen", definition: "n = pq, phi = (p-1)(q-1), d = e^-1 mod phi." },
+              { term: "RSA encryption", definition: "c = m^e mod n; decryption m = c^d mod n." },
+              { term: "Euler correctness", definition: "ed = 1 + k*phi -> c^d = m mod n." },
+              { term: "CRT speedup", definition: "Decrypt mod p and q separately, recombine - about 4x faster." },
+              { term: "OAEP/PSS", definition: "The padding forms that make RSA CCA-secure/unforgeable." },
+            ],
+            codeExample: {
+              language: "python",
+              caption: "rsa_toy.py - the worked example, runnable",
+              code: `p, q, e = 3, 11, 3
+n, phi = p * q, (p - 1) * (q - 1)   # 33, 20
+d = pow(e, -1, phi)                 # 7 (3*7 = 21 = 1 mod 20)
+
+m = 4
+c = pow(m, e, n)                    # 31
+print(pow(c, d, n))                 # 4 - recovered
+
+# correctness: ed = 21 = 1 + 20 -> c^d = m^(1+phi) = m mod n
+# CRT view: 31 mod 3 = 1, 31 mod 11 = 9 -> recombine to 4`,
+            },
+            bullets: [
+              "Keygen: n = pq; phi = (p-1)(q-1); d = e^-1 mod phi.",
+              "Enc: c = m^e mod n; Dec: m = c^d mod n.",
+              "Toy: n = 33, e = 3, d = 7; m = 4 -> c = 31 -> 4.",
+              "Correctness via Euler: ed = 1 + k*phi.",
+              "CRT decryption: about 4x faster - the implementation norm.",
+              "Deployment: OAEP/PSS padding; 3072-bit keys; independent primes.",
+            ],
+            diagram: {
+              kind: "pipeline",
+              title: "RSA end to end",
+              caption: "Prime generation to Euler-verified decryption.",
+              stages: [
+                { label: "Primes", note: "Miller-Rabin finds p, q" },
+                { label: "Modulus + phi", note: "n = pq; phi = (p-1)(q-1)" },
+                { label: "Key pair", note: "e coprime to phi; d = e^-1 mod phi" },
+                { label: "Encrypt/decrypt", note: "c = m^e; m = c^d - Euler guarantees" },
+                { label: "Deployment", note: "OAEP padding + CRT speedup" },
+              ],
+            },
+            callout: {
+              type: "exam",
+              title: "Euler is the correctness proof",
+              body: "The one-line proof to quote: 'ed = 1 + k*phi(n) by construction of d, so c^d = m^(ed) = m^(1 + k*phi) = m mod n'. Then the toy walkthrough (n = 33) - examiners grade the d-computation and the Euler sentence together.",
+            },
+            examQuestions: [
+              {
+                q: "Explain the RSA cryptosystem: key generation, encryption, decryption with the Euler-theorem correctness argument, and a complete toy example (n = 33).",
+                marks: 14,
+                outline: [
+                  "Keygen: p, q prime; n = pq = 33; phi = 20",
+                  "e = 3 coprime to phi; d = 7 (3*7 = 21 = 1 mod 20)",
+                  "Encryption: c = 4^3 mod 33 = 31",
+                  "Decryption: 31^7 mod 33 = 4",
+                  "Euler: ed = 1 + k*phi -> m recovered",
+                  "CRT speedup for real implementations",
+                  "Deployment: OAEP/PSS; independent primes; 3072-bit sizes",
+                ],
+              },
+              {
+                q: "Why must the two RSA primes be generated independently?",
+                marks: 7,
+                outline: [
+                  "Shared primes across users make gcd(n1, n2) reveal p",
+                  "Batch-GCD attacks factor millions of keys at once",
+                  "Independence is a key-generation requirement, not an option",
+                ],
+              },
+            ],
+          },
+          {
+            number: "2.3",
+            title: "Variants of RSA",
+            body: [
+              "The syllabus's RSA variants. CRT-RSA: the decryption speedup (private key stored as p, q, dP, dQ, qInv - decrypt mod p and q, recombine). Multi-prime RSA: more than two primes - shorter CRT components, faster decryption, same security discipline (primes still independently generated). Rabin's scheme: the e = 2 variant - encryption c = m^2 mod n; decryption needs square roots mod p and q (four candidates, resolved by redundancy/checks) - historically important, awkward in practice.",
+              "A worked CRT-RSA walkthrough: with n = 33 (p = 3, q = 11), d = 7: dP = d mod (p-1) = 7 mod 2 = 1; dQ = 7 mod 10 = 7; decrypt c = 31: m_p = 31^1 mod 3 = 1; m_q = 31^7 mod 11 = 4 (31 = 9 mod 11; 9^7 = ... = 4); recombine: m = m_q + q * ((m_p - m_q) * q^-1 mod p) - with q^-1 mod p: 11 mod 3 = 2, 2^-1 mod 3 = 2; (1 - 4) * 2 = -6 mod 3 = 0 -> m = 4. The algebra is the exam's expected exercise.",
+              "The variant rationale completes the section: speed (CRT: 4x; multi-prime: more), signature/encryption separation (separate keys for signing and encryption - key-usage discipline), and padding variants (OAEP-encryption vs PSS-signatures). The exam's framing: variants optimize performance and deployment discipline - the core (modexp with a factoring trapdoor) never changes.",
+              "Exam framing: expect 'variants of RSA'. Give CRT-RSA with the worked recombination, multi-prime and Rabin notes, and the key-usage/padding discipline. The 'core never changes' sentence is the summary mark.",
+            ],
+            keyTerms: [
+              { term: "CRT-RSA", definition: "Private key as (p, q, dP, dQ, qInv) - about 4x faster decryption." },
+              { term: "Multi-prime RSA", definition: "k > 2 primes - shorter CRT limbs, faster private ops." },
+              { term: "Rabin scheme", definition: "e = 2 variant - square roots; four candidates resolved by redundancy." },
+              { term: "Key-usage separation", definition: "Distinct signing and encryption keys - deployment discipline." },
+              { term: "qInv", definition: "q^-1 mod p - the CRT recombination constant." },
+            ],
+            table: {
+              caption: "RSA variants and their purposes.",
+              headers: ["Variant", "Change", "Purpose"],
+              rows: [
+                ["CRT-RSA", "decrypt via p, q limbs", "speed (about 4x)"],
+                ["Multi-prime", "more primes in n", "faster private ops"],
+                ["Rabin", "e = 2 (squaring)", "historical; proof tied to factoring"],
+                ["RSA-OAEP", "padded encryption", "CCA-secure encryption"],
+                ["RSA-PSS", "padded signatures", "provable unforgeability"],
+              ],
+            },
+            bullets: [
+              "CRT-RSA: dP, dQ, qInv - the standard private-key format.",
+              "Worked: n = 33; m_p = 1, m_q = 4; recombine to 4.",
+              "Multi-prime: more primes, faster CRT, same discipline.",
+              "Rabin: square-root ambiguity needs redundancy.",
+              "OAEP vs PSS: padding matched to purpose.",
+              "Variants optimize; the factoring core never changes.",
+            ],
+            diagram: {
+              kind: "flow",
+              title: "CRT-RSA decryption, end to end",
+              caption: "Two small exponentiations and a recombination beat one big one.",
+              steps: [
+                { label: "Split", note: "m_p = c^dP mod p; m_q = c^dQ mod q" },
+                { label: "Worked", note: "31^1 mod 3 = 1; 31^7 mod 11 = 4" },
+                { label: "Difference", note: "(m_p - m_q) * qInv mod p" },
+                { label: "Recombine", note: "m = m_q + q * h" },
+                { label: "Payoff", note: "smaller exponents - about 4x faster" },
+              ],
+            },
+            callout: {
+              type: "exam",
+              title: "Variants optimize, the core holds",
+              body: "The summary sentence: 'every RSA variant - CRT, multi-prime, OAEP, PSS - optimizes speed or deployment discipline while the factoring trapdoor stays untouched; quote that sentence, then the CRT recombination walkthrough as the algebraic proof'.",
+            },
+            examQuestions: [
+              {
+                q: "Explain the variants of RSA: CRT-RSA with a worked recombination, multi-prime RSA, the Rabin scheme, and the padding/usage variants.",
+                marks: 14,
+                outline: [
+                  "CRT-RSA: (p, q, dP, dQ, qInv) - about 4x decryption",
+                  "Worked: n = 33; dP = 1, dQ = 7",
+                  "m_p = 1, m_q = 4; h = (1 - 4)*2 mod 3 = 0; m = 4",
+                  "Multi-prime: more primes - faster private operations",
+                  "Rabin: e = 2 - square roots, redundancy resolves candidates",
+                  "OAEP (encryption) vs PSS (signatures)",
+                  "Variants optimize performance/discipline; core unchanged",
+                ],
+              },
+              {
+                q: "Why does Rabin's scheme produce four decryption candidates?",
+                marks: 7,
+                outline: [
+                  "Squaring loses the sign: ±m mod p and ±m mod q",
+                  "CRT recombination yields 4 combinations mod n",
+                  "Redundancy in the plaintext selects the true one",
+                ],
+              },
+            ],
+          },
+          {
+            number: "2.4",
+            title: "Primality testing",
+            body: [
+              "RSA keys need primes, and primality testing finds them - probabilistically. Fermat's test: check a^(n-1) = 1 mod n for random a - but Carmichael numbers pass for every base (561 = 3*11*17 is the smallest): the false-positive class. Miller-Rabin fixes it: write n - 1 = 2^s * d; test a^d = 1 or a^(2^r * d) = -1 for some r < s - a composite fails for at least 3/4 of bases; k rounds give error at most 4^-k - the standard with cryptographic parameters (k = 40+ gives 2^-80 per-number error).",
+              "A worked Miller-Rabin sketch: n = 221 (= 13*17): n - 1 = 220 = 2^2 * 55; base a = 174: a^55 mod 221 = 47, 47^2 = 220 = -1 mod 221 - passes round one; another base exposes it - composites survive only small witness sets. Generation discipline: generate odd candidates, run Miller-Rabin (k rounds), optionally trial-divide small primes first (cheap filters), and for RSA also check p - 1, p + 1 for large factors (Protecting against special-form factoring).",
+              "The deterministic note completes the section: AKS (2002) proved primality in polynomial time - theoretically important, practically slower than Miller-Rabin's error budget; ECPP for records. The exam's framing: Fermat (with Carmichael caveat) -> Miller-Rabin (error 4^-k) -> generation discipline (candidate, trial division, rounds, special-form checks). The 4^-k bound is the numeric mark.",
+            ],
+            keyTerms: [
+              { term: "Fermat test", definition: "a^(n-1) = 1 mod n - fails on Carmichael numbers." },
+              { term: "Carmichael number", definition: "Composite passing Fermat for all coprime bases (561 smallest)." },
+              { term: "Miller-Rabin", definition: "Strong-probable-prime test - error at most 4^-k after k rounds." },
+              { term: "Witness", definition: "A base exposing compositeness - composites have few non-witnesses." },
+              { term: "AKS", definition: "Polynomial-time deterministic primality (2002) - theory milestone." },
+            ],
+            table: {
+              caption: "The primality-testing ladder.",
+              headers: ["Test", "Nature", "Caveat"],
+              rows: [
+                ["Trial division", "deterministic, tiny primes", "only a filter - not a test"],
+                ["Fermat", "probabilistic", "Carmichael numbers pass always"],
+                ["Miller-Rabin", "probabilistic, 4^-k error", "the practical standard"],
+                ["AKS / ECPP", "deterministic", "proof of concept / records - slower"],
+              ],
+            },
+            bullets: [
+              "Fermat: a^(n-1) = 1 mod n; Carmichael numbers defeat it.",
+              "Miller-Rabin: n-1 = 2^s d; square-root-to--1 check.",
+              "Error bound: at most 4^-k after k independent bases.",
+              "k = 40 gives 2^-80 per-number error - cryptographic grade.",
+              "Generation: odd candidate -> trial division -> k MR rounds.",
+              "AKS: polynomial-time deterministic - theory, not speed.",
+            ],
+            diagram: {
+              kind: "flow",
+              title: "One Miller-Rabin round",
+              caption: "The strong-probable-prime conditions in order.",
+              steps: [
+                { label: "Decompose", note: "n - 1 = 2^s * d" },
+                { label: "Compute a^d", note: "= 1? probable prime so far" },
+                { label: "Square chain", note: "a^(2^r d) = -1 for some r < s?" },
+                { label: "Neither", note: "a is a witness - n is composite" },
+                { label: "Repeat k rounds", note: "error <= 4^-k" },
+              ],
+            },
+            callout: {
+              type: "exam",
+              title: "4^-k is the bound to quote",
+              body: "The numeric checkpoint: 'Miller-Rabin errs on composites with probability at most 4^-k per independent base - 40 rounds give a 2^-80 per-number error, standard for RSA key generation'. Then the Carmichael caveat explaining why Fermat alone fails.",
+            },
+            examQuestions: [
+              {
+                q: "Explain primality testing: the Fermat test with the Carmichael caveat, the Miller-Rabin test with its error bound and a sketch, and the key-generation discipline.",
+                marks: 14,
+                outline: [
+                  "Fermat: a^(n-1) = 1 mod n - probabilistic",
+                  "Carmichael numbers (561) pass Fermat always",
+                  "Miller-Rabin: n - 1 = 2^s * d; square chain to -1",
+                  "Composite: at least 3/4 of bases are witnesses",
+                  "k rounds -> error at most 4^-k; 40 rounds = 2^-80",
+                  "Worked sketch: n = 221 base 174 passes one round",
+                  "Generation: odd candidate -> trial division -> k rounds",
+                ],
+              },
+              {
+                q: "Why is Miller-Rabin preferred over AKS in practice?",
+                marks: 7,
+                outline: [
+                  "Probabilistic with tunable 4^-k error",
+                  "Vastly faster per candidate at cryptographic sizes",
+                  "AKS is a polynomial-time proof, not a speed record",
+                ],
+              },
+            ],
+          },
+          {
+            number: "2.5",
+            title: "The security of RSA",
+            body: [
+              "RSA's security analysis prices each attack. Factoring: the root threat - NFS/GNFS at sub-exponential cost (3072-bit moduli for 128-bit security); small factors/gaps in p, q (Fermat factoring when |p - q| is small) - generation discipline counters. Small public exponent e = 3: safe only with proper padding - raw small-e encryption of small m gives c = m^3 with a cube root over the integers (no reduction); stereotyped messages meet Coppersmith's short-pad attack.",
+              "A worked attack walkthrough fixes the malleability point: raw RSA satisfies c' = c * s^e -> m' = m * s - anyone transforms ciphertexts; a decryption oracle (the CCA game) unblinds challenges (c * s^e -> m * s -> m). Private-exponent hazards: d too small (Wiener: d < n^0.25 recoverable via continued fractions; Boneh-Durfee extends to 0.292); partial key exposure (leaking d's low bits enables attacks). Shared primes: gcd(n1, n2) reveals p across users (batch GCD).",
+              "The defence summary completes the section: OAEP padding (CCA security), PSS (signatures), minimum key sizes (3072-bit), independent generation (no shared primes), full-size random d (or CRT form with blinding - timing-defence), and constant-time implementations (side channels - the CRT fault-attack Bellcore countermeasure: verify signatures after CRT). The exam's framing: textbook RSA is a trapdoor permutation, not an encryption scheme - the security question is always 'with which padding and parameters'.",
+              "Exam framing: expect 'security of RSA: attacks and countermeasures'. Give the factoring/e/Coppersmith/Wiener attack table with the malleability walkthrough, and the defence list. The 'padding and parameters' sentence is the summary mark.",
+            ],
+            keyTerms: [
+              { term: "Malleability", definition: "c * s^e -> m * s - raw RSA's ciphertext transformability." },
+              { term: "Wiener's attack", definition: "d < n^0.25 recoverable via continued fractions (Boneh-Durfee: 0.292)." },
+              { term: "Coppersmith attacks", definition: "Stereotyped/short-pad messages with small e recoverable." },
+              { term: "Batch GCD", definition: "Shared primes across moduli exposed by gcd computations." },
+              { term: "CRT fault attack", definition: "Bellcore: one faulty CRT limb leaks the factorization - verify after." },
+            ],
+            table: {
+              caption: "RSA attacks and their countermeasures.",
+              headers: ["Attack", "Condition", "Countermeasure"],
+              rows: [
+                ["Factoring (GNFS)", "sub-exponential in modulus size", "3072-bit moduli at 128-bit security"],
+                ["Cube-root (small e)", "raw encryption of small m", "OAEP padding"],
+                ["Coppersmith short-pad", "stereotyped messages, small e", "full randomization (OAEP)"],
+                ["Wiener", "d < n^0.25", "full-size d or CRT blinding"],
+                ["Batch GCD", "shared primes", "independent generation"],
+                ["CRT fault (Bellcore)", "unverified CRT signatures", "verify after CRT"],
+              ],
+            },
+            bullets: [
+              "Factoring: the root assumption - size discipline (3072-bit).",
+              "Small-e cube roots: raw small messages decryptable without the key.",
+              "Malleability walkthrough: c * s^e -> m * s (CCA unblinding).",
+              "Wiener/Boneh-Durfee: small-d bounds 0.25 / 0.292.",
+              "Shared primes: batch GCD across users.",
+              "Defences: OAEP/PSS, full d, independent primes, CRT verification.",
+            ],
+            diagram: {
+              kind: "fork",
+              title: "Textbook RSA's two structural holes",
+              caption: "Determinism and malleability - padding fills both.",
+              start: "Raw RSA c = m^e mod n",
+              branches: [
+                { label: "Deterministic", outcome: "repeat-encryption wins the CPA game - no randomness", good: false },
+                { label: "Malleable", outcome: "c * s^e -> m * s - CCA unblinding works", good: false },
+                { label: "OAEP-padded", outcome: "randomized + checkable - CCA-secure in the ROM", good: true },
+              ],
+            },
+            callout: {
+              type: "exam",
+              title: "The security question is always 'with which padding'",
+              body: "The summary sentence: 'textbook RSA is a trapdoor permutation - its security as encryption or signature depends entirely on padding and parameters: OAEP for CCA encryption, PSS for signatures, 3072-bit moduli, full-size d'. Then the malleability walkthrough as the concrete failure.",
+            },
+            examQuestions: [
+              {
+                q: "Analyze the security of RSA: factoring-based limits, small-e and Coppersmith attacks, Wiener's small-d attack, shared-prime exposure, and the countermeasure list.",
+                marks: 14,
+                outline: [
+                  "Factoring: GNFS sub-exponential - 3072-bit discipline",
+                  "Small e = 3: cube roots of small raw messages",
+                  "Coppersmith: stereotyped/short-pad recovery",
+                  "Malleability: c * s^e -> m * s - CCA unblinding",
+                  "Wiener: d < n^0.25 via continued fractions",
+                  "Batch GCD: shared primes across users",
+                  "Defences: OAEP/PSS, full d, independent primes, CRT verify",
+                ],
+              },
+              {
+                q: "Why does the Bellcore fault attack work against CRT signatures?",
+                marks: 7,
+                outline: [
+                  "One faulty limb yields a signature correct mod one prime only",
+                  "gcd(sig^e - m, n) reveals that prime",
+                  "Countermeasure: verify the signature after CRT computation",
+                ],
+              },
+            ],
+          },
+          {
+            number: "2.6",
+            title: "The Merkle-Hellman knapsack and its security",
+            body: [
+              "Merkle-Hellman (1978) was public key's second attempt, riding the subset-sum problem: given weights w_i, decide which subset sums to a target - NP-complete in general. The trapdoor: a superincreasing sequence (each weight exceeds the sum of all previous: w_i > sum w_j, j < i) - solving subset-sum is then easy (greedy from the largest). Key generation: choose superincreasing w (n terms), modulus m > sum(w), multiplier t coprime to m; publish the hard weights a_i = t * w_i mod m; the private key is (w, m, t^-1).",
+              "A worked toy walkthrough: w = (1, 2, 4, 8) (superincreasing), m = 17, t = 5 -> public a = (5, 10, 20 mod 17 = 3, 40 mod 17 = 6) = (5, 10, 3, 6). Encrypt bit-vector m = 1011: s = 5*1 + 10*0 + 3*1 + 6*1 = 14. Decrypt: compute t^-1 = 7 (5*7 = 35 = 1 mod 17); s' = 14*7 = 98 mod 17 = 13; greedy on superincreasing (8: yes, rem 5; 4: yes, rem 1; 2: no; 1: yes) -> 1011 - recovered. The encryption is one bit per public weight; block sizes were small, so MH encrypted bit-planes of messages.",
+              "The security fall completes the section: subset-sum is NP-complete in the worst case, but Merkle-Hellman's instances are structured - Shamir (1982) recovered the trapdoor in polynomial time (density arguments and lattice reduction - the LLL algorithm's star turn); low-density attacks (Lagarias-Odlyzko) followed. The lesson (stated in Unit I's complexity section): average-case structure betrayed worst-case hardness - knapsack cryptography died as a family. The exam's framing: MH is public-key history's cautionary construction - elegant trapdoor, broken average case.",
+              "Exam framing: expect 'Merkle-Hellman with a worked example and its security failure'. Give the keygen/enc/dec with the toy walkthrough, the superincreasing trapdoor logic, and the Shamir/LLL fall. The 'worst-case hardness betrayed by average case' sentence is the analysis mark.",
+            ],
+            keyTerms: [
+              { term: "Subset-sum", definition: "Which weights sum to the target - NP-complete in general." },
+              { term: "Superincreasing", definition: "w_i > sum of all previous - greedy-solvable sequence." },
+              { term: "Public hard weights", definition: "a_i = t * w_i mod m - the disguise." },
+              { term: "Density", definition: "n / log2(max a_i) - low-density instances fall to lattice attacks." },
+              { term: "LLL", definition: "Lattice basis reduction - the algorithm family that broke MH." },
+            ],
+            table: {
+              caption: "The toy Merkle-Hellman run.",
+              headers: ["Step", "Computation", "Value"],
+              rows: [
+                ["Private weights", "superincreasing (1, 2, 4, 8)", "greedy-solvable"],
+                ["Modulus + t", "m = 17, t = 5", "t^-1 = 7"],
+                ["Public weights", "(5, 10, 3, 6)", "published"],
+                ["Encrypt 1011", "5 + 3 + 6", "s = 14"],
+                ["Unscramble", "14 * 7 mod 17", "s' = 13"],
+                ["Greedy solve", "8+4+1 -> 1011", "plaintext recovered"],
+              ],
+            },
+            bullets: [
+              "Trapdoor: superincreasing w disguised by t*w mod m.",
+              "Encryption: dot product of bits with public weights.",
+              "Decryption: unscramble by t^-1, then greedy on w.",
+              "Toy: (1,2,4,8), m = 17, t = 5 -> public (5, 10, 3, 6).",
+              "Break: Shamir 1982 - polynomial trapdoor recovery via lattices.",
+              "Lesson: NP-complete worst case did not save the average case.",
+            ],
+            diagram: {
+              kind: "fork",
+              title: "Why the knapsack trapdoor failed",
+              caption: "The disguise preserved structure the lattice could see.",
+              start: "Merkle-Hellman public key",
+              branches: [
+                { label: "Design hope", outcome: "public weights look like general subset-sum - NP-hard", good: false },
+                { label: "Reality", outcome: "t*w mod m preserves density and modular structure", good: false },
+                { label: "Attack", outcome: "Shamir/LLL recover (w, t) in polynomial time", good: false },
+              ],
+            },
+            callout: {
+              type: "warning",
+              title: "Structure betrayed hardness",
+              body: "The analysis sentence: 'Merkle-Hellman transformed an NP-complete problem into publishable instances - but the transform preserved enough structure (density, modularity) for lattice reduction to invert it in polynomial time; worst-case hardness never protected the actual instances'. Then the toy walkthrough as the construction evidence.",
+            },
+            examQuestions: [
+              {
+                q: "Explain the Merkle-Hellman knapsack cryptosystem: key generation with the superincreasing trapdoor, a worked toy encryption-decryption, and the Shamir/LLL security failure.",
+                marks: 14,
+                outline: [
+                  "Superincreasing w: each weight exceeds all previous sums",
+                  "m > sum(w); t coprime; public a_i = t*w_i mod m",
+                  "Toy: w = (1,2,4,8), m = 17, t = 5 -> a = (5, 10, 3, 6)",
+                  "Encrypt 1011: s = 14",
+                  "Decrypt: t^-1 = 7; s' = 13; greedy -> 1011",
+                  "Shamir (1982): polynomial trapdoor recovery (lattices/LLL)",
+                  "Lesson: average-case structure beat NP-complete worst case",
+                ],
+              },
+              {
+                q: "What is the density of a knapsack system and why does low density fall?",
+                marks: 7,
+                outline: [
+                  "Density = n / log2(max weight)",
+                  "Low-density instances have few possible sums",
+                  "Lagarias-Odlyzko/LLL recover solutions efficiently",
+                ],
+              },
+            ],
+          },
+          {
+            number: "2.7",
+            title: "ElGamal and elliptic-curve cryptography",
+            body: [
+              "ElGamal rides the discrete logarithm: keygen - group G of order q, generator g, secret x, public h = g^x; encryption with fresh randomness y - (c1 = g^y, c2 = m * h^y); decryption m = c2 / c1^x. Semantic security holds under DDH (the mask g^xy is indistinguishable from random); the scheme is randomized (fresh y per message) and malleable ((c1, u*c2) -> u*m - CCA fixes come from hybrid composition).",
+              "A worked toy walkthrough: G = Z_23*, g = 5, x = 6 -> h = 8; encrypt m = 7 with y = 3: c1 = 5^3 = 10, mask h^y = 8^3 mod 23 = 6, c2 = 7*6 = 42 mod 23 = 19; decrypt: c1^x = 10^6 mod 23 = 6, inverse 6^-1 = 4 mod 23, m = 19*4 mod 23 = 7. ECC: the same design on curve groups - y^2 = x^3 + ax + b mod p, points with chord-tangent addition; ECDLP resists index calculus, so 256-bit curves deliver 128-bit security (vs 3072-bit finite fields) - EC-ElGamal (ECIES in deployment) is the ported scheme.",
+              "The comparison completes the section: ElGamal (multiplicative groups) vs ECC (curve groups) - same trapdoor shape (discrete log), different group geometry; ECC's advantages: smaller keys/signatures/bandwidth, faster operations at equal security; the deployment forms: ElGamal encryption per se is rare, but its DH core (ECDH) plus ECDSA signatures (Unit IV) are everywhere in TLS. The exam's framing: one trapdoor idea - exponentiation vs scalar multiplication - two group families.",
+              "Exam framing: expect 'ElGamal with a worked example' and 'elliptic-curve cryptography'. Give the ElGamal walkthrough with the DDH security note, the curve group description, and the size-comparison table.",
+            ],
+            keyTerms: [
+              { term: "ElGamal encryption", definition: "(c1 = g^y, c2 = m*h^y); decrypt c2 / c1^x - semantic security under DDH." },
+              { term: "DDH assumption", definition: "Distinguishing (g^x, g^y, g^xy) from random - ElGamal's base." },
+              { term: "Curve group", definition: "Points on y^2 = x^3 + ax + b with chord-tangent addition." },
+              { term: "ECDLP", definition: "Given P, kP find k - no sub-exponential attack known." },
+              { term: "ECIES", definition: "The deployed EC-ElGamal hybrid - KEM + KDF + AEAD." },
+            ],
+            table: {
+              caption: "ElGamal's toy run and the ECC size dividend.",
+              headers: ["Item", "ElGamal (mod 23)", "ECC equivalent"],
+              rows: [
+                ["Keys", "g = 5, x = 6, h = 8", "scalar k, point Q = kP"],
+                ["Encrypt m = 7", "(10, 19) with y = 3", "point ops with fresh k"],
+                ["Decrypt", "19 * 4 = 7 mod 23", "unmask by scalar multiplication"],
+                ["Security size", "3072-bit field modulus", "256-bit curve - same 128-bit security"],
+              ],
+            },
+            bullets: [
+              "Keygen: secret x; public h = g^x.",
+              "Encrypt: (g^y, m*h^y) - fresh y; decrypt c2 / c1^x.",
+              "Toy: h = 8; (10, 19) for m = 7; recovery via 6^-1 = 4.",
+              "Semantic security iff DDH; malleable - hybrids fix CCA.",
+              "Curves: chord-tangent groups; ECDLP resists index calculus.",
+              "Dividend: 256-bit EC = 3072-bit field = 128-bit security.",
+            ],
+            diagram: {
+              kind: "compare",
+              title: "One trapdoor, two geometries",
+              caption: "Multiplicative groups versus curve groups.",
+              left: {
+                heading: "ElGamal (Z_p*)",
+                items: [
+                  "g^x forward; DLP reverse",
+                  "Toy: h = 5^6 = 8 mod 23",
+                  "Index calculus exists - big moduli",
+                  "Educational form of ECIES",
+                ],
+              },
+              right: {
+                heading: "ECC",
+                items: [
+                  "kP forward; ECDLP reverse",
+                  "Chord-tangent point addition",
+                  "No index calculus - 256-bit keys",
+                  "ECIES/ECDH/ECDSA deployed",
+                ],
+              },
+            },
+            callout: {
+              type: "exam",
+              title: "One trapdoor idea, two group families",
+              body: "The summary sentence: 'ElGamal and ECC share a single trapdoor idea - exponentiation easy, logarithm hard - differing only in group geometry; curves have no index calculus, which is the whole 10x key-size dividend'. Then the toy walkthrough (mod 23) as the hand-verifiable evidence.",
+            },
+            examQuestions: [
+              {
+                q: "Explain the ElGamal cryptosystem with a worked toy example and its DDH security, then describe elliptic-curve cryptography and the key-size comparison.",
+                marks: 14,
+                outline: [
+                  "Keygen: x secret, h = g^x public",
+                  "Encrypt: (c1 = g^y, c2 = m*h^y) - fresh y",
+                  "Toy: mod 23, g = 5, x = 6 -> h = 8; (10, 19) for m = 7",
+                  "Decrypt: c2 / c1^x = 19 * 4 = 7",
+                  "Semantic security under DDH; malleable -> hybrids",
+                  "ECC: curve points, chord-tangent addition, ECDLP",
+                  "256-bit EC = 3072-bit field at 128-bit security",
+                ],
+              },
+              {
+                q: "Why does ECC lack an index-calculus attack comparable to finite fields?",
+                marks: 7,
+                outline: [
+                  "Index calculus needs smooth-relation structure",
+                  "Curve groups offer no factor-base representation",
+                  "Generic sqrt(q) attacks remain the best - hence smaller keys",
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    },
+    {
+      number: 3,
+      roman: "III",
+      title: "Stream Ciphers and Block Ciphers",
+      summary:
+        "Unit III is the stream-cipher machinery unit: the one-time pad and stream-cipher principles, synchronous versus self-synchronizing designs, feedback shift registers with linear complexity, and the LFSR-based generator families - nonlinear combination, nonlinear filter, clock-controlled, alternating-step and shrinking generators.",
+      chapter: {
+        number: "03",
+        title: "From Pads to LFSR Generators",
+        intro:
+          "Unit III covers the one-time pad, synchronous and self-synchronizing stream ciphers, feedback shift registers and linear complexity, nonlinear feedback shift registers, and stream ciphers based on LFSRs - nonlinear combination generators, nonlinear filter generators, clock-controlled generators, the alternating-step generator and the shrinking generator.",
+        inOneBreath:
+          "The OTP is the perfect stream cipher; practical ones replace the pad with generated keystreams. LFSRs are the hardware engine - but linear sequences fall to Berlekamp-Massey (linear complexity = 2L register length), so designs combine, filter, or clock-irregularize LFSRs: Geffe's combination leaks correlations; filter and clock-controlled variants; alternating step and shrinking generators trade hardware for strength.",
+        sections: [
+          {
+            number: "3.1",
+            title: "The one-time pad and stream-cipher principles",
+            body: [
+              "The one-time pad is the theoretical stream cipher: key k as long as the message, uniformly random, used once; encryption c = m XOR k; decryption m = c XOR k. Perfect secrecy (Shannon): every message equally likely given any ciphertext - the proof's core is that for any (m, c) pair exactly one key works, so the ciphertext carries zero information about m. The one-time conditions are absolute: length, randomness, single use - reuse gives c1 XOR c2 = m1 XOR m2 (VENONA's historical break).",
+              "A worked bit-level walkthrough: m = 1011, k = 0110 -> c = 1101; receiver XORs 0110 back -> 1011. Stream-cipher principles generalize the OTP: a keystream generator replaces the pre-shared pad - seed k into generator G, produce keystream z, encrypt c_i = m_i XOR z_i. The security requirement transfers: the keystream must be indistinguishable from random and never repeat across messages (fresh nonce/seed per message) - the design burden moves from key distribution to generator quality.",
+              "The trade completes the section: OTP - perfect secrecy at impossible logistics (key distribution as long as traffic, one use, secure channel needed for the key itself); stream ciphers - practical logistics at conditional security (generator quality is the assumption). The exam's framing: OTP as the ideal, stream ciphers as the engineering compromise, the reuse identity as the shared fatal rule.",
+              "Exam framing: expect 'the one-time pad and stream-cipher principles'. Give the OTP definition with the perfect-secrecy argument, the bit walkthrough, and the generator generalization with the freshness rule.",
+            ],
+            keyTerms: [
+              { term: "One-time pad", definition: "c = m XOR k with uniform single-use k as long as m - perfect secrecy." },
+              { term: "Perfect secrecy", definition: "H(M | C) = H(M) - zero information leak, even unbounded." },
+              { term: "Keystream generator", definition: "Seed -> pseudorandom stream - the OTP's practical replacement." },
+              { term: "Reuse identity", definition: "c1 XOR c2 = m1 XOR m2 - the shared fatal rule." },
+              { term: "Nonce discipline", definition: "Fresh seed/nonce per message - keystream never repeats." },
+            ],
+            table: {
+              caption: "OTP versus practical stream ciphers.",
+              headers: ["Property", "One-time pad", "Stream cipher"],
+              rows: [
+                ["Keystream source", "pre-shared random pad", "generated from seed"],
+                ["Security", "unconditional (perfect)", "conditional on generator"],
+                ["Key logistics", "key as long as all traffic", "one short seed per key"],
+                ["Reuse", "forbidden - breaks secrecy", "forbidden - nonce rule"],
+                ["Examples", "VENONA-era manuals", "RC4 (dead), ChaCha20, AES-CTR"],
+              ],
+            },
+            bullets: [
+              "OTP: c = m XOR k; uniform k; single use; perfect secrecy.",
+              "Walkthrough: 1011 XOR 0110 = 1101; XOR back restores.",
+              "Perfect secrecy: exactly one key per (m, c) pair - no leak.",
+              "Stream cipher: generator replaces the pad; freshness required.",
+              "Reuse identity: c1 XOR c2 = m1 XOR m2 - VENONA's lesson.",
+              "Trade: perfect secrecy vs practical key logistics.",
+            ],
+            diagram: {
+              kind: "pipeline",
+              title: "From pad to keystream generator",
+              caption: "The same XOR combiner; the source of randomness moves.",
+              stages: [
+                { label: "OTP key", note: "pre-shared uniform pad" },
+                { label: "XOR combiner", note: "c = m XOR k" },
+                { label: "Stream cipher seed", note: "short key + nonce" },
+                { label: "Generator G", note: "keystream z produced" },
+                { label: "Rule", note: "z never repeats across messages" },
+              ],
+            },
+            callout: {
+              type: "exam",
+              title: "The burden moves, the rule stays",
+              body: "The framing sentence: 'the OTP's impossibility logistics pushed the randomness burden into a generator - but the single-use rule transferred intact: keystreams must never repeat; every stream-cipher failure in history (WEP, RC4 reuse) is that rule violated'. Then the bit walkthrough.",
+            },
+            examQuestions: [
+              {
+                q: "Explain the one-time pad with its perfect-secrecy argument and a bit-level walkthrough, and generalize to stream-cipher principles with the freshness requirement.",
+                marks: 14,
+                outline: [
+                  "OTP: c = m XOR k; k uniform, length = message, one use",
+                  "Perfect secrecy: exactly one key per (m, c) - no leak",
+                  "Walkthrough: 1011 XOR 0110 = 1101; back to 1011",
+                  "Stream cipher: keystream z = G(seed); c_i = m_i XOR z_i",
+                  "Security transfers to generator quality",
+                  "Freshness: nonce/seed unique per message",
+                  "Reuse identity: c1 XOR c2 = m1 XOR m2",
+                ],
+              },
+              {
+                q: "Why is the one-time pad impractical despite perfect secrecy?",
+                marks: 7,
+                outline: [
+                  "Key volume grows with traffic volume",
+                  "Single use forbids reuse - distribution scales badly",
+                  "The key needs a channel as secure as the message",
+                ],
+              },
+            ],
+          },
+          {
+            number: "3.2",
+            title: "Synchronous and self-synchronizing stream ciphers",
+            body: [
+              "Stream ciphers split by keystream dependence. Synchronous: the keystream z_i = G(k, i) depends only on the key and position - independent of plaintext and ciphertext; sender and receiver must stay perfectly synchronized (lost/duplicated bits desynchronize everything - resynchronization frames required); error propagation: one corrupted ciphertext bit corrupts exactly one plaintext bit (no spread).",
+              "A worked contrast walkthrough: synchronous - a dropped packet means the receiver's keystream index is wrong; every subsequent bit decrypts to garbage until resync; self-synchronizing (cipher feedback style) - z_i = F(k, c_{i-1}..c_{i-n}) depends on recent ciphertext: after n clean ciphertext bits, the receiver re-synchronizes automatically; a corrupted bit corrupts n plaintext bits then self-heals. The trade: synchronous = simpler generator, fragile sync, minimal error spread; self-synchronizing = self-healing, limited error propagation, but keystream becomes ciphertext-dependent (plaintext-ciphertext coupling complicates analysis).",
+              "The security notes complete the section: synchronous generators are the design home of LFSR machinery (section 3.3 onward - the keystream is position-indexed); self-synchronizing designs inherit CFB-mode-like analysis (insertion/deletion resistance needs authentication - integrity must come from outside either design). The exam's sentence: the split is about where the keystream's dependence lives - position only, or recent ciphertext.",
+              "Exam framing: expect 'synchronous vs self-synchronizing stream ciphers'. Give both definitions with the dropped-bit walkthrough, the error-propagation comparison, and the design implications.",
+            ],
+            keyTerms: [
+              { term: "Synchronous stream cipher", definition: "Keystream depends on key and position only - no plaintext coupling." },
+              { term: "Self-synchronizing", definition: "Keystream depends on recent ciphertext - auto-resync after n bits." },
+              { term: "Desynchronization", definition: "Synchronous designs' fragility - lost bits corrupt everything after." },
+              { term: "Error propagation", definition: "Synchronous: 1 bit; self-sync: n bits then heals." },
+              { term: "Resynchronization", definition: "Periodic re-framing needed by synchronous designs." },
+            ],
+            table: {
+              caption: "Synchronous vs self-synchronizing.",
+              headers: ["Property", "Synchronous", "Self-synchronizing"],
+              rows: [
+                ["Keystream input", "key + position", "key + recent ciphertext"],
+                ["Lost bit", "all subsequent garbage until resync", "self-heals after n bits"],
+                ["Error spread", "1 plaintext bit", "n plaintext bits"],
+                ["Generator", "simpler, position-indexed", "ciphertext-coupled"],
+                ["Integrity", "external (MAC)", "external (MAC)"],
+              ],
+            },
+            bullets: [
+              "Synchronous: z_i = G(k, i) - position-indexed only.",
+              "Self-sync: z_i = F(k, c_{i-1}..c_{i-n}) - ciphertext-coupled.",
+              "Synchronous fragility: dropped bits desynchronize wholly.",
+              "Self-sync healing: n clean bits restore alignment.",
+              "Error spread: 1 bit vs n bits - the trade.",
+              "Neither provides integrity - MACs are external in both.",
+            ],
+            diagram: {
+              kind: "compare",
+              title: "Where the keystream comes from",
+              caption: "Position indexing versus ciphertext feedback.",
+              left: {
+                heading: "Synchronous",
+                items: [
+                  "z_i = G(k, i)",
+                  "Fragile to lost/duplicated bits",
+                  "One corrupted bit -> one wrong plaintext bit",
+                  "LFSR machinery's home",
+                ],
+              },
+              right: {
+                heading: "Self-synchronizing",
+                items: [
+                  "z_i = F(k, c_{i-n}..c_{i-1})",
+                  "Auto-resync after n clean bits",
+                  "n-bit error propagation",
+                  "CFB-mode-like analysis",
+                ],
+              },
+            },
+            callout: {
+              type: "exam",
+              title: "Dependence defines the design",
+              body: "The framing sentence: 'the split is a single question - does the keystream know where it is (position) or what preceded it (ciphertext)? - and every operational property (sync fragility, error spread, analysis difficulty) follows from that answer'. Then the dropped-bit walkthrough.",
+            },
+            examQuestions: [
+              {
+                q: "Distinguish synchronous and self-synchronizing stream ciphers: keystream definitions, the dropped-bit and corrupted-bit walkthroughs, error propagation, and design implications.",
+                marks: 14,
+                outline: [
+                  "Synchronous: z_i = G(k, i) - key + position only",
+                  "Desync: lost bits corrupt everything until resync",
+                  "Error spread: one ciphertext bit -> one plaintext bit",
+                  "Self-sync: z_i = F(k, recent ciphertext)",
+                  "Healing: n clean bits restore; n-bit error spread",
+                  "Generator trade: simpler vs ciphertext-coupled",
+                  "Integrity external in both - MAC required",
+                ],
+              },
+              {
+                q: "Why do synchronous designs need resynchronization frames?",
+                marks: 7,
+                outline: [
+                  "Keystream index must match exactly",
+                  "Packet loss shifts the index - all later bits garbage",
+                  "Periodic resync markers restore alignment",
+                ],
+              },
+            ],
+          },
+          {
+            number: "3.3",
+            title: "Feedback shift registers and linear complexity",
+            body: [
+              "The feedback shift register (FSR) is the stream cipher's hardware engine: a register of n cells shifts each clock; an input bit computed from the current state (the feedback function) enters at one end. Linear FSR (LFSR): the feedback is XOR of taps - a linear function; the state cycles through a sequence determined by the tap polynomial; maximal-length LFSRs (primitive polynomials) produce period 2^n - 1 m-sequences with good statistical appearance.",
+              "A worked LFSR walkthrough: 4-bit LFSR, taps at cells 4 and 1 (polynomial x^4 + x + 1, primitive): state (1,0,0,0); feedback = s4 XOR s1; clock: new bit enters, register shifts - the sequence visits all 15 nonzero states before repeating (period 15). The linear-complexity lesson is the section's core: any LFSR-generated sequence is linear - the Berlekamp-Massey algorithm finds the shortest LFSR reproducing it from just 2L output bits (for an L-stage register); linear complexity L = register length needed - so an n-bit LFSR's keystream is predictable from 2n bits: linear sequences are never cryptographically secure alone.",
+              "The design consequence completes the section: LFSRs are excellent hardware (a few gates per bit, huge periods, good statistics) and cryptographically naked alone - every secure design (sections 3.5-3.7) exists to raise the effective linear complexity: nonlinear combination, nonlinear filtering, or irregular clocking. The exam's framing: LFSR definition, the m-sequence walkthrough, Berlekamp-Massey with the 2L rule, and the design consequence.",
+            ],
+            keyTerms: [
+              { term: "LFSR", definition: "Shift register with XOR feedback - linear state transition." },
+              { term: "m-sequence", definition: "Maximal-length LFSR output - period 2^n - 1 for primitive polynomials." },
+              { term: "Linear complexity", definition: "Shortest LFSR reproducing the sequence - predictability's price tag." },
+              { term: "Berlekamp-Massey", definition: "Finds the minimal LFSR from 2L bits - the linear killer." },
+              { term: "Primitive polynomial", definition: "Tap polynomial yielding maximal period." },
+            ],
+            table: {
+              caption: "LFSR facts and their consequences.",
+              headers: ["Fact", "Consequence"],
+              rows: [
+                ["Primitive taps -> period 2^n - 1", "long, statistically clean sequences"],
+                ["Output is linear in the state", "Berlekamp-Massey inverts it"],
+                ["2L bits suffice for L-stage recovery", "predictable from tiny samples"],
+                ["Hardware cost: one XOR per tap", "why LFSRs dominate hardware designs"],
+                ["Linear complexity of a pure LFSR = n", "never secure alone"],
+              ],
+            },
+            bullets: [
+              "LFSR: shift register, XOR taps, clocked state.",
+              "Primitive polynomials: m-sequences of period 2^n - 1.",
+              "Worked: 4-bit, x^4 + x + 1 - period 15.",
+              "Berlekamp-Massey: minimal LFSR from 2L bits.",
+              "Linear complexity = the register length needed to predict.",
+              "Design consequence: nonlinearity must be added (3.5-3.7).",
+            ],
+            diagram: {
+              kind: "pipeline",
+              title: "An LFSR's clock cycle",
+              caption: "Taps XOR into the input; the register shifts.",
+              stages: [
+                { label: "State (s4..s1)", note: "n bits held" },
+                { label: "Feedback", note: "XOR of taps (linear)" },
+                { label: "Output", note: "leftmost bit emitted" },
+                { label: "Shift", note: "state slides; feedback enters" },
+                { label: "Period", note: "2^n - 1 for primitive taps" },
+              ],
+            },
+            callout: {
+              type: "warning",
+              title: "2n bits kill an n-bit LFSR",
+              body: "The numeric warning: 'Berlekamp-Massey reconstructs any LFSR's feedback from just 2n output bits - an n-stage LFSR's keystream is predictable from a short sample; linear complexity is the measured weakness and every later generator exists to raise it'. Quote the 2L rule in any LFSR answer.",
+            },
+            examQuestions: [
+              {
+                q: "Explain feedback shift registers: LFSR structure, m-sequences with a worked small example, linear complexity and the Berlekamp-Massey consequence.",
+                marks: 14,
+                outline: [
+                  "LFSR: n cells, XOR taps, clocked shift",
+                  "Primitive polynomial -> period 2^n - 1 m-sequence",
+                  "Worked: 4-bit, x^4 + x + 1 -> period 15",
+                  "Linear complexity L: shortest reproducing LFSR",
+                  "Berlekamp-Massey: recovers from 2L bits",
+                  "Pure LFSR: L = n - predictable from 2n bits",
+                  "Consequence: nonlinearity required for security",
+                ],
+              },
+              {
+                q: "Why are LFSRs still used inside secure stream ciphers?",
+                marks: 7,
+                outline: [
+                  "Hardware economy: gates per bit, high speed",
+                  "Great periods and statistics as a base",
+                  "Security added by nonlinear combination/filtering/clocking",
+                ],
+              },
+            ],
+          },
+          {
+            number: "3.4",
+            title: "Nonlinear FSRs and LFSR-based stream ciphers",
+            body: [
+              "Nonlinear feedback shift registers (NLFSRs) replace the XOR feedback with a nonlinear Boolean function - state transitions leave the linear world, Berlekamp-Massey no longer applies directly; periods are harder to guarantee (analysis is harder too). The syllabus's practical path: stream ciphers based on LFSRs - keep linear registers for their hardware economy and statistics, and add nonlinearity around them: combining several LFSR outputs nonlinearly (3.5), filtering one LFSR's state nonlinearly (3.6), or clocking them irregularly (3.6-3.7).",
+              "A worked design-space walkthrough: the three ways to buy nonlinearity - combination: k parallel LFSRs, output = nonlinear function f(s1..sk) (Geffe's multiplexer is the classic); filter: one LFSR, output = f(tapped state bits) (e.g., fnv-style taps into a Boolean function); clock control: LFSRs clocked irregularly by each other (stop-and-go, alternating step, shrinking). Each trades: hardware cost vs linearity removed vs correlation risk - the design triangle the next three sections price.",
+              "The analysis frame completes the section: every LFSR-based design is attacked via its residual correlations (divide-and-conquer - attack one register through the output's statistical bias toward it) or via algebraic methods (solve the nonlinear equations when the function's algebraic normal form is sparse). The exam's sentence: NLFSRs replace linearity with analysis difficulty; LFSR-based designs keep the linear hardware and hide the linearity behind nonlinearity - the syllabus's five named generators are the case studies.",
+              "Exam framing: expect 'NLFSRs and LFSR-based cipher design space'. Give the NLFSR definition, the three nonlinearity-buying strategies with the design triangle, and the correlation/algebraic attack frame.",
+            ],
+            keyTerms: [
+              { term: "NLFSR", definition: "Shift register with nonlinear feedback - Berlekamp-Massey blind." },
+              { term: "Combination generator", definition: "Parallel LFSRs merged by a nonlinear function." },
+              { term: "Filter generator", definition: "One LFSR; nonlinear function over tapped state bits." },
+              { term: "Clock control", definition: "Irregular clocking from other registers - time-based nonlinearity." },
+              { term: "Correlation attack", definition: "Divide-and-conquer through output-to-register statistical bias." },
+            ],
+            table: {
+              caption: "Three ways to buy nonlinearity.",
+              headers: ["Strategy", "Mechanism", "Cost", "Risk"],
+              rows: [
+                ["Combination", "f(s1..sk) over parallel LFSRs", "k registers", "correlation leaks (Geffe)"],
+                ["Filter", "f(tapped state of one LFSR)", "one register", "algebraic/sparsity attacks"],
+                ["Clock control", "irregular clocking", "timing logic", "throughput, analysis complexity"],
+              ],
+            },
+            bullets: [
+              "NLFSR: nonlinear feedback - BM's linearity gone.",
+              "Period analysis harder for NLFSRs - the trade.",
+              "LFSR-based designs: keep linear hardware, hide linearity.",
+              "Combination: Geffe-style multiplexers (3.5).",
+              "Filter: tapped-state Boolean functions (3.6).",
+              "Clock control: irregular timing (3.6-3.7).",
+            ],
+            diagram: {
+              kind: "pyramid",
+              title: "The nonlinearity design ladder",
+              caption: "From one naked LFSR up to irregular clocking.",
+              tiers: [
+                { label: "Single LFSR", note: "L = n - broken by 2n bits" },
+                { label: "Filtered LFSR", note: "nonlinear taps - algebraic attacks remain" },
+                { label: "Combination", note: "parallel registers fused - correlation risk" },
+                { label: "Clock-controlled", note: "irregular timing - strongest, slowest" },
+              ],
+            },
+            callout: {
+              type: "tip",
+              title: "Hide the linearity, keep the hardware",
+              body: "The design sentence: 'LFSR-based ciphers keep the linear engine for its economy and statistics, then hide its linearity behind combination, filtering, or clock control - each strategy is a different answer to the same Berlekamp-Massey threat'. Then the design-triangle table.",
+            },
+            examQuestions: [
+              {
+                q: "Explain nonlinear FSRs and the design space of LFSR-based stream ciphers: the three nonlinearity strategies, their costs and risks, and the attack frame (correlation, algebraic).",
+                marks: 14,
+                outline: [
+                  "NLFSR: nonlinear feedback - BM inapplicable directly",
+                  "Period guarantees harder - the analysis trade",
+                  "Combination: f(s1..sk) over parallel LFSRs",
+                  "Filter: f(tapped state) of one LFSR",
+                  "Clock control: irregular clocking by other registers",
+                  "Correlation attacks: divide-and-conquer through bias",
+                  "Algebraic attacks: sparse Boolean functions solved",
+                ],
+              },
+              {
+                q: "Why keep LFSRs at all if they are linearly predictable?",
+                marks: 7,
+                outline: [
+                  "Minimal hardware per keystream bit",
+                  "Excellent periods and statistical properties",
+                  "Nonlinear wrappers supply the missing security",
+                ],
+              },
+            ],
+          },
+          {
+            number: "3.5",
+            title: "Nonlinear combination generators",
+            body: [
+              "A nonlinear combination generator runs k parallel LFSRs and outputs f(s1..sk) - a nonlinear Boolean function of their current bits. Geffe's generator (the syllabus's classic): three LFSRs, output = (L1 AND L2) XOR ((NOT L1) AND L3) - a multiplexer: L1 selects L2's bit or L3's bit. The design intent: period = lcm of the three periods; linear complexity = the product of the three lengths (for the right f); good statistics.",
+              "A worked correlation autopsy - the section's core: when L1 = 1, output = L2's bit (50% of time); when L1 = 0, output = L3's bit. Output correlates with L2 at 75% (it equals L2 whenever L1 = 1, and coincides half the time otherwise) - and with L3 at 75% too. Divide-and-conquer: try all 2^n1 L1 seeds, count agreements with the output - the true L1 emerges at 75% correlation with modest data; then L2, L3 fall separately. Geffe's linear complexity is thus irrelevant: the correlation attack splits the key into small searches.",
+              "The design lesson completes the section: the combining function must be correlation-immune (of order k-1: the output is statistically independent of any proper subset of inputs - Siegenthaler's criterion) and balanced, ideally high nonlinearity - the function-design criteria that later stream ciphers (and modern Boolean-function design) formalized. The exam's sentence: Geffe teaches that linear complexity alone is marketing - correlation is the real currency.",
+              "Exam framing: expect 'nonlinear combination generators with the Geffe example'. Give the construction, the multiplexer truth-table logic, the 75% correlation walkthrough, and the correlation-immunity criteria.",
+            ],
+            keyTerms: [
+              { term: "Combination generator", definition: "k parallel LFSRs merged by nonlinear f." },
+              { term: "Geffe generator", definition: "Multiplexer: (L1 AND L2) XOR (NOT L1 AND L3)." },
+              { term: "Correlation attack", definition: "Recover one register via output-to-register statistical bias." },
+              { term: "Correlation immunity", definition: "f independent of any proper input subset - Siegenthaler's criterion." },
+              { term: "Divide-and-conquer", definition: "Splitting a 3-register search into three small ones." },
+            ],
+            table: {
+              caption: "Geffe's correlation leak, quantified.",
+              headers: ["Register", "Output agreement", "Consequence"],
+              rows: [
+                ["L1", "50%", "no direct bias - but L1 is the selector"],
+                ["L2", "75%", "recover L2 by 2^n2 trial + counting"],
+                ["L3", "75%", "recover L3 the same way"],
+                ["Whole key", "2^n1 + 2^n2 + 2^n3 work", "vs 2^(n1+n2+n3) brute force"],
+              ],
+            },
+            bullets: [
+              "Construction: k LFSRs, output f(s1..sk).",
+              "Geffe: L1 multiplexes between L2 and L3.",
+              "Correlation: output matches L2/L3 at 75%.",
+              "Attack: try each register's seeds independently - small searches.",
+              "Criteria: correlation immunity (order k-1) + balance + nonlinearity.",
+              "Lesson: linear complexity alone is not security.",
+            ],
+            diagram: {
+              kind: "fork",
+              title: "Geffe's divide-and-conquer",
+              caption: "The multiplexer leaks each register separately.",
+              start: "Geffe output stream",
+              branches: [
+                { label: "Bias toward L2 (75%)", outcome: "exhaust L2's seeds - count agreements", good: false },
+                { label: "Bias toward L3 (75%)", outcome: "exhaust L3's seeds independently", good: false },
+                { label: "L1 implied", outcome: "once L2/L3 known, L1 falls from the selector logic", good: false },
+                { label: "Fix", outcome: "correlation-immune combining functions (Siegenthaler)", good: true },
+              ],
+            },
+            callout: {
+              type: "warning",
+              title: "Linear complexity is marketing; correlation is currency",
+              body: "The autopsy sentence: 'Geffe's generator advertised product-scale linear complexity, yet 75% correlations let each register be recovered alone - the whole-key search shrank from 2^(n1+n2+n3) to three small searches; correlation immunity, not complexity, is the combining function's real requirement'.",
+            },
+            examQuestions: [
+              {
+                q: "Explain nonlinear combination generators and the Geffe generator: the construction, the multiplexer logic, the 75% correlation attack walkthrough, and the correlation-immunity design criteria.",
+                marks: 14,
+                outline: [
+                  "Construction: k parallel LFSRs, output f(s1..sk)",
+                  "Geffe: (L1 AND L2) XOR (NOT L1 AND L3) - multiplexer",
+                  "Output = L2 when L1 = 1, L3 when L1 = 0",
+                  "Correlation: 75% agreement with L2 and L3",
+                  "Divide-and-conquer: register-by-register seed trials",
+                  "Work collapse: product complexity -> sum of small searches",
+                  "Criteria: Siegenthaler correlation immunity + balance",
+                ],
+              },
+              {
+                q: "Why did Geffe's high linear complexity not save it?",
+                marks: 7,
+                outline: [
+                  "Linear complexity prices linear attacks only",
+                  "Statistical bias enables nonlinear divide-and-conquer",
+                  "Correlation immunity is the relevant function criterion",
+                ],
+              },
+            ],
+          },
+          {
+            number: "3.6",
+            title: "Nonlinear filter and clock-controlled generators",
+            body: [
+              "The nonlinear filter generator: one LFSR, output f(s_{i1}..s_{ik}) - a nonlinear Boolean function over tapped state cells. The design questions: tap spread (tap positions coprime-ish for good diffusion), f's properties (balanced, high nonlinearity, some correlation immunity), and the residual risk: algebraic attacks - if f's algebraic normal form has low degree, the keystream equations in the state bits are solvable (Courtois's fast algebraic attacks killed several published designs).",
+              "A worked filter walkthrough: an 8-stage LFSR with taps {1, 4, 6, 8} into f = majority(s1, s4, s6, s8) - the majority function is balanced, degree 3; the keystream bit per clock is f over the current taps. The attack lens: express output equations in the initial state's bits - if degree is low, linearization (treat monomials as variables) solves with enough output - the algebraic complexity (not linear complexity) is the new security metric.",
+              "Clock-controlled generators complete the pair: LFSRs clocked irregularly - stop-and-go (one register gates another's clocking), and the general principle: irregular timing removes the fixed index alignment, defeating the correlation/algebraic arithmetic that assumes regular clocks. The costs: throughput drops (bits skipped), and timing side channels appear in software. The exam's sentence: filter generators buy nonlinearity in the function; clock control buys it in time - both priced by the analysis they invite.",
+              "Exam framing: expect 'nonlinear filter generators and clock-controlled generators'. Give the filter construction with the majority example, the algebraic-attack lens, and the stop-and-go clocking principle with its trade.",
+            ],
+            keyTerms: [
+              { term: "Filter generator", definition: "One LFSR; output f over tapped state bits." },
+              { term: "Algebraic attack", definition: "Solving low-degree output equations in the state bits." },
+              { term: "Algebraic immunity", definition: "The function-degree budget resisting algebraic solving." },
+              { term: "Stop-and-go", definition: "One register gates another's clocking - irregular timing." },
+              { term: "Tap spread", definition: "Tapped positions chosen for diffusion within the state." },
+            ],
+            table: {
+              caption: "Filter vs clock control.",
+              headers: ["Property", "Filter generator", "Clock-controlled"],
+              rows: [
+                ["Nonlinearity source", "the function f", "the timing"],
+                ["Throughput", "one bit per clock", "less than one per clock"],
+                ["Main attack", "algebraic (low-degree f)", "correlation under inferred timing"],
+                ["Hardware", "cheap - taps + f", "gating logic"],
+                ["Example", "majority of taps", "stop-and-go"],
+              ],
+            },
+            bullets: [
+              "Filter: one LFSR + nonlinear f over taps.",
+              "Worked: majority(s1, s4, s6, s8) - balanced, degree 3.",
+              "Algebraic attacks: low-degree f solves state equations.",
+              "Algebraic immunity = the new design metric.",
+              "Clock control: irregular timing (stop-and-go).",
+              "Cost: throughput; gain: alignment arithmetic defeated.",
+            ],
+            diagram: {
+              kind: "compare",
+              title: "Function nonlinearity vs timing nonlinearity",
+              caption: "Two places to hide the LFSR's linearity.",
+              left: {
+                heading: "Filter generator",
+                items: [
+                  "f over tapped state bits",
+                  "One bit per clock - fast",
+                  "Attacked by algebraic solving",
+                  "Metric: algebraic immunity",
+                ],
+              },
+              right: {
+                heading: "Clock-controlled",
+                items: [
+                  "Irregular clocking (stop-and-go)",
+                  "Throughput drops",
+                  "Attacked via timing inference",
+                  "Metric: irregularity strength",
+                ],
+              },
+            },
+            callout: {
+              type: "exam",
+              title: "Algebraic immunity joined the metrics",
+              body: "The modern note: 'after fast algebraic attacks broke published filter generators, algebraic immunity - the minimum degree needed to annihilate f - joined balance, nonlinearity and correlation immunity as the Boolean-function design criteria'. Then the majority-taps walkthrough as the concrete construction.",
+            },
+            examQuestions: [
+              {
+                q: "Explain nonlinear filter generators and clock-controlled generators: constructions, a majority-filter walkthrough, the algebraic-attack lens, and the stop-and-go principle with its trade.",
+                marks: 14,
+                outline: [
+                  "Filter: one LFSR; output f(tapped state)",
+                  "Worked: majority(s1, s4, s6, s8) - balanced, degree 3",
+                  "Algebraic attack: linearize low-degree output equations",
+                  "Algebraic immunity as the design metric",
+                  "Clock control: stop-and-go irregular timing",
+                  "Trade: throughput vs alignment-arithmetic defeat",
+                  "Both hide LFSR linearity - function vs time",
+                ],
+              },
+              {
+                q: "Why does irregular clocking complicate correlation attacks?",
+                marks: 7,
+                outline: [
+                  "Attacks assume fixed index alignment",
+                  "Irregular clocks desynchronize output-to-state mapping",
+                  "The attacker must infer timing - larger search",
+                ],
+              },
+            ],
+          },
+          {
+            number: "3.7",
+            title: "The alternating-step and shrinking generators",
+            body: [
+              "The alternating-step generator (Guenther 1987): three LFSRs - a control register C clocks the other two irregularly: when C outputs 1, clock R1; when 0, clock R2; output = XOR of R1's and R2's current bits. The design: only one of R1/R2 advances per step (the other repeats its bit), destroying the fixed alignment arithmetic; periods and linear complexity inherit the product structure; hardware is modest.",
+              "A worked alternating-step walkthrough: C = 10110... -> step pattern: R1, R2, R1, R2, R1; outputs: R1 b1, R2 b2, R1 (advanced) b1', R2 (advanced) b2', ...; keystream = XOR of the two selected bits per step. The analysis lens: attacks must first recover C's timing (the control register's phase), then the two data registers - the irregular clocking pushes correlation attacks into timing-inference searches; strengthened variants (A5/1's stopping-clock style relations aside) formalized the approach.",
+              "The shrinking generator (Coppersmith, Krawczyk, Mega): two LFSRs - A produces candidate bits, S controls: output A's bit whenever S's bit is 1 (discard otherwise) - decimation. Properties: the output's rate drops to about 1/4 of A's clock (throughput cost), but the irregular selection defeats alignment attacks; the self-shrinking variant uses one register's bit pairs (a2i, a2i+1): output a2i when a2i+1 = 1. The exam's sentence: alternating step and shrinking are the syllabus's clock-control case studies - both trade throughput for timing-based nonlinearity, and both survived their contemporaries' correlation fates.",
+              "Exam framing: expect 'alternating-step and shrinking generators'. Give both constructions with walkthroughs, the timing-inference attack lens, and the throughput trade. The 'throughput for nonlinearity' sentence is the summary mark.",
+            ],
+            keyTerms: [
+              { term: "Alternating-step", definition: "Control register clocks R1/R2 alternately; output XOR of current bits." },
+              { term: "Shrinking generator", definition: "A's bits output when S's bit = 1 - decimation." },
+              { term: "Self-shrinking", definition: "One register: pairs (a2i, a2i+1); output a2i if a2i+1 = 1." },
+              { term: "Decimation rate", definition: "Shrinking's about-1/4 output rate - the throughput cost." },
+              { term: "Timing inference", definition: "Recovering the control register's clock pattern - the attack's first stage." },
+            ],
+            table: {
+              caption: "The two clock-controlled case studies.",
+              headers: ["Generator", "Mechanism", "Output rate", "Attack lens"],
+              rows: [
+                ["Alternating step", "C clocks R1 or R2; XOR output", "1 bit per step", "control-phase recovery first"],
+                ["Shrinking", "S gates A's bits", "about 1/4 of A's clock", "selection-pattern inference"],
+                ["Self-shrinking", "one register, bit pairs", "about 1/4", "same lens, smaller hardware"],
+              ],
+            },
+            bullets: [
+              "Alternating step: control C selects R1/R2 clocking; XOR out.",
+              "Only one data register advances per step - alignment broken.",
+              "Attack: recover C's phase, then the data registers.",
+              "Shrinking: A gated by S - about 1/4 rate decimation.",
+              "Self-shrinking: single-register pair rule.",
+              "Trade: throughput for timing-based nonlinearity.",
+            ],
+            diagram: {
+              kind: "flow",
+              title: "The shrinking generator's gate",
+              caption: "S decides; A speaks only when allowed.",
+              steps: [
+                { label: "Clock both", note: "A and S advance together" },
+                { label: "S bit = 1?", note: "yes -> output A's current bit" },
+                { label: "S bit = 0", note: "discard A's bit - decimation" },
+                { label: "Rate", note: "about 1/4 of A's clock rate" },
+                { label: "Effect", note: "output timing irregular - alignment attacks blind" },
+              ],
+            },
+            callout: {
+              type: "exam",
+              title: "Throughput traded for nonlinearity",
+              body: "The summary sentence: 'alternating-step and shrinking generators buy security the same way - irregular timing breaks the fixed-index arithmetic correlation attacks rely on, at the price of throughput (about 1/4 rate for shrinking)'; then the two constructions' walkthroughs as evidence.",
+            },
+            examQuestions: [
+              {
+                q: "Explain the alternating-step and shrinking generators: constructions with walkthroughs, the timing-inference attack lens, the self-shrinking variant, and the throughput trade.",
+                marks: 14,
+                outline: [
+                  "Alternating step: C gates R1/R2; output XOR of current bits",
+                  "Only one register advances per step - alignment destroyed",
+                  "Attack: control-phase recovery, then data registers",
+                  "Shrinking: A's bits output when S = 1 - decimation",
+                  "Rate about 1/4; self-shrinking variant with one register",
+                  "Timing inference is the shared attack lens",
+                  "Both trade throughput for timing nonlinearity",
+                ],
+              },
+              {
+                q: "Why does the shrinking generator output at about one quarter rate?",
+                marks: 7,
+                outline: [
+                  "S's bits are balanced - half are 1",
+                  "A's bit emits on S = 1 only",
+                  "So about half of A's bits survive; per input clock about 1/4 after pairing",
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    },
+    {
+      number: 4,
+      roman: "IV",
+      title: "Digital Signatures",
+      summary:
+        "Unit IV is the signature unit: signature properties, generic schemes (Rabin, Lamport), the Matyas-Meyer and RSA constructions, multiple RSA and ElGamal signatures, the Digital Signature Standard, and blind signatures with the RSA blind protocol.",
+      chapter: {
+        number: "04",
+        title: "From One-Time Trees to Blind Signatures",
+        intro:
+          "Unit IV covers digital-signature properties, generic signature schemes (Rabin, Lamport), the Matyas-Meyer construction, RSA signatures, multiple RSA and ElGamal signatures, the Digital Signature Standard, and blind signatures including RSA blind.",
+        inOneBreath:
+          "Signatures demand unforgeability, integrity, non-repudiation - the private-key direction of public key. Lamport signs with hash preimages (one-time; Merkle trees scale it); Matyas-Meyer signs with block-cipher encryption of the digest; RSA-FDH signs by private exponentiation; ElGamal/DSA sign with per-message randomness - k reuse leaks the key. Blind signatures sign hidden messages - the e-cash and privacy primitive.",
+        sections: [
+          {
+            number: "4.1",
+            title: "Digital signature properties",
+            body: [
+              "A digital signature inverts public-key encryption's direction: the private key produces the tag; anyone with the public key verifies. The required properties: authenticity (bound to the signer's key), integrity (any message alteration invalidates), non-repudiation (the signer cannot deny - possible only with public verification), and unforgeability - EUF-CMA: no efficient attacker, after requesting signatures on chosen messages, can produce a valid signature on a new message.",
+              "A worked properties-vs-MAC contrast fixes the boundary: a MAC authenticates but cannot non-repudiate (the verifier holds the key - it could forge); a signature's public verification confines signing to the private-key holder - the court-grade property. The supporting trio: the hash-and-sign paradigm (sign the digest - fixes input size, defeats pick-s-first forgery, binds via collision resistance), randomness discipline (fresh per-message nonces in ElGamal/DSA class schemes), and key hygiene (separate signing/encryption keys).",
+              "The signature system's components complete the section: key generation, signing algorithm, verification algorithm - and the trust layer (certificates binding keys to identities - PKI, Unit II). The exam's framing: define the properties, contrast with MACs, and state the hash-then-sign paradigm as the universal template; the properties question is answered by the four-property list plus the MAC boundary.",
+              "Exam framing: expect 'properties of digital signatures'. Give the four-property list, the MAC contrast walkthrough, and the hash-then-sign template with its three reasons.",
+            ],
+            keyTerms: [
+              { term: "Non-repudiation", definition: "Undeniable authorship - public verification's court-grade property." },
+              { term: "EUF-CMA", definition: "Unforgeability after chosen-message signing queries." },
+              { term: "Hash-and-sign", definition: "Sign the digest - size, anti-forgery, collision binding." },
+              { term: "Public verification", definition: "Anyone can verify - the MAC impossibility for non-repudiation." },
+              { term: "Key hygiene", definition: "Separate signing/encryption keys; fresh nonces per message." },
+            ],
+            table: {
+              caption: "Signature vs MAC - the property boundary.",
+              headers: ["Property", "MAC", "Digital signature"],
+              rows: [
+                ["Integrity", "yes", "yes"],
+                ["Authenticity", "yes (to key-holders)", "yes (to everyone)"],
+                ["Non-repudiation", "no - verifier can forge", "yes - private key only"],
+                ["Verification", "shared key", "public key"],
+                ["Cost", "fast", "public-key operations"],
+              ],
+            },
+            bullets: [
+              "Properties: authenticity, integrity, non-repudiation, EUF-CMA.",
+              "Public verification makes denial impossible - the MAC boundary.",
+              "Hash-then-sign: digest signing shrinks and hardens.",
+              "Collision resistance binds the signature to the document.",
+              "Fresh per-message nonces in ElGamal/DSA-class schemes.",
+              "Certificates bind keys to identities (the PKI layer).",
+            ],
+            diagram: {
+              kind: "compare",
+              title: "Who can forge?",
+              caption: "The property boundary in one question.",
+              left: {
+                heading: "MAC",
+                items: [
+                  "Signer and verifier share the key",
+                  "Either party can produce valid tags",
+                  "No court-grade attribution",
+                  "Fast symmetric operations",
+                ],
+              },
+              right: {
+                heading: "Digital signature",
+                items: [
+                  "Private key signs; public key verifies",
+                  "Only the key-holder can sign",
+                  "Non-repudiation possible",
+                  "Public-key cost, certificates",
+                ],
+              },
+            },
+            callout: {
+              type: "exam",
+              title: "Public verification is the dividing line",
+              body: "The boundary sentence: 'a MAC cannot non-repudiate because its verifier could have forged the tag; a signature's verification needs no secret, so authorship is confined to the private key - that asymmetry is the entire property list'. Then the hash-then-sign template.",
+            },
+            examQuestions: [
+              {
+                q: "Explain the properties of digital signatures and contrast them with message authentication codes, including the hash-and-sign paradigm.",
+                marks: 14,
+                outline: [
+                  "Properties: authenticity, integrity, non-repudiation",
+                  "Unforgeability: EUF-CMA game defined",
+                  "MAC contrast: shared key - verifier can forge",
+                  "Public verification: authorship confined to private key",
+                  "Hash-then-sign: sign the digest, not the message",
+                  "Reasons: size reduction, pick-s-first defeat, collision binding",
+                  "Certificates bind keys to identities",
+                ],
+              },
+              {
+                q: "Why must signing and encryption keys be separated in practice?",
+                marks: 7,
+                outline: [
+                  "Compromise of one use should not expose the other",
+                  "Encryption key exposure enables decryption attacks",
+                  "Key-usage certificates enforce the separation",
+                ],
+              },
+            ],
+          },
+          {
+            number: "4.2",
+            title: "Generic signature schemes - Rabin and Lamport",
+            body: [
+              "Generic (construction-template) signatures. Rabin signatures: sign with square roots - s with s^2 = H(m) mod n (n = pq); verification checks the squaring. The subtlety: two roots exist mod each prime - four candidates mod n - so redundancy in H(m) (structured padding) selects the true root; its security ties directly to factoring (extracting roots = factoring n).",
+              "A worked Lamport one-time scheme fixes the hash-based family: generate 256 pairs of random values (x_{i,0}, x_{i,1}); publish the digests (H(x_{i,0}), H(x_{i,1})) as the public key; to sign message bit i, reveal x_{i,b} for the bit's value b - each revealed value verifies against its published digest. Signature size: 256 values (about 8 KB with 256-bit values); the one-time constraint: revealing both values of any pair lets an attacker forge the complementary bit - each key pair signs exactly one message (or a few, with checksum tricks).",
+              "The Merkle-tree extension completes the family: hash the one-time public keys into a tree; sign the root once with a master scheme (or the tree root as the public key); each leaf's signature includes the sibling-hash path (authentication path) - many one-time signatures under one published root. The exam's framing: Rabin = factoring-rooted signatures with root ambiguity; Lamport = hash-based one-time signatures with the tree scaling - the generic-scheme table.",
+              "Exam framing: expect 'generic signature schemes: Rabin and Lamport'. Give both constructions with walkthroughs, the root-ambiguity and one-time constraints, and the Merkle-tree scaling note.",
+            ],
+            keyTerms: [
+              { term: "Rabin signature", definition: "s^2 = H(m) mod n - four roots; redundancy selects; security = factoring." },
+              { term: "Lamport signature", definition: "Reveal hash preimages per message bit - one-time use." },
+              { term: "One-time constraint", definition: "Both pair values revealed -> complementary bit forgeable." },
+              { term: "Merkle tree", definition: "Hash tree over one-time keys - many signatures under one root." },
+              { term: "Authentication path", definition: "Sibling hashes verifying a leaf to the root." },
+            ],
+            table: {
+              caption: "The generic schemes compared.",
+              headers: ["Scheme", "Basis", "Constraint", "Security"],
+              rows: [
+                ["Rabin", "square roots mod n", "root ambiguity - redundancy needed", "factoring"],
+                ["Lamport", "hash preimage pairs", "one-time per key pair", "hash function"],
+                ["Merkle (Lamport + tree)", "hashed one-time keys", "path sizes grow with tree depth", "hash function"],
+              ],
+            },
+            bullets: [
+              "Rabin: sign by extracting a square root of H(m).",
+              "Four roots mod n - structured padding selects.",
+              "Lamport: publish hash pairs; reveal per-bit preimages.",
+              "One-time: both values revealed breaks the pair.",
+              "Merkle trees: many one-time signatures, one published root.",
+              "Post-quantum relevance: hash-based signatures survive Shor.",
+            ],
+            diagram: {
+              kind: "flow",
+              title: "Lamport's per-bit reveal",
+              caption: "Each bit's signature is one preimage - used once.",
+              steps: [
+                { label: "Generate pairs", note: "256 x (x0, x1) random values" },
+                { label: "Publish digests", note: "H(x_{i,0}), H(x_{i,1}) - the public key" },
+                { label: "Sign bit i = b", note: "reveal x_{i,b}" },
+                { label: "Verify", note: "H(revealed) matches the published digest" },
+                { label: "Limit", note: "revealing both values of a pair forges the other bit" },
+              ],
+            },
+            callout: {
+              type: "tip",
+              title: "One-time signatures are the post-quantum seed",
+              body: "The forward-looking note: 'Lamport's security needs only a hash function - no number theory - which is why Merkle-tree hash signatures (SPHINCS-style) are the post-quantum candidates; the one-time constraint is the engineering price the tree pays down'. Anchor the generic-scheme answer with that arc.",
+            },
+            examQuestions: [
+              {
+                q: "Explain the Rabin and Lamport generic signature schemes: constructions, worked mechanics, their constraints (root ambiguity, one-time use), and the Merkle-tree extension.",
+                marks: 14,
+                outline: [
+                  "Rabin: s^2 = H(m) mod n; four roots - redundancy selects",
+                  "Rabin security tied to factoring",
+                  "Lamport: 256 hash-pair digests published",
+                  "Signing: reveal the preimage matching each bit",
+                  "One-time: both pair values -> complement forgeable",
+                  "Merkle tree: many one-time keys under one root",
+                  "Hash-based schemes survive quantum (Shor)",
+                ],
+              },
+              {
+                q: "Why does Lamport's scheme allow only one signature per key pair?",
+                marks: 7,
+                outline: [
+                  "Two signed messages reveal both values of shared pairs",
+                  "The attacker then signs the complementary bits",
+                  "Checksums extend to a few messages; trees extend further",
+                ],
+              },
+            ],
+          },
+          {
+            number: "4.3",
+            title: "The Matyas-Meyer construction and RSA signatures",
+            body: [
+              "The Matyas-Meyer construction: signature s = E_{sk}(H(m)) - the signing key as a block cipher's key, encrypting the digest; verification recomputes E_{sk}(H(m)) and compares (or verifies s decrypts to H(m) under the public direction where defined). Security rests on the ideal-cipher model - the construction is a MAC-shaped signature used inside schemes where the key's secrecy carries authenticity; its simplicity makes it the textbook bridge from MACs to signatures.",
+              "A worked RSA-FDH walkthrough: signing s = H(m)^d mod n; verification s^e mod n == H(m). The three design reasons: (1) size - the digest fits one block; (2) anti-forgery - the pick-s-first attack (choose s, set m = s^e) fails because the forger must match a specific H(m) - a 2^n pre-image; (3) binding - collision resistance ties the signature to the document. Full-domain hash maps H onto all of Z_n* (so the forger's candidate space is the whole ring); PSS adds randomness for provable unforgeability.",
+              "The deployment notes complete the section: RSA signatures are deterministic (FDH) or randomized (PSS); CRT speeds signing 4x - with the Bellcore fault-attack countermeasure (verify after CRT - section 2.5's attack); key sizes at 3072 bits for 128-bit security. The exam's framing: Matyas-Meyer is the cipher-as-signature bridge; RSA-FDH is the factoring-rooted workhorse - both hash-then-sign instances.",
+              "Exam framing: expect 'Matyas-Meyer and RSA signatures'. Give both constructions with walkthroughs, the pick-s-first defeat, and the CRT/fault countermeasure note.",
+            ],
+            keyTerms: [
+              { term: "Matyas-Meyer", definition: "s = E_{sk}(H(m)) - block-cipher-encryption signature; ideal-cipher security." },
+              { term: "RSA-FDH", definition: "s = H(m)^d mod n with full-domain hash; verify s^e == H(m)." },
+              { term: "Pick-s-first forgery", definition: "Choose s, set m = s^e - defeated by hashing first." },
+              { term: "RSA-PSS", definition: "Randomized padding - provable unforgeability in the ROM." },
+              { term: "CRT verification", definition: "Re-verify after CRT signing - the Bellcore countermeasure." },
+            ],
+            table: {
+              caption: "Two hash-then-sign instances.",
+              headers: ["Property", "Matyas-Meyer", "RSA-FDH/PSS"],
+              rows: [
+                ["Primitive", "block cipher", "RSA modexp"],
+                ["Security basis", "ideal-cipher model", "factoring / RSA inversion"],
+                ["Randomness", "none (deterministic)", "FDH deterministic; PSS randomized"],
+                ["Cost", "symmetric speed", "public-key cost (CRT 4x)"],
+                ["Size", "one block", "modulus-sized (3072 bits)"],
+              ],
+            },
+            bullets: [
+              "Matyas-Meyer: sign = encrypt the digest with the secret key.",
+              "Security in the ideal-cipher model - the textbook bridge.",
+              "RSA-FDH: s = H(m)^d; verify s^e == H(m).",
+              "Pick-s-first fails against a specific H(m) - 2^n pre-image.",
+              "PSS: randomized, provably unforgeable.",
+              "CRT signing: verify after - the fault-attack rule.",
+            ],
+            diagram: {
+              kind: "flow",
+              title: "RSA-FDH sign and verify",
+              caption: "Hash, exponentiate privately, verify publicly.",
+              steps: [
+                { label: "Hash", note: "h = H(m) - full-domain mapped" },
+                { label: "Sign", note: "s = h^d mod n (private)" },
+                { label: "Transmit", note: "(m, s)" },
+                { label: "Verify", note: "s^e mod n == H(m)?" },
+                { label: "Forgery check", note: "pick s -> m = s^e fails the hash match" },
+              ],
+            },
+            callout: {
+              type: "exam",
+              title: "Hashing first defeats the inversion forgery",
+              body: "The technical sentence: 'without hashing, anyone picks s and calls m = s^e a signed message; hashing first forces the forger to find m with H(m) = s^e - a 2^n pre-image problem'. Then the Matyas-Meyer bridge as the symmetric-flavoured sibling.",
+            },
+            examQuestions: [
+              {
+                q: "Explain the Matyas-Meyer construction and RSA-FDH signatures: constructions, the pick-s-first forgery and its defeat, PSS's role, and CRT-signing countermeasures.",
+                marks: 14,
+                outline: [
+                  "Matyas-Meyer: s = E_{sk}(H(m)); ideal-cipher security",
+                  "RSA-FDH: s = H(m)^d mod n; verify s^e == H(m)",
+                  "Pick-s-first: choose s, m = s^e - valid without the key",
+                  "Hashing first: forgery needs a 2^n pre-image",
+                  "Full-domain hash: forger's space = all of Z_n*",
+                  "PSS: randomized padding - provable unforgeability",
+                  "CRT signing: verify after - Bellcore countermeasure",
+                ],
+              },
+              {
+                q: "Why is full-domain hashing part of the RSA signature security proof?",
+                marks: 7,
+                outline: [
+                  "Partial-range digests shrink the forger's target set",
+                  "FDH maps digests onto all of Z_n*",
+                  "The reduction to RSA inversion then holds tightly",
+                ],
+              },
+            ],
+          },
+          {
+            number: "4.4",
+            title: "Multiple RSA and ElGamal signatures",
+            body: [
+              "Multiple RSA signatures: signing the same message with multiple key holders (multi-signatures) vs a single signer's multiple schemes - the syllabus's phrase maps to two deployments: sequential multi-signatures (each party signs in turn - signature chains) and the composite/aggregate variants (combining signatures compactly - threshold-RSA and aggregate-signature research lines). The practical form: sequential signing (certificate chains are multi-signatures in this sense - each CA signs the next's certificate).",
+              "A worked ElGamal signature walkthrough: keygen - p prime, g generator, x secret, y = g^x; signing message m (digest H(m) = h) with fresh k coprime to p-1: r = g^k mod p; s = k^-1 (h - x*r) mod (p-1); signature (r, s). Verification: g^h == y^r * r^s mod p. The algebra: from s's definition, h = x*r + k*s, so g^h = (g^x)^r * (g^k)^s = y^r * r^s - the verification identity.",
+              "The k-discipline is the section's warning - the k-reuse leak: two signatures with the same k satisfy s1 - s2 = k^-1 (h1 - h2) mod (p-1) -> k = (h1 - h2)/(s1 - s2) -> x = (k*s1 - h1)/r - the private key falls from public data; predictable k is equivalent to publishing x. The exam's framing: multiple RSA = certificate-chain-style sequential signing; ElGamal signatures = the discrete-log template with the existential k rule - DSA (next section) inherits the algebra and the discipline.",
+              "Exam framing: expect 'multiple RSA and ElGamal signatures'. Give the multi-signature reading, the ElGamal sign/verify algebra with the toy identity, and the k-reuse leak derivation.",
+            ],
+            keyTerms: [
+              { term: "Multi-signature", definition: "Multiple signers on one message - sequential chains or aggregates." },
+              { term: "ElGamal signature", definition: "(r = g^k, s = k^-1(h - x*r)); verify g^h == y^r * r^s." },
+              { term: "k-reuse leak", definition: "Two signatures with one k reveal x algebraically." },
+              { term: "Verification identity", definition: "g^h = y^r * r^s - ElGamal's correctness." },
+              { term: "Freshness rule", definition: "k uniform, secret, never reused or predicted." },
+            ],
+            table: {
+              caption: "ElGamal signing and verifying, step by step.",
+              headers: ["Step", "Computation", "Note"],
+              rows: [
+                ["Keygen", "x secret; y = g^x mod p", "discrete-log pair"],
+                ["Pick k", "fresh, coprime to p-1", "reuse = key leak"],
+                ["r", "g^k mod p", "public commitment"],
+                ["s", "k^-1 (h - x*r) mod (p-1)", "the blinding algebra"],
+                ["Verify", "g^h == y^r * r^s mod p", "the identity checks"],
+              ],
+            },
+            bullets: [
+              "Multiple RSA: sequential multi-signatures - certificate chains exemplify.",
+              "ElGamal: (r, s) from one fresh k per message.",
+              "Verify: g^h == y^r * r^s - the algebra's check.",
+              "k reuse: s1 - s2 exposes k, then x - the fatal rule.",
+              "Predictable k = publishing x.",
+              "DSA inherits both the algebra and the k-discipline.",
+            ],
+            diagram: {
+              kind: "flow",
+              title: "The k-reuse key leak",
+              caption: "Two signatures, one k - the private key falls out.",
+              steps: [
+                { label: "Sign twice", note: "same k, messages h1 and h2" },
+                { label: "Subtract", note: "s1 - s2 = k^-1 (h1 - h2) mod (p-1)" },
+                { label: "Solve k", note: "k = (h1 - h2)/(s1 - s2)" },
+                { label: "Solve x", note: "x = (k*s1 - h1)/r mod (p-1)" },
+                { label: "Lesson", note: "fresh uniform k per signature - always" },
+              ],
+            },
+            callout: {
+              type: "warning",
+              title: "One reused k is a key leak",
+              body: "The discipline sentence: 'ElGamal-family signatures mask the private key with k - reusing or predicting k unmasks it algebraically from public data; the PS3 firmware signing key fell to exactly this in ECDSA'. Fresh, uniform, secret k per signature - quote the rule.",
+            },
+            examQuestions: [
+              {
+                q: "Explain multiple RSA signatures and the ElGamal signature scheme: the multi-signature reading, the sign/verify algebra with the verification identity, and the k-reuse leak derivation.",
+                marks: 14,
+                outline: [
+                  "Multiple RSA: sequential multi-signatures; certificate chains",
+                  "ElGamal keygen: x secret, y = g^x",
+                  "Sign: r = g^k; s = k^-1 (h - x*r) mod (p-1)",
+                  "Verify: g^h == y^r * r^s mod p",
+                  "Identity: h = x*r + k*s -> the check holds",
+                  "k reuse: k = (h1 - h2)/(s1 - s2); x falls",
+                  "Fresh uniform k per signature - the discipline",
+                ],
+              },
+              {
+                q: "Why must k be coprime to p-1 in ElGamal signatures?",
+                marks: 7,
+                outline: [
+                  "s's formula needs k^-1 mod (p-1)",
+                  "The inverse exists only when gcd(k, p-1) = 1",
+                  "Otherwise the signing equation has no solution",
+                ],
+              },
+            ],
+          },
+          {
+            number: "4.5",
+            title: "The Digital Signature Standard (DSA/DSS)",
+            body: [
+              "The Digital Signature Standard (FIPS 186) standardizes DSA: parameters - primes p (1024-3072 bits) and q (160-256 bits, q | p-1), generator g = h^((p-1)/q) mod p; keys - secret x in [1, q-1], public y = g^x mod p. Signing digest h with fresh k in [1, q-1]: r = (g^k mod p) mod q; s = k^-1 (h + x*r) mod q; if r or s is 0, re-draw k. Signature (r, s) - 2 q-sized values: compact (512 bits at P-256-class parameters).",
+              "A worked verification walkthrough: w = s^-1 mod q; u1 = h*w mod q; u2 = r*w mod q; v = (g^u1 * y^u2 mod p) mod q; accept iff v == r. The algebra (mod q everywhere): v = r^(h*w * x*w + k*s^-1 * ... ) - concretely the exponents reconstruct k^-1*(h + x*r), so g^(k*s*k^-1) = g^k lands back on r. The k-discipline carries over from ElGamal - k reuse leaks x via the mod-q algebra (the PS3 ECDSA incident); RFC 6979's deterministic k (derived from key + message via HMAC) removes the failure mode.",
+              "The DSS evolution completes the section: DSA (1994) -> ECDSA (curves - P-256/P-384, the deployed standard in TLS) -> EdDSA (Ed25519 - Edwards curves, deterministic nonces, fast, misuse-resistant). The exam's framing: DSA = ElGamal's algebra standardized with mod-q compactness; ECDSA = the curve port; EdDSA = the modern fix of the k-discipline by construction.",
+              "Exam framing: expect 'the Digital Signature Standard'. Give DSA's parameters/keys, the sign/verify walkthrough with the v == r check, the k-reuse leak in mod-q form, and the ECDSA/EdDSA evolution.",
+            ],
+            keyTerms: [
+              { term: "DSA parameters", definition: "p, q (q | p-1), g = h^((p-1)/q) mod p." },
+              { term: "DSA signing", definition: "r = (g^k mod p) mod q; s = k^-1 (h + x*r) mod q." },
+              { term: "DSA verification", definition: "w = s^-1; u1, u2; v = (g^u1 * y^u2 mod p) mod q == r." },
+              { term: "Deterministic k (RFC 6979)", definition: "k from HMAC(key, message) - reuse impossible by construction." },
+              { term: "EdDSA (Ed25519)", definition: "Edwards-curve signatures with deterministic nonces - the modern form." },
+            ],
+            table: {
+              caption: "DSA sign and verify, step by step.",
+              headers: ["Step", "Computation", "Note"],
+              rows: [
+                ["Keygen", "x secret; y = g^x mod p", "params generated once"],
+                ["Pick k", "fresh in [1, q-1]", "reuse leaks x"],
+                ["r", "(g^k mod p) mod q", "0? re-draw k"],
+                ["s", "k^-1 (h + x*r) mod q", "0? re-draw k"],
+                ["Verify", "v = (g^u1 * y^u2 mod p) mod q", "accept iff v == r"],
+              ],
+            },
+            bullets: [
+              "DSA: ElGamal's algebra standardized mod q - compact signatures.",
+              "Sign: (r, s) with fresh k; both nonzero required.",
+              "Verify: w, u1, u2 -> v == r.",
+              "k reuse in mod-q algebra leaks x (PS3 incident).",
+              "RFC 6979: deterministic k - the failure mode removed.",
+              "Evolution: DSA -> ECDSA (curves) -> Ed25519 (deterministic).",
+            ],
+            diagram: {
+              kind: "cycle",
+              title: "The DSA signing loop",
+              caption: "Fresh k each turn - the loop's discipline is the scheme's security.",
+              steps: [
+                { label: "Digest h", note: "H(m) reduced mod q" },
+                { label: "Fresh k", note: "uniform, secret, never reused" },
+                { label: "r", note: "(g^k mod p) mod q" },
+                { label: "s", note: "k^-1 (h + x*r) mod q" },
+                { label: "Publish (r, s)", note: "verification reconstructs r" },
+              ],
+            },
+            callout: {
+              type: "warning",
+              title: "The k-discipline is the scheme's life",
+              body: "The discipline sentence: 'DSA/ECDSA mask x with per-signature k - one reused or predictable k unmasks it from public (r, s) pairs; RFC 6979 and Ed25519 derive k deterministically from the key and message, removing the failure mode by construction'. Quote the PS3 incident as the consequence.",
+            },
+            examQuestions: [
+              {
+                q: "Explain the Digital Signature Standard: parameters and keys, the signing and verification walkthroughs with the v == r check, the k-reuse leak, and the ECDSA/EdDSA evolution.",
+                marks: 14,
+                outline: [
+                  "Params: p, q with q | p-1; g = h^((p-1)/q)",
+                  "Keys: x secret; y = g^x mod p",
+                  "Sign: r = (g^k mod p) mod q; s = k^-1 (h + x*r) mod q",
+                  "Verify: w = s^-1; v = (g^u1 * y^u2 mod p) mod q == r",
+                  "k reuse: s1 - s2 exposes k, then x (PS3 incident)",
+                  "RFC 6979 deterministic k; Ed25519 deterministic by design",
+                  "Evolution: DSA -> ECDSA -> EdDSA",
+                ],
+              },
+              {
+                q: "Why are DSA signatures two q-sized values rather than p-sized?",
+                marks: 7,
+                outline: [
+                  "All signing algebra lives mod q",
+                  "r and s are q-sized (160-256 bits)",
+                  "Compactness is DSA's design gain over raw ElGamal",
+                ],
+              },
+            ],
+          },
+          {
+            number: "4.6",
+            title: "Blind signatures and the RSA blind protocol",
+            body: [
+              "A blind signature lets a signer sign a message it cannot see: the requester blinds the message (a masking factor), the signer signs the blinded value, the requester unblinds - obtaining a valid signature on the original. Properties: blindness (the signer learns nothing about m) and unforgeability/unlinkability (the signer cannot later link the signature to the session - one-more-unforgeability in the formal model). Applications: e-cash (Chaum's original), anonymous credentials, e-voting.",
+              "A worked RSA-blind walkthrough: signer's key (n, e), private d. Blinding: requester picks random r coprime to n, computes m' = m * r^e mod n - masked by an e-th power; signing: s' = (m')^d = m^d * r mod n (the signer sees only m'); unblinding: s = s' * r^-1 mod n = m^d mod n - a valid RSA-FDH signature on m, while the signer never saw m and cannot link (fresh r per session).",
+              "The verification closes the walkthrough: anyone checks s^e == m mod n - the signature is ordinary RSA-FDH; the blindness was purely in the signing session. The security notes: blinding factors must be fresh and uniform (reused r leaks - the requester's discipline); the signer must bound signature counts (the one-more-unforgeability game - e-cash's double-spend concern); and the scheme's message structure must be constrained (the signer should not sign arbitrary values - padding/structure in the blinded value). The exam's framing: blind signatures = signatures with privacy - RSA-blind is the textbook construction.",
+              "Exam framing: expect 'blind signatures and the RSA blind protocol'. Give the property list, the three-step walkthrough with the algebra, and the security notes (fresh r, one-more-unforgeability, structure constraints).",
+            ],
+            keyTerms: [
+              { term: "Blind signature", definition: "The signer signs m without seeing it - privacy-preserving signing." },
+              { term: "Blinding factor", definition: "r^e mod n masking the message before signing." },
+              { term: "Unblinding", definition: "s = s' * r^-1 - recovering the ordinary signature." },
+              { term: "Unlinkability", definition: "The signer cannot connect signature to signing session." },
+              { term: "One-more-unforgeability", definition: "Cannot obtain k+1 valid signatures from k sessions." },
+            ],
+            table: {
+              caption: "RSA blind, step by step.",
+              headers: ["Step", "Computation", "Who sees what"],
+              rows: [
+                ["Blind", "m' = m * r^e mod n", "requester holds m, r"],
+                ["Sign", "s' = (m')^d = m^d * r mod n", "signer sees only m'"],
+                ["Unblind", "s = s' * r^-1 = m^d mod n", "requester holds s, m"],
+                ["Verify", "s^e == m mod n", "anyone - ordinary RSA-FDH"],
+              ],
+            },
+            bullets: [
+              "Blind: mask m by r^e before sending to the signer.",
+              "Signer signs m' - learns nothing about m.",
+              "Unblind by r^-1 - the signature is ordinary RSA-FDH.",
+              "Unlinkability: fresh r per session defeats linking.",
+              "Disciplines: fresh uniform r; signer bounds signature counts.",
+              "Applications: e-cash, anonymous credentials, e-voting.",
+            ],
+            diagram: {
+              kind: "flow",
+              title: "The RSA blind protocol, end to end",
+              caption: "The signer signs a masked value; the world sees a normal signature.",
+              steps: [
+                { label: "Requester blinds", note: "m' = m * r^e mod n" },
+                { label: "Signer signs", note: "s' = (m')^d mod n - m unknown" },
+                { label: "Requester unblinds", note: "s = s' / r = m^d mod n" },
+                { label: "Public verify", note: "s^e == m mod n - ordinary signature" },
+                { label: "Signer's view", note: "cannot link s to this session" },
+              ],
+            },
+            callout: {
+              type: "exam",
+              title: "Privacy with an ordinary signature",
+              body: "The elegance sentence: 'RSA-blind's output is an ordinary RSA-FDH signature - the privacy lives entirely in the signing session's algebra (mask, sign, unmask); anyone can verify without knowing the message was ever hidden'. Then the fresh-r discipline as the requester's duty.",
+            },
+            examQuestions: [
+              {
+                q: "Explain blind signatures and the RSA blind protocol: the property list, the blind/sign/unblind walkthrough with algebra, verification, and the security disciplines.",
+                marks: 14,
+                outline: [
+                  "Properties: blindness, unlinkability, one-more-unforgeability",
+                  "Blind: m' = m * r^e mod n (fresh random r)",
+                  "Sign: s' = (m')^d = m^d * r mod n",
+                  "Unblind: s = s' * r^-1 mod n = m^d",
+                  "Verify: s^e == m mod n - ordinary RSA-FDH",
+                  "Signer learns nothing; cannot link later",
+                  "Applications: e-cash, credentials, e-voting",
+                ],
+              },
+              {
+                q: "Why must the blinding factor r be fresh for each signing session?",
+                marks: 7,
+                outline: [
+                  "Reused r lets the signer link sessions",
+                  "Two masked values share the mask's e-th power",
+                  "Fresh uniform r restores unlinkability",
+                ],
+              },
+            ],
+          },
+          {
+            number: "4.7",
+            title: "Hash-based signature trees and practical signature systems",
+            body: [
+              "The unit's synthesis extends section 4.2: Merkle tree signatures scale one-time schemes - leaves hold one-time public keys (Lamport/Winternitz); each leaf's OTS signs the message; the authentication path (sibling hashes up the tree) verifies the leaf against the published root; the root is the long-term public key. Costs: signature size grows with tree depth (about log2 N hashes per path); state management (one-time leaf use tracking) is XMSS/LMS's engineering problem.",
+              "A worked tree walkthrough: 8 leaves (depth 3); leaf 5 signs the message; its authentication path = siblings at each level (leaf 4's hash, the subtree hash, the other subtree hash); the verifier hashes leaf 5 up with the siblings and compares with the root. Winternitz one-time signatures trade time for size: chain H iterated w times per digit - signature size drops, verification compute rises (the time-memory dial).",
+              "The practical-systems view completes the section: deployed signatures are hash-and-sign instances - RSA-PSS, ECDSA, Ed25519 - with certificates (X.509 chains - multi-signatures) binding keys to identities; the post-quantum horizon: hash-based (stateful XMSS/LMS standardized; stateless SPHINCS+) and lattice schemes (Dilithium/Falcon) assume the Shor-vulnerable incumbents' succession. The exam's sentence: signatures compose - hash-then-sign templates, tree scaling, certificate trust layers - and the hash-based branch is the quantum-ready retreat.",
+              "Exam framing: expect 'Merkle-tree signatures and the practical signature landscape'. Give the tree walkthrough with authentication paths, the Winternitz dial, and the deployed/post-quantum survey. The 'compose and retreat' sentence is the synthesis mark.",
+            ],
+            keyTerms: [
+              { term: "Merkle signature scheme", definition: "One-time leaves + hash tree root - scalable hash-based signing." },
+              { term: "Authentication path", definition: "Sibling hashes verifying a leaf against the root." },
+              { term: "Winternitz OTS", definition: "Iterated-hash chains - size/time tradeoff within one-time signatures." },
+              { term: "Stateful signatures", definition: "XMSS/LMS - leaf-use tracking required." },
+              { term: "SPHINCS+", definition: "Stateless hash-based signatures - the post-quantum candidate." },
+            ],
+            table: {
+              caption: "The signature landscape, deployed to post-quantum.",
+              headers: ["System", "Basis", "Status"],
+              rows: [
+                ["RSA-PSS", "factoring", "deployed"],
+                ["ECDSA / Ed25519", "ECDLP", "deployed standard"],
+                ["XMSS / LMS", "hash trees (stateful)", "standardized (RFC 8391/8554)"],
+                ["SPHINCS+", "hash trees (stateless)", "NIST PQC signature"],
+                ["Dilithium / Falcon", "lattices", "NIST PQC signatures"],
+              ],
+            },
+            bullets: [
+              "Merkle trees: many one-time signatures under one root.",
+              "Authentication path: log2 N sibling hashes per signature.",
+              "Winternitz: iteration count trades signature size for compute.",
+              "Stateful schemes need leaf-use tracking (XMSS/LMS).",
+              "Deployed: RSA-PSS, ECDSA, Ed25519 inside X.509 chains.",
+              "Post-quantum: hash-based and lattice successors.",
+            ],
+            diagram: {
+              kind: "pyramid",
+              title: "A Merkle signature tree (root at top)",
+              caption: "Each leaf signs once; paths verify to the single root.",
+              tiers: [
+                { label: "Root (public key)", note: "published once - trust anchor" },
+                { label: "Internal nodes", note: "hashes of children" },
+                { label: "Leaves", note: "H(one-time public keys)" },
+                { label: "Messages", note: "each signed by one leaf + path" },
+              ],
+            },
+            callout: {
+              type: "tip",
+              title: "Compose, then retreat to hashes",
+              body: "The synthesis sentence: 'practical signatures compose hash-and-sign templates with certificate trust layers, and the hash-based branch (Merkle trees) is the quantum-ready retreat - its security needs nothing but the hash function's survival'. Then the tree walkthrough; the Winternitz dial prices the engineering.",
+            },
+            examQuestions: [
+              {
+                q: "Explain Merkle-tree signatures: the tree structure, the authentication-path verification walkthrough, the Winternitz tradeoff, and the practical/post-quantum signature landscape.",
+                marks: 14,
+                outline: [
+                  "Leaves: one-time public keys hashed",
+                  "Root: the long-term public key",
+                  "Signing: leaf OTS signs; path of siblings included",
+                  "Verification: hash leaf + siblings upward, compare root",
+                  "Depth 3 tree: 3 sibling hashes per signature",
+                  "Winternitz: chain length trades size vs compute",
+                  "Deployed: RSA-PSS/ECDSA/Ed25519; PQ: XMSS, SPHINCS+, Dilithium",
+                ],
+              },
+              {
+                q: "Why are hash-based signatures considered quantum-resistant?",
+                marks: 7,
+                outline: [
+                  "Shor breaks factoring/discrete logs, not hash functions",
+                  "Grover only halves hash security - countering by doubling widths",
+                  "Lamport/Merkle security rests solely on pre-image resistance",
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    },
+    {
+      number: 5,
+      roman: "V",
+      title: "Secret Sharing and Pseudorandom Number Generation",
+      summary:
+        "Unit V closes the subject with two infrastructure topics: secret-sharing algorithms - threshold schemes with the Shamir, Blakley and modular constructions - and pseudorandom number generation - randomness definitions, statistical tests, the linear congruential generator and modern PRNGs.",
+      chapter: {
+        number: "05",
+        title: "Splitting Secrets and Making Randomness",
+        intro:
+          "Unit V covers threshold secret sharing with the Shamir, Blakley and modular schemes, and pseudorandom number generation - definitions of randomness and pseudo-randomness, statistical tests, the linear congruential generator and modern PRNGs.",
+        inOneBreath:
+          "Threshold sharing splits a secret into n shares with k needed: Shamir uses polynomial interpolation (Lagrange), Blakley uses hyperplane intersection, Asmuth-Bloom uses CRT - all rebuild the secret only at threshold. Randomness: TRNG entropy vs PRNG expansion; statistical tests (frequency, runs, poker) judge appearance; LCGs are predictable; modern PRNGs are CSPRNGs seeded well.",
+        sections: [
+          {
+            number: "5.1",
+            title: "Threshold secret sharing",
+            body: [
+              "Threshold secret sharing splits a secret S into n shares such that any k shares reconstruct S exactly, while any k-1 reveal nothing (perfect secrecy for smaller coalitions) - the (k, n)-threshold scheme. The motivations: key custody (no single person holds the master key - dual control), availability (any k of n custodians can recover - no single point of failure), and the t-of-n access structure generally.",
+              "A worked properties table fixes the requirements: correctness (any k shares rebuild S), privacy (k-1 shares leak nothing - information-theoretically, in Shamir's scheme), efficiency (share sizes bounded - ideally |share| about |S|), and homomorphic/verifiable extensions (VSS - shares verifiable against commitments; proactive sharing - shares refreshed periodically without changing S). The exam's framing: define (k, n)-threshold, give the motivations, and state the property table - correctness, privacy, efficiency.",
+              "The access-structure generality completes the section: thresholds are the simplest access structure; general monotone structures (hierarchies, OR/AND compositions) are built from thresholds (or linear secret-sharing schemes); ramp schemes (between k-1 and k, partial information leaks) trade privacy for share size. The exam's sentence: secret sharing is trust architecture in mathematics - dual control and availability composed by threshold algebra.",
+              "Exam framing: expect 'threshold secret sharing: concept and requirements'. Define (k, n), give the dual-control/availability motivations, and the property table with the VSS/proactive extensions.",
+            ],
+            keyTerms: [
+              { term: "(k, n)-threshold", definition: "Any k shares reconstruct; k-1 learn nothing." },
+              { term: "Dual control", definition: "No single custodian holds or uses the key alone." },
+              { term: "Perfect privacy", definition: "k-1 shares information-theoretically reveal nothing." },
+              { term: "VSS", definition: "Verifiable secret sharing - commitments let shares be checked." },
+              { term: "Proactive sharing", definition: "Shares refreshed periodically; the secret unchanged." },
+            ],
+            table: {
+              caption: "The (k, n)-threshold requirements.",
+              headers: ["Property", "Statement", "Why it matters"],
+              rows: [
+                ["Correctness", "any k shares rebuild S", "availability"],
+                ["Privacy", "k-1 shares reveal nothing", "dual control"],
+                ["Efficiency", "share size about |S|", "deployability"],
+                ["Verifiability", "shares checkable (VSS)", "detects dealer/peer cheating"],
+                ["Proactivity", "shares refreshable", "long-lived keys"],
+              ],
+            },
+            bullets: [
+              "(k, n)-threshold: k needed, k-1 useless.",
+              "Dual control: no lone custodian - the governance motive.",
+              "Availability: any k of n recover - no single point of failure.",
+              "Perfect privacy below threshold (Shamir's information-theoretic form).",
+              "Extensions: verifiable shares, proactive refresh.",
+              "Thresholds compose into general access structures.",
+            ],
+            diagram: {
+              kind: "pyramid",
+              title: "The threshold access structure",
+              caption: "Below k: nothing; at k: everything.",
+              tiers: [
+                { label: "k shares", note: "full reconstruction - the threshold" },
+                { label: "k-1 shares", note: "information-theoretically nothing" },
+                { label: "Fewer shares", note: "even less - monotone structure" },
+                { label: "Single share", note: "one custodian - never sufficient" },
+              ],
+            },
+            callout: {
+              type: "exam",
+              title: "Trust architecture in mathematics",
+              body: "The framing sentence: 'threshold secret sharing turns governance requirements - dual control, no single point of failure - into algebraic guarantees; k-1 shares are information-theoretically useless, not merely hard to use'. Then the property table.",
+            },
+            examQuestions: [
+              {
+                q: "Explain threshold secret sharing: the (k, n) definition, the dual-control and availability motivations, and the property table with verifiable and proactive extensions.",
+                marks: 14,
+                outline: [
+                  "Definition: any k of n shares reconstruct S",
+                  "k-1 shares reveal nothing (perfect privacy)",
+                  "Dual control: no single custodian holds the key",
+                  "Availability: any k custodians recover - redundancy",
+                  "Correctness + privacy + efficiency as the requirement triad",
+                  "VSS: shares verifiable against dealer commitments",
+                  "Proactive refresh: shares renewed, secret unchanged",
+                ],
+              },
+              {
+                q: "Why is information-theoretic privacy below the threshold notable?",
+                marks: 7,
+                outline: [
+                  "Unbounded adversaries learn nothing from k-1 shares",
+                  "No hardness assumption is rented",
+                  "Contrast: computational protections age; this does not",
+                ],
+              },
+            ],
+          },
+          {
+            number: "5.2",
+            title: "The Shamir scheme",
+            body: [
+              "Shamir's (k, n) scheme (1979) rides polynomial interpolation: choose a random polynomial f(x) = S + a1*x + a2*x^2 + ... + a_{k-1}*x^{k-1} mod p (prime p > S and > n); share i is (i, f(i)); any k shares determine f uniquely (a degree k-1 polynomial has a unique interpolation through k points), and f(0) = S recovers the secret. Fewer than k shares: infinitely many polynomials of degree k-1 pass through the points - every secret equally likely - perfect privacy.",
+              "A worked (3, 5) walkthrough: p = 23, S = 7, polynomial f(x) = 7 + 3x + 2x^2 mod 23; shares: f(1) = 12, f(2) = 21, f(3) = 11, f(4) = 5, f(5) = 1 (7 + 15 + 50 mod 23 = 72 - 69 = 3? recompute: 2*25 = 50 mod 23 = 4; 7 + 15 + 4 = 26 mod 23 = 3 - share 5 = 3). Reconstruction with shares 1-3 via Lagrange: L1 = (0-2)(0-3)/((1-2)(1-3)) = 3; 3*12 = 36 mod 23 = 13; L2 = (0-1)(0-3)/((2-1)(2-3)) = -3 = 20; 20*21 = 420 mod 23 = 6; L3 = 1; 1*11 = 11; sum = 13 + 6 + 11 = 30 mod 23 = 7 - the secret.",
+              "The implementation notes complete the section: Lagrange coefficients computed once per coalition; shares delivered over authenticated channels (VSS commitments detect dealer cheating); x-coordinates are public (only y-values are secrets); and the scheme's elegance - each share is one field element (efficiency property met). The exam's framing: polynomial construction, the Lagrange reconstruction with the worked numbers, and the perfect-privacy argument (infinitely many polynomials through k-1 points).",
+              "Exam framing: expect 'the Shamir scheme with a worked example'. Give the polynomial setup, the share computation, the Lagrange reconstruction with numbers, and the privacy argument.",
+            ],
+            keyTerms: [
+              { term: "Shamir scheme", definition: "Degree k-1 polynomial mod p; shares are points; f(0) = S." },
+              { term: "Lagrange interpolation", definition: "Weighted sum rebuilding f(0) from any k shares." },
+              { term: "Perfect privacy", definition: "k-1 points admit infinitely many polynomials - every S equally likely." },
+              { term: "Share", definition: "(i, f(i)) - one field element's worth of secret." },
+              { term: "Dealer", definition: "The party generating the polynomial and distributing shares." },
+            ],
+            codeExample: {
+              language: "python",
+              caption: "shamir.py - the (3, 5) toy walkthrough",
+              code: `P = 23
+S = 7                          # secret
+coeffs = (3, 2)                # f(x) = 7 + 3x + 2x^2
+
+def f(x):
+    return (S + coeffs[0]*x + coeffs[1]*x*x) % P
+
+shares = [(i, f(i)) for i in range(1, 6)]
+print(shares)                  # (1,12) (2,21) (3,11) (4,5) (5,3)
+
+def lagrange_at_zero(points):
+    total = 0
+    for i, (xi, yi) in enumerate(points):
+        num = den = 1
+        for j, (xj, _) in enumerate(points):
+            if i != j:
+                num = num * (-xj) % P
+                den = den * (xi - xj) % P
+        total = (total + yi * num * pow(den, -1, P)) % P
+    return total
+
+print(lagrange_at_zero(shares[:3]))   # 7 - secret from any 3 shares`,
+            },
+            bullets: [
+              "Polynomial: f(x) = S + a1 x + ... + a_{k-1} x^{k-1} mod p.",
+              "Shares: (i, f(i)) for i = 1..n.",
+              "Worked: p = 23; shares 12, 21, 11, 5, 3.",
+              "Lagrange: coefficients per coalition; f(0) = S = 7.",
+              "Privacy: k-1 points leave infinitely many polynomials.",
+              "Efficiency: one field element per share.",
+            ],
+            diagram: {
+              kind: "flow",
+              title: "Shamir split and rebuild",
+              caption: "Polynomial points out; interpolation back to f(0).",
+              steps: [
+                { label: "Choose polynomial", note: "S as constant term; random coefficients" },
+                { label: "Emit shares", note: "(i, f(i)) mod p for i = 1..n" },
+                { label: "Collect k shares", note: "any coalition of size k" },
+                { label: "Lagrange at 0", note: "weighted sum rebuilds f(0)" },
+                { label: "Secret", note: "S recovered exactly" },
+              ],
+            },
+            callout: {
+              type: "exam",
+              title: "Do the Lagrange arithmetic once by hand",
+              body: "The numeric checkpoint: 'with p = 23 and shares (1,12), (2,21), (3,11), the Lagrange coefficients are 3, 20, 1 - yielding 13 + 6 + 11 = 30 = 7 mod 23'. Examiners grade the coefficient computation; run one full reconstruction before the exam.",
+            },
+            examQuestions: [
+              {
+                q: "Explain the Shamir threshold scheme: the polynomial construction, a worked (3, 5) example with shares and Lagrange reconstruction, and the perfect-privacy argument.",
+                marks: 14,
+                outline: [
+                  "f(x) = S + a1 x + ... + a_{k-1} x^{k-1} mod p",
+                  "Worked: p = 23, S = 7, f(x) = 7 + 3x + 2x^2",
+                  "Shares: (1,12), (2,21), (3,11), (4,5), (5,3)",
+                  "Any 3: Lagrange coefficients 3, 20, 1",
+                  "13 + 6 + 11 = 30 mod 23 = 7 - secret recovered",
+                  "k-1 shares: infinitely many polynomials - no leak",
+                  "Efficiency: one field element per share",
+                ],
+              },
+              {
+                q: "Why must the polynomial's coefficients be random for privacy?",
+                marks: 7,
+                outline: [
+                  "k-1 points determine a family of polynomials",
+                  "Non-uniform coefficients bias the constant term's distribution",
+                  "Uniform randomness makes every S equally consistent",
+                ],
+              },
+            ],
+          },
+          {
+            number: "5.3",
+            title: "The Blakley scheme",
+            body: [
+              "Blakley's scheme (1979, concurrent with Shamir) takes the geometric route: shares are hyperplanes in a k-dimensional space over a finite field; the secret is a designated point (one coordinate of the intersection). Each share is a hyperplane equation a1 x1 + ... + ak xk = b; any k hyperplanes whose normals are independent intersect in exactly one point - the secret's coordinate; k-1 hyperplanes intersect in a line/plane - a continuum of candidates - privacy.",
+              "A worked (3, n) walkthrough over F_23: secret point t = (7, 11, 3); hyperplane i: a_i1 x + a_i2 y + a_i3 z = b_i with b_i = a_i . t; three independent hyperplanes solve the linear system (Gaussian elimination) for exactly t; two hyperplanes leave a line of solutions - the secret coordinate is one of many. The design contrast with Shamir: shares are equations (larger than field elements - efficiency costs more), construction is linear algebra rather than interpolation, and the privacy argument is geometric (a line of candidates, not a polynomial family).",
+              "The practical notes complete the section: Blakley shares need normal-vector discipline (independent normals; degenerate configurations must be avoided - the dealer samples them), and the scheme's historical role is the concept pairing - two independent proofs (interpolation vs geometry) that threshold sharing is achievable; deployed systems use Shamir. The exam's sentence: Shamir interpolates, Blakley intersects - two geometries, one access structure.",
+              "Exam framing: expect 'the Blakley scheme'. Give the hyperplane construction, the (3, n) walkthrough, the k-1 privacy geometry, and the Shamir contrast.",
+            ],
+            keyTerms: [
+              { term: "Blakley scheme", definition: "Shares are hyperplanes; the secret is the intersection point." },
+              { term: "Hyperplane share", definition: "a1 x1 + ... + ak xk = b over a finite field." },
+              { term: "Independent normals", definition: "The k share hyperplanes must intersect in one point." },
+              { term: "Geometric privacy", definition: "k-1 hyperplanes leave a line - candidate continuum." },
+              { term: "Interpolation contrast", definition: "Shamir's polynomial route - the deployed alternative." },
+            ],
+            table: {
+              caption: "Shamir vs Blakley - the two geometries.",
+              headers: ["Property", "Shamir", "Blakley"],
+              rows: [
+                ["Share shape", "field element (i, f(i))", "hyperplane equation"],
+                ["Reconstruction", "Lagrange interpolation", "linear-system solving"],
+                ["Privacy argument", "polynomial family", "candidate line/plane"],
+                ["Share size", "minimal (one element)", "larger (k coefficients + b)"],
+                ["Deployment", "standard", "historical/conceptual"],
+              ],
+            },
+            bullets: [
+              "Shares: hyperplane equations over F_p.",
+              "Secret: a designated coordinate of the intersection point.",
+              "k independent hyperplanes -> unique point (correctness).",
+              "k-1 -> a line of candidates (privacy).",
+              "Normals must be independent - dealer discipline.",
+              "Contrast: interpolation vs intersection; Shamir deployed.",
+            ],
+            diagram: {
+              kind: "compare",
+              title: "Two geometries of the same guarantee",
+              caption: "Polynomial points versus hyperplane equations.",
+              left: {
+                heading: "Shamir",
+                items: [
+                  "Shares: points on a polynomial",
+                  "Rebuild: Lagrange at x = 0",
+                  "Privacy: polynomial family",
+                  "Minimal share size",
+                ],
+              },
+              right: {
+                heading: "Blakley",
+                items: [
+                  "Shares: hyperplane equations",
+                  "Rebuild: solve the linear system",
+                  "Privacy: candidate line/plane",
+                  "Larger shares; linear algebra",
+                ],
+              },
+            },
+            callout: {
+              type: "exam",
+              title: "Interpolation versus intersection",
+              body: "The pairing sentence: 'Shamir reconstructs by interpolating a polynomial's constant term; Blakley reconstructs by intersecting hyperplanes - the same (k, n) guarantee from two geometries; deployment chose the smaller shares'. Then the (3, n) walkthrough.",
+            },
+            examQuestions: [
+              {
+                q: "Explain the Blakley secret-sharing scheme: the hyperplane construction, a (3, n) walkthrough, the geometric privacy argument, and the contrast with Shamir.",
+                marks: 14,
+                outline: [
+                  "Shares: hyperplanes a.x = b over a finite field",
+                  "Secret: a coordinate of the k-plane intersection",
+                  "k independent hyperplanes -> unique point",
+                  "k-1 -> a line of candidates - privacy",
+                  "Worked: secret (7, 11, 3) over F_23; three planes solve it",
+                  "Normals must be independent - dealer discipline",
+                  "Contrast: Shamir's interpolation, smaller shares, deployed",
+                ],
+              },
+              {
+                q: "What goes wrong if two share hyperplanes have dependent normals?",
+                marks: 7,
+                outline: [
+                  "The intersection may be degenerate (no unique point)",
+                  "Correctness fails - reconstruction ambiguous or impossible",
+                  "Dealers sample normal vectors for independence",
+                ],
+              },
+            ],
+          },
+          {
+            number: "5.4",
+            title: "The modular (Asmuth-Bloom) scheme",
+            body: [
+              "The modular scheme (Asmuth-Bloom, 1983) rides the Chinese Remainder Theorem: choose coprime moduli m_1 < m_2 < ... < m_n and a prime p0 > S with conditions (m_1 * ... * m_k > p0 * m_1 * ... * m_{k-1} - the threshold gap); shares are y_i = (S + a * p0) mod m_i for a random a; any k shares reconstruct M = S + a*p0 by CRT, and S = M mod p0; k-1 shares determine M only modulo a product too small to pin it - privacy.",
+              "A worked toy walkthrough: S = 7, p0 = 11; moduli (m1, m2, m3) = (13, 17, 19) (coprime, threshold gap satisfied: 13*17 > 11*13? 221 > 143 - yes for (2, 3)-threshold with these parameters at k = 2... keeping the (2,3) form: shares y1 = (7 + a*11) mod 13, y2 = ... mod 17, y3 = ... mod 19 with a = 1: y1 = 18 mod 13 = 5, y2 = 18 mod 17 = 1, y3 = 18 mod 19 = 18. Any two shares + CRT over their moduli rebuild M = 18 mod (m_i * m_j), then S = 18 mod 11 = 7.",
+              "The scheme's character completes the section: shares are residues (small, efficient), reconstruction is CRT arithmetic (fast), and privacy is the modulus-product gap - k-1 shares bound the CRT solution space below p0's multiples resolution... precisely: fewer than k shares leave M ambiguous modulo the small product, so S's residue class is not pinned. The exam's framing: CRT-based sharing - the third geometry (residues and products) alongside interpolation and intersection; efficiency is its selling point.",
+              "Exam framing: expect 'the modular (Asmuth-Bloom) scheme'. Give the modulus/prime conditions, the share computation with the toy walkthrough, the CRT reconstruction, and the privacy mechanism.",
+            ],
+            keyTerms: [
+              { term: "Asmuth-Bloom", definition: "CRT-based (k, n) sharing - shares are residues mod coprime moduli." },
+              { term: "Threshold gap", definition: "Product condition ensuring k shares suffice, k-1 do not." },
+              { term: "M = S + a*p0", definition: "The hidden value shares reduce modulo m_i." },
+              { term: "CRT reconstruction", definition: "k residues -> M mod product; S = M mod p0." },
+              { term: "Residue shares", definition: "Small efficient shares - the scheme's selling point." },
+            ],
+            table: {
+              caption: "The three sharing geometries.",
+              headers: ["Scheme", "Mathematics", "Share shape"],
+              rows: [
+                ["Shamir", "polynomial interpolation", "field elements (i, f(i))"],
+                ["Blakley", "hyperplane intersection", "linear equations"],
+                ["Asmuth-Bloom", "CRT over coprime moduli", "small residues y_i"],
+              ],
+            },
+            bullets: [
+              "Setup: prime p0 > S; coprime moduli with the threshold gap.",
+              "Shares: y_i = (S + a*p0) mod m_i.",
+              "Toy: S = 7, p0 = 11, a = 1 -> shares (5, 1, 18).",
+              "Reconstruct: CRT on k residues -> M; S = M mod p0.",
+              "Privacy: k-1 moduli's product leaves M ambiguous.",
+              "Efficiency: small residues, fast CRT - the scheme's virtue.",
+            ],
+            diagram: {
+              kind: "flow",
+              title: "Asmuth-Bloom split and rebuild",
+              caption: "Residues out; CRT back to M; reduction to S.",
+              steps: [
+                { label: "Pick moduli", note: "coprime m_i with the threshold gap" },
+                { label: "Hide M", note: "M = S + a*p0 for random a" },
+                { label: "Emit residues", note: "y_i = M mod m_i" },
+                { label: "Reconstruct", note: "CRT on any k residues -> M" },
+                { label: "Reduce", note: "S = M mod p0" },
+              ],
+            },
+            callout: {
+              type: "exam",
+              title: "CRT is the third geometry",
+              body: "The framing sentence: 'secret sharing has three geometries - interpolation (Shamir), intersection (Blakley), and residues (Asmuth-Bloom); the modular scheme's virtue is efficiency: tiny shares and fast CRT reconstruction, priced against stricter modulus conditions'. Then the toy walkthrough.",
+            },
+            examQuestions: [
+              {
+                q: "Explain the Asmuth-Bloom modular secret-sharing scheme: the setup conditions, share computation with a toy walkthrough, CRT reconstruction, and the privacy mechanism.",
+                marks: 14,
+                outline: [
+                  "p0 prime > S; coprime moduli m_1..m_n",
+                  "Threshold-gap product condition",
+                  "Shares: y_i = (S + a*p0) mod m_i, a random",
+                  "Toy: S = 7, p0 = 11, a = 1 -> (5, 1, 18) mod (13, 17, 19)",
+                  "Reconstruct: CRT on any k residues -> M = 18",
+                  "S = M mod p0 = 7",
+                  "Privacy: k-1 residues leave M's class ambiguous",
+                ],
+              },
+              {
+                q: "What role does the random a play in the scheme?",
+                marks: 7,
+                outline: [
+                  "M = S + a*p0 randomizes the hidden multiple",
+                  "Shares alone reveal M mod small products only",
+                  "a's uniformity underpins the privacy argument",
+                ],
+              },
+            ],
+          },
+          {
+            number: "5.5",
+            title: "Randomness and pseudo-randomness",
+            body: [
+              "The syllabus's definitional question: what is randomness? True randomness: unpredictability grounded in physical entropy - no algorithm reproduces the sequence (thermal noise, radioactive decay, oscillator jitter). Pseudo-randomness: deterministically generated from a seed - reproducible, statistically indistinguishable (ideally) from random, but fundamentally predictable given the seed; the security question is whether the seed is protected and the generator is cryptographically strong.",
+              "A worked role-mapping walkthrough: TRNGs generate keys and nonces (seeds - the entropy root); PRNGs expand seeds into streams (keystreams, IV sequences, simulation); CSPRNGs (cryptographically secure PRNGs) add the next-bit test resistance - no polynomial observer predicts the next bit better than chance. The failure taxonomy: entropy starvation (boot-time seeds - the Debian OpenSSL 2008 disaster: predictably small keyspace), state compromise (backtracking - hence forward secrecy via state reseeding), and algorithmic weakness (LCG-class predictability - next section).",
+              "The definitions' precision completes the section: statistical randomness (passes tests) vs cryptographic randomness (next-bit unpredictable) vs information-theoretic randomness (entropy-bounded) - three strengths, three uses. The exam's sentence: randomness is generated entropy plus careful expansion - TRNGs seed, CSPRNGs expand, and every failure is one of the three named classes.",
+              "Exam framing: expect 'definitions of randomness and pseudo-randomness'. Give the TRNG/PRNG/CSPRNG vocabulary, the role mapping with the Debian example, and the three-strengths distinction.",
+            ],
+            keyTerms: [
+              { term: "TRNG", definition: "Physical-entropy generator - non-reproducible randomness." },
+              { term: "PRNG", definition: "Deterministic seed expansion - reproducible sequences." },
+              { term: "CSPRNG", definition: "PRNG resisting the next-bit test - cryptographic grade." },
+              { term: "Next-bit test", definition: "No efficient predictor beats chance on the next bit." },
+              { term: "Entropy starvation", definition: "Insufficient seeding - the Debian OpenSSL failure class." },
+            ],
+            table: {
+              caption: "The randomness vocabulary.",
+              headers: ["Term", "Definition", "Role"],
+              rows: [
+                ["Randomness", "physical unpredictability", "key/nonce generation"],
+                ["Pseudo-randomness", "seeded determinism", "stream expansion"],
+                ["CSPRNG", "next-bit-resistant PRNG", "all cryptographic streams"],
+                ["Statistical randomness", "passes test suites", "necessary, not sufficient"],
+                ["Forward secrecy (PRNG)", "state compromise limits past outputs", "long-running generators"],
+              ],
+            },
+            bullets: [
+              "True randomness: entropy - unpredictable in principle.",
+              "Pseudo-randomness: seed + deterministic expansion.",
+              "CSPRNG: next-bit test resistance - the cryptographic bar.",
+              "TRNGs seed; CSPRNGs expand - the composition rule.",
+              "Debian OpenSSL 2008: entropy starvation collapsed the keyspace.",
+              "Three strengths: statistical, cryptographic, information-theoretic.",
+            ],
+            diagram: {
+              kind: "pipeline",
+              title: "The randomness supply chain",
+              caption: "Entropy in, expansion out - each stage fails differently.",
+              stages: [
+                { label: "Entropy source", note: "TRNG: jitter, noise, disk timing" },
+                { label: "Health checks", note: "entropy estimation, conditioning" },
+                { label: "Seed", note: "the CSPRNG's starting state" },
+                { label: "CSPRNG expansion", note: "next-bit-resistant stream" },
+                { label: "Consumers", note: "keys, nonces, IVs" },
+              ],
+            },
+            callout: {
+              type: "warning",
+              title: "Seeding failures are structural",
+              body: "The failure sentence: 'a CSPRNG cannot rescue a bad seed - Debian's OpenSSL shipped with a nearly-empty entropy pool and produced guessable keys worldwide; entropy health checks and repeated reseeding are the structural answers'. Then the three-strengths distinction.",
+            },
+            examQuestions: [
+              {
+                q: "Define randomness and pseudo-randomness, distinguish TRNG/PRNG/CSPRNG roles, and explain the failure taxonomy with the Debian OpenSSL example.",
+                marks: 14,
+                outline: [
+                  "Randomness: physical entropy - non-reproducible",
+                  "Pseudo-randomness: seeded deterministic expansion",
+                  "CSPRNG: next-bit-test resistance",
+                  "Role mapping: TRNG seeds, CSPRNG expands",
+                  "Debian 2008: empty entropy pool -> guessable keys",
+                  "Failures: entropy starvation, state compromise, algorithmic weakness",
+                  "Three strengths: statistical, cryptographic, information-theoretic",
+                ],
+              },
+              {
+                q: "Why does passing statistical tests not make a generator cryptographically secure?",
+                marks: 7,
+                outline: [
+                  "Tests sample finitely many properties",
+                  "A deterministic generator can pass them yet hide structure",
+                  "Cryptographic security needs next-bit unpredictability",
+                ],
+              },
+            ],
+          },
+          {
+            number: "5.6",
+            title: "Statistical tests of randomness",
+            body: [
+              "Statistical tests judge whether a sequence looks random - the first (necessary, insufficient) quality gate. The syllabus's named set: frequency (monobit) test - are 0s and 1s balanced (chi-square/binomial against 50%)? Runs test - are run lengths distributed per the geometric expectation (no clustering)? Poker test - are 4-bit blocks uniform across the 16 values? Serial/two-bit tests extend frequency to pairs; autocorrelation checks shifted-sequence independence.",
+              "A worked monobit test walkthrough: 20,000 bits, 10,090 ones - expected 10,000, standard deviation sqrt(n*p*(1-p)) = about 70.7; z = (10090 - 10000)/70.7 = about 1.27; |z| < 1.96 (95% two-sided) - pass. The interpretation discipline: a pass is necessary not sufficient (a generator could pass frequency and fail runs), tests are run on many sequences (each test has its own false-alarm rate - combine via levels), and the ultimate caveat: statistical tests cannot certify unpredictability (the CSPRNG property) - only entropy sources and cryptanalysis do that.",
+              "The test-suite landscape completes the section: NIST SP 800-22 (the standard battery: frequency, runs, longest-run, matrix rank, DFT/spectral, Maurer's universal, ...), Dieharder, TestU01's Big Crush - batteries of dozens of tests; designers run batteries on CSPRNG output as regression, and on TRNG raw output as health checks. The exam's sentence: statistical tests are the smoke detector - they catch gross failures cheaply; cryptographic assurance needs the next-bit property, not the chi-square.",
+              "Exam framing: expect 'statistical tests of randomness'. Give the named tests with what each checks, the monobit walkthrough with the z-score, and the necessary-not-sufficient caveat with the NIST battery.",
+            ],
+            keyTerms: [
+              { term: "Frequency (monobit) test", definition: "Balance of 0s and 1s - chi-square/z against 50%." },
+              { term: "Runs test", definition: "Run-length distribution vs geometric expectation." },
+              { term: "Poker test", definition: "Uniformity of 4-bit block frequencies." },
+              { term: "NIST SP 800-22", definition: "The standard statistical test battery." },
+              { term: "Necessary not sufficient", definition: "Tests catch gross failure; unpredictability needs more." },
+            ],
+            table: {
+              caption: "The named tests and their questions.",
+              headers: ["Test", "Question answered"],
+              rows: [
+                ["Frequency (monobit)", "are bits balanced?"],
+                ["Serial/two-bit", "are pairs independent?"],
+                ["Runs", "are run lengths natural?"],
+                ["Poker (4-bit blocks)", "are blocks uniform over 16 values?"],
+                ["Autocorrelation", "is the sequence self-similar at shifts?"],
+              ],
+            },
+            bullets: [
+              "Frequency: balance check with z/chi-square.",
+              "Worked: 10,090/20,000 -> z = 1.27 < 1.96 - pass.",
+              "Runs: clustering detection; poker: block uniformity.",
+              "Run batteries (NIST 800-22, Dieharder, TestU01).",
+              "Passes are necessary, not sufficient for security.",
+              "TRNG health checks + CSPRNG regression - the uses.",
+            ],
+            diagram: {
+              kind: "flow",
+              title: "A statistical test's decision",
+              caption: "From counts to z to verdict - with the caveat attached.",
+              steps: [
+                { label: "Collect statistic", note: "counts, runs, blocks" },
+                { label: "Expected value", note: "under the uniform model" },
+                { label: "z / chi-square", note: "deviation normalized" },
+                { label: "Threshold", note: "1.96 (95%) or battery level" },
+                { label: "Verdict", note: "pass/fail - necessary only" },
+              ],
+            },
+            callout: {
+              type: "exam",
+              title: "A smoke detector, not a guarantee",
+              body: "The caveat sentence: 'statistical tests are the smoke detector - they catch gross generator failures cheaply, but unpredictability is a computational property no finite test battery can certify; the next-bit property and entropy sourcing carry the security weight'. Then the monobit walkthrough with the z arithmetic.",
+            },
+            examQuestions: [
+              {
+                q: "Explain the statistical tests of randomness: frequency, runs and poker tests with what each checks, a worked monobit computation, and the necessary-not-sufficient caveat with test batteries.",
+                marks: 14,
+                outline: [
+                  "Frequency (monobit): 0/1 balance - z or chi-square",
+                  "Worked: 10,090 ones in 20,000 -> z = 1.27 < 1.96",
+                  "Runs test: run-length distribution vs geometric",
+                  "Poker test: 4-bit block uniformity",
+                  "Autocorrelation: shift-independence",
+                  "Batteries: NIST SP 800-22, Dieharder, TestU01",
+                  "Passes necessary not sufficient - next-bit property governs",
+                ],
+              },
+              {
+                q: "Why are test batteries run on TRNG raw output?",
+                marks: 7,
+                outline: [
+                  "Physical entropy sources can degrade or bias",
+                  "Health checks catch hardware failure early",
+                  "Conditioning then feeds the CSPRNG",
+                ],
+              },
+            ],
+          },
+          {
+            number: "5.7",
+            title: "The linear congruential generator and modern PRNGs",
+            body: [
+              "The linear congruential generator (LCG) is the classical PRNG: x_{n+1} = (a * x_n + c) mod m with modulus m, multiplier a, increment c, seed x0. Full period requires the Hull-Dobell conditions (c coprime to m; a = 1 mod every prime factor of m; a = 1 mod 4 when 4 | m). Worked example: m = 31, a = 7? concretely x_{n+1} = (5*x + 3) mod 23, x0 = 1: 8, 20, 11, 12, 17... - reproducible and fast.",
+              "A worked predictability walkthrough - the section's core: LCG states are linear over Z_m; given a few outputs, the parameters and the state are solvable (for c = 0 and known a, m: x_{n+1} = a*x_n -> two outputs give everything; for unknown parameters, modular linear algebra recovers them from about 3-4 consecutive outputs; truncated outputs need lattice methods - but fall too). LCGs are simulation-grade (numerics, games), never cryptographic - the syllabus's named cautionary generator.",
+              "Modern PRNGs complete the section: CSPRNG designs - CTR_DRBG (AES in counter mode as the expansion core), Hash_DRBG (hash-based), ChaCha20-based (the OS userspace favorite - /dev/urandom lineage), and theFortuna/Yarrow designs (entropy pools + reseed discipline); NIST SP 800-90 formalizes the DRBG families. The design principles: next-bit resistance (hardness-backed expansion), state-compromise resilience (backtracking resistance - reseed/evolve state), and health testing (section 5.6's checks integrated). The exam's sentence: LCGs teach what predictability means; modern DRBGs answer it with hardness-backed expansion and disciplined reseeding.",
+              "Exam framing: expect 'the LCG and modern PRNGs'. Give the LCG recurrence with the Hull-Dobell conditions and a worked sequence, the predictability walkthrough, and the modern DRBG survey with design principles.",
+            ],
+            keyTerms: [
+              { term: "LCG", definition: "x_{n+1} = (a x_n + c) mod m - simulation-grade, predictable." },
+              { term: "Hull-Dobell conditions", definition: "Full-period requirements for the LCG." },
+              { term: "CTR_DRBG / Hash_DRBG", definition: "NIST SP 800-90's deterministic random bit generators." },
+              { term: "Backtracking resistance", definition: "Past outputs unrecoverable from a compromised state." },
+              { term: "Reseeding discipline", definition: "Fresh entropy folded in - the Fortuna lesson." },
+            ],
+            table: {
+              caption: "LCG versus modern DRBGs.",
+              headers: ["Property", "LCG", "Modern DRBG (CTR/Hash/ChaCha)"],
+              rows: [
+                ["Recurrence", "linear mod m", "hardness-backed (AES/hash)"],
+                ["Predictability", "3-4 outputs recover state", "next-bit resistant"],
+                ["Use", "simulation, games", "all cryptographic streams"],
+                ["Resilience", "none", "backtracking resistance + reseeding"],
+                ["Standards", "textbook", "NIST SP 800-90"],
+              ],
+            },
+            bullets: [
+              "LCG: x_{n+1} = (a x_n + c) mod m - the classical form.",
+              "Worked: (5x + 3) mod 23 from seed 1: 8, 20, 11, 12...",
+              "Full period: Hull-Dobell conditions.",
+              "Predictability: a few outputs recover parameters and state.",
+              "Modern: CTR_DRBG, Hash_DRBG, ChaCha20 cores.",
+              "Principles: next-bit resistance + backtracking resistance + reseeding.",
+            ],
+            diagram: {
+              kind: "compare",
+              title: "From LCG to DRBG",
+              caption: "Simulation convenience versus cryptographic assurance.",
+              left: {
+                heading: "LCG",
+                items: [
+                  "Linear recurrence mod m",
+                  "Fast, tiny state",
+                  "State from a handful of outputs",
+                  "Never for keys or nonces",
+                ],
+              },
+              right: {
+                heading: "Modern DRBG",
+                items: [
+                  "AES/hash/ChaCha expansion",
+                  "Next-bit resistant by design",
+                  "Backtracking + reseeding discipline",
+                  "NIST SP 800-90 standardized",
+                ],
+              },
+            },
+            callout: {
+              type: "exam",
+              title: "LCGs teach predictability",
+              body: "The framing sentence: 'the LCG's lesson is definitional - a generator whose state is recoverable from a few outputs is pseudo-random only statistically; modern DRBGs answer with hardness-backed expansion (AES/ChaCha cores) and disciplined reseeding'. Then the worked sequence and the 3-4-output recovery as the evidence.",
+            },
+            examQuestions: [
+              {
+                q: "Explain the linear congruential generator: the recurrence, Hull-Dobell conditions, a worked sequence, and the predictability analysis - then survey modern PRNGs and their design principles.",
+                marks: 14,
+                outline: [
+                  "LCG: x_{n+1} = (a x_n + c) mod m",
+                  "Hull-Dobell: c coprime; a = 1 mod prime factors; a = 1 mod 4 if 4 | m",
+                  "Worked: (5x + 3) mod 23, x0 = 1 -> 8, 20, 11, 12",
+                  "Predictability: 3-4 consecutive outputs recover state",
+                  "Truncated outputs still fall (lattice methods)",
+                  "Modern: CTR_DRBG, Hash_DRBG, ChaCha20; SP 800-90",
+                  "Principles: next-bit resistance, backtracking resistance, reseeding",
+                ],
+              },
+              {
+                q: "Why is backtracking resistance a design requirement for long-running PRNGs?",
+                marks: 7,
+                outline: [
+                  "Server states persist and get compromised",
+                  "Past outputs (old keys) must not fall with the state",
+                  "State evolution/reseeding bounds the exposure window",
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    },
+  ],
+  studyPlan: [
+    {
+      id: "weightage",
+      heading: "Exam weightage - where to spend the hours",
+      weightedTopics: [
+        { topic: "Classical ciphers with worked cryptanalysis", weight: "about 10-12 marks", note: "Affine round trip, Vigenere/Beaufort pair, columnar - hand computations win." },
+        { topic: "RSA: keygen, variants, security", weight: "about 10-12 marks", note: "Toy n = 33, CRT recombination, attack table." },
+        { topic: "Shamir secret sharing with Lagrange numbers", weight: "about 8-10 marks", note: "The (3, 5) walkthrough - coefficients graded." },
+        { topic: "Stream ciphers: LFSRs, linear complexity, generators", weight: "about 8-10 marks", note: "2L rule + Geffe correlation + shrinking rate." },
+        { topic: "Digital signatures: RSA-FDH, ElGamal, DSA, blind", weight: "about 10-12 marks", note: "k-reuse algebra + blind protocol steps." },
+        { topic: "Mathematical background: entropy, complexity, number theory", weight: "about 6-8 marks", note: "Unicity distance + P/NP + extended Euclid." },
+        { topic: "DES family: product ciphers, Lucifer", weight: "about 6-8 marks", note: "Doctrine + Feistel equation + ledger." },
+        { topic: "PRNGs: LCG, tests, modern DRBGs", weight: "about 6-8 marks", note: "Hull-Dobell + monobit z-score + DRBG principles." },
+      ],
+    },
+    {
+      id: "schedule",
+      heading: "A six-week study schedule",
+      body: [
+        "Two hours a day, five days a week; weekends for hand computations. This subject's marks live in arithmetic - affine rounds, Lagrange coefficients, k-reuse algebra - so every weekend re-runs one full computation from memory.",
+      ],
+      weeks: [
+        { week: "Week 1", focus: "Unit I - ground and classical", tasks: ["History timeline + Shannon doctrine", "Entropy/redundancy/unicity computation", "P/NP + extended Euclid inverse", "Caesar/affine walkthrough (a = 5, b = 8)", "Columnar key 'HACK' round trip", "Vigenere + Beaufort 'HELLO'/'CAT' pair", "Lucifer->DES + Feistel equation"] },
+        { week: "Week 2", focus: "Unit II - public key", tasks: ["PKCS concept + four-construction table", "RSA toy (n = 33) + Euler proof", "CRT-RSA recombination walkthrough", "Miller-Rabin sketch + 4^-k bound", "RSA attack table + malleability trace", "Merkle-Hellman toy (1,2,4,8)/17/5", "ElGamal toy mod 23 + ECC sizes"] },
+        { week: "Week 3", focus: "Unit III - stream ciphers", tasks: ["OTP walkthrough + perfect secrecy", "Synchronous vs self-sync table", "LFSR 4-bit example + 2L rule", "NLFSR + design triangle", "Geffe correlation autopsy (75%)", "Filter majority + algebraic immunity", "Alternating step + shrinking rate"] },
+        { week: "Week 4", focus: "Unit IV - signatures", tasks: ["Property list + MAC boundary", "Lamport mechanics + one-time rule", "Merkle tree + authentication paths", "Matyas-Meyer + RSA-FDH forgery defeat", "ElGamal sign/verify identity", "k-reuse leak derivation", "DSA v == r + blind protocol algebra"] },
+        { week: "Week 5", focus: "Unit V - sharing and PRNGs", tasks: ["(k, n) properties + motivations", "Shamir (3, 5) Lagrange computation", "Blakley hyperplanes + contrast", "Asmuth-Bloom toy (S = 7, p0 = 11)", "TRNG/PRNG/CSPRNG definitions", "Monobit z-score walkthrough", "LCG worked sequence + DRBG survey"] },
+        { week: "Week 6", focus: "Revision and papers", tasks: ["Re-run every hand computation from memory", "Two full past papers under time", "Error log rewritten three times", "One-page classical-cipher sheet", "One-page RSA/signature sheet", "One-page sharing/PRNG sheet"] },
+      ],
+    },
+    {
+      id: "exam-tips",
+      heading: "Exam-hall strategy",
+      examTips: [
+        "This subject grades arithmetic: show every modular step - affine inverses, Lagrange coefficients, CRT recombination, k-reuse algebra. A bare formula scores half.",
+        "Every cipher answer pairs construction with attack: Vigenere + Kasiski, substitution + frequency, LFSR + Berlekamp-Massey.",
+        "Quote the small numbers: 312 affine keys, 4^-k Miller-Rabin, 2L bits per LFSR, 75% Geffe correlation, about 1/4 shrinking rate.",
+        "For RSA answers, the Euler sentence (ed = 1 + k*phi) is the correctness proof - write it before the toy numbers.",
+        "For signatures, the k-discipline is the recurring theme - one reused k unmasks x; quote the PS3 incident.",
+        "For secret sharing, run the (3, 5) Shamir walkthrough end to end - coefficients 3, 20, 1 recovering S = 7.",
+        "For PRNGs, distinguish statistical (tests pass) from cryptographic (next-bit resistant) - the caveat sentence is the differentiator.",
+        "Time-box: 7-mark about 12 minutes, 14-mark about 22 minutes; leave 10 minutes to re-check modular arithmetic.",
+      ],
+    },
+    {
+      id: "slips",
+      heading: "Last-day strategy and common slips",
+      body: [
+        "Last day: re-run the five anchor computations (affine round trip, Vigenere/Beaufort pair, RSA toy, Shamir Lagrange, blind-signature algebra), rebuild the four tables (modes of attack vs ciphers, RSA attacks, sharing geometries, LCG-vs-DRBG), and re-quote the number set (312, 4^-k, 2L, 75%, 1/4). No new material tonight.",
+      ],
+      bullets: [
+        "Forgetting gcd(a, 26) = 1 in affine keys - the inverse may not exist.",
+        "Quoting Beaufort as x - k instead of k - x - the self-reciprocal form is k - x.",
+        "Skipping the length field in Merkle-Damgard padding discussions - chains collapse without it.",
+        "Claiming 2^n security for collisions - birthday gives 2^(n/2); pre-image is the 2^n one.",
+        "Saying Merkle-Hellman is secure because subset-sum is NP-complete - average case fell (Shamir 1982).",
+        "Mixing ElGamal encryption with ElGamal signatures - same key family, different algebra.",
+        "Omitting the k-reuse warning in ElGamal/DSA answers - one reused k unmasks x.",
+        "Computing Lagrange coefficients over integers instead of mod p - modular inverses required.",
+        "Calling LCG output 'random' - predictable from a few outputs; simulation-grade only.",
+        "Treating statistical tests as security certificates - necessary, not sufficient; next-bit property governs.",
+        "Quoting Blakley shares as field elements - they are hyperplane equations (larger).",
+        "Forgetting the fresh-r discipline in blind signatures - reuse links sessions.",
+      ],
+    },
+  ],
+};

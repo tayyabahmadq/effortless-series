@@ -5,7 +5,7 @@
  */
 
 import type { AcademicSubject } from "./types";
-import { ad504a } from "./subject-ad-504-a";
+import { ad504a } from "./subject-ad-504a";
 import { rebrandSubject } from "./rebrand";
 
 export const me803d: AcademicSubject = rebrandSubject(ad504a, {
