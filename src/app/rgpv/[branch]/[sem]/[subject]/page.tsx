@@ -59,7 +59,7 @@ export default async function SubjectRoute({
   if (!found) notFound();
 
   const { branch, subject } = found;
-  const content = getSubjectContent(branchSlug, semNumber, subjectSlug);
+  const content = await getSubjectContent(branchSlug, semNumber, subjectSlug);
   const backHref = `/rgpv/${branchSlug}/${semNumber}`;
   const backLabel = `Sem ${semNumber} syllabus`;
 

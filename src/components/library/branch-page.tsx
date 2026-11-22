@@ -11,7 +11,7 @@ import {
   Info,
 } from "lucide-react";
 import type { RgpvBranch, RgpvSubject } from "@/lib/rgpv/branches-data";
-import { getSubjectContent } from "@/lib/rgpv/content-map";
+import { fullContentKeys } from "@/lib/rgpv/content-map";
 import { LibraryNav } from "./library-nav";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -139,8 +139,9 @@ function SubjectRow({
   subject: RgpvSubject;
   index: number;
 }) {
-  const hasContent =
-    getSubjectContent(branchSlug, semNumber, subject.slug) !== undefined;
+  const hasContent = fullContentKeys.has(
+    `${branchSlug}/${semNumber}/${subject.slug}`
+  );
 
   return (
     <motion.div

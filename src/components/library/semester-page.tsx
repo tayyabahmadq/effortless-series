@@ -10,7 +10,7 @@ import {
   GraduationCap,
 } from "lucide-react";
 import type { RgpvBranch, RgpvSemester } from "@/lib/rgpv/branches-data";
-import { getSubjectContent } from "@/lib/rgpv/content-map";
+import { fullContentKeys } from "@/lib/rgpv/content-map";
 import { LibraryNav } from "./library-nav";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -87,9 +87,9 @@ export function SemesterPage({
       <div className="max-w-6xl mx-auto px-5 sm:px-8 py-10 sm:py-14">
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
           {semester.subjects.map((s, i) => {
-            const hasContent =
-              getSubjectContent(branch.slug, semester.number, s.slug) !==
-              undefined;
+            const hasContent = fullContentKeys.has(
+              `${branch.slug}/${semester.number}/${s.slug}`
+            );
             return (
               <motion.div
                 key={s.slug}
