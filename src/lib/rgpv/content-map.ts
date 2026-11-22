@@ -87,10 +87,54 @@ import { bt203 } from "@/lib/academics/subject-bt-203";
 import { bt204 } from "@/lib/academics/subject-bt-204";
 import { bt205 } from "@/lib/academics/subject-bt-205";
 import { bt401 } from "@/lib/academics/subject-bt-401";
+// Information Technology (IT-XXX): identical-syllabus rebrands of the CSE family
+import { it302 } from "@/lib/academics/subject-it-302";
+import { it303 } from "@/lib/academics/subject-it-303";
+import { it304 } from "@/lib/academics/subject-it-304";
+import { it305 } from "@/lib/academics/subject-it-305";
+import { it402 } from "@/lib/academics/subject-it-402";
+import { it403 } from "@/lib/academics/subject-it-403";
+import { it404 } from "@/lib/academics/subject-it-404";
+import { it405 } from "@/lib/academics/subject-it-405";
+import { it501 } from "@/lib/academics/subject-it-501";
+import { it502 } from "@/lib/academics/subject-it-502";
+import { it503a } from "@/lib/academics/subject-it-503-a";
+import { it503b } from "@/lib/academics/subject-it-503-b";
+import { it503c } from "@/lib/academics/subject-it-503-c";
+import { it504a } from "@/lib/academics/subject-it-504-a";
+import { it504b } from "@/lib/academics/subject-it-504-b";
+import { it504c } from "@/lib/academics/subject-it-504-c";
+import { it601 } from "@/lib/academics/subject-it-601";
+import { it602 } from "@/lib/academics/subject-it-602";
+import { it603a } from "@/lib/academics/subject-it-603-a";
+import { it603b } from "@/lib/academics/subject-it-603-b";
+import { it604a } from "@/lib/academics/subject-it-604-a";
+import { it604b } from "@/lib/academics/subject-it-604-b";
+import { it604c } from "@/lib/academics/subject-it-604-c";
+import { it605 } from "@/lib/academics/subject-it-605";
+import { it606 } from "@/lib/academics/subject-it-606";
+import { it701 } from "@/lib/academics/subject-it-701";
+import { it702a } from "@/lib/academics/subject-it-702-a";
+import { it702b } from "@/lib/academics/subject-it-702-b";
+import { it702c } from "@/lib/academics/subject-it-702-c";
+import { it702d } from "@/lib/academics/subject-it-702-d";
+import { it703b } from "@/lib/academics/subject-it-703-b";
+import { it703c } from "@/lib/academics/subject-it-703-c";
+import { it703d } from "@/lib/academics/subject-it-703-d";
+import { it801 } from "@/lib/academics/subject-it-801";
+import { it802a } from "@/lib/academics/subject-it-802-a";
+import { it802b } from "@/lib/academics/subject-it-802-b";
+import { it802c } from "@/lib/academics/subject-it-802-c";
+import { it802d } from "@/lib/academics/subject-it-802-d";
+import { it803a } from "@/lib/academics/subject-it-803-a";
+import { it803b } from "@/lib/academics/subject-it-803-b";
+import { it803c } from "@/lib/academics/subject-it-803-c";
+import { it803d } from "@/lib/academics/subject-it-803-d";
 
 const AD = "ai-and-data-science";
 const CSE = "computer-science-and-engineering";
 const AL = "ai-and-machine-learning";
+const IT = "information-technology";
 const FY = "first-year-common";
 
 /** First-year subject objects reused across every B.Tech branch's Sem 1-2. */
@@ -178,8 +222,7 @@ export const subjectContentMap: Record<string, AcademicSubject> = {
   [`${CSE}/8/cs-801`]: cs801,
 
   // ===== AI & Machine Learning =====
-  ...fyEntries(AL),
-  // Semester III
+  ...fyEntries(AL),// Semester III
   [`${AL}/3/al-301`]: al301,
   [`${AL}/3/al-302`]: al302,
   [`${AL}/3/al-303`]: al303,
@@ -214,6 +257,58 @@ export const subjectContentMap: Record<string, AcademicSubject> = {
   [`${AL}/8/al-802-d`]: al802d,
   [`${AL}/8/al-803-a`]: al803a,
   [`${AL}/8/al-803-b`]: al803b,
+
+  // ===== Information Technology =====
+  // Semester III
+  [`${IT}/3/it-302`]: it302,
+  [`${IT}/3/it-303`]: it303,
+  [`${IT}/3/it-304`]: it304,
+  [`${IT}/3/it-305`]: it305,
+  [`${IT}/3/es-301`]: es301,
+  // Semester IV
+  [`${IT}/4/it-402`]: it402,
+  [`${IT}/4/it-403`]: it403,
+  [`${IT}/4/it-404`]: it404,
+  [`${IT}/4/it-405`]: it405,
+  [`${IT}/4/bt-401`]: bt401,
+  // Semester V
+  [`${IT}/5/it-501`]: it501,
+  [`${IT}/5/it-502`]: it502,
+  [`${IT}/5/it-503-a`]: it503a,
+  [`${IT}/5/it-503-b`]: it503b,
+  [`${IT}/5/it-503-c`]: it503c,
+  [`${IT}/5/it-504-a`]: it504a,
+  [`${IT}/5/it-504-b`]: it504b,
+  [`${IT}/5/it-504-c`]: it504c,
+  // Semester VI
+  [`${IT}/6/it-601`]: it601,
+  [`${IT}/6/it-602`]: it602,
+  [`${IT}/6/it-603-a`]: it603a,
+  [`${IT}/6/it-603-b`]: it603b,
+  [`${IT}/6/it-604-a`]: it604a,
+  [`${IT}/6/it-604-b`]: it604b,
+  [`${IT}/6/it-604-c`]: it604c,
+  [`${IT}/6/it-605`]: it605,
+  [`${IT}/6/it-606`]: it606,
+  // Semester VII
+  [`${IT}/7/it-701`]: it701,
+  [`${IT}/7/it-702-a`]: it702a,
+  [`${IT}/7/it-702-b`]: it702b,
+  [`${IT}/7/it-702-c`]: it702c,
+  [`${IT}/7/it-702-d`]: it702d,
+  [`${IT}/7/it-703-b`]: it703b,
+  [`${IT}/7/it-703-c`]: it703c,
+  [`${IT}/7/it-703-d`]: it703d,
+  // Semester VIII
+  [`${IT}/8/it-801`]: it801,
+  [`${IT}/8/it-802-a`]: it802a,
+  [`${IT}/8/it-802-b`]: it802b,
+  [`${IT}/8/it-802-c`]: it802c,
+  [`${IT}/8/it-802-d`]: it802d,
+  [`${IT}/8/it-803-a`]: it803a,
+  [`${IT}/8/it-803-b`]: it803b,
+  [`${IT}/8/it-803-c`]: it803c,
+  [`${IT}/8/it-803-d`]: it803d,
 };
 
 /** Slugs of the subjects with full content - used for badges. */
