@@ -3,9 +3,10 @@ import { SiteShell } from "@/components/library/site-shell";
 import { JobsPage } from "@/components/library/jobs-page";
 
 export const metadata: Metadata = {
-  title: "Jobs & Internships · RGPV Digital Library",
+  title: "RGPV Jobs & Internships — 20 Official Career Portals",
   description:
-    "20 official career portals for RGPV B.Tech students — MPESB, SSC JE, UPSC ESE, RRB, DRDO, ISRO, BARC, TCS, Amazon, GSoC and more. Openings update at the source.",
+    "Official career portals for RGPV B.Tech students — MPESB (Vyapam), SSC JE, UPSC ESE, RRB JE, DRDO RAC, ISRO, BARC, BHEL Bhopal, TCS NQT, Amazon, Google Summer of Code, Internshala and more. Openings update at the source.",
+  alternates: { canonical: "/jobs" },
 };
 
 export default function JobsRoute() {

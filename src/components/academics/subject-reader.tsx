@@ -147,7 +147,12 @@ export function SubjectReader({
                 </span>
               </div>
               <h1 className="font-serif text-3xl sm:text-4xl font-bold text-foreground leading-tight">
-                {subject.title}
+                {subject.title}{" "}
+                <span className="text-red-400">Notes</span>
+                <span className="sr-only">
+                  {" "}
+                  — {subject.code}, {subject.program}
+                </span>
               </h1>
               <p className="mt-2 text-sm sm:text-base text-muted-foreground leading-relaxed max-w-2xl">
                 {subject.tagline}

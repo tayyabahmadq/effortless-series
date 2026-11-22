@@ -66,11 +66,16 @@ export function SubjectPlaceholder({
               </span>
             </div>
             <h1 className="font-serif text-3xl sm:text-4xl font-bold text-foreground leading-tight">
-              {subject.name}
+              {subject.name} <span className="text-red-400">Notes</span>
+              <span className="sr-only">
+                {" "}
+                — {subject.code}, {branch.name} Semester {semNumber}, RGPV
+              </span>
             </h1>
             <p className="mt-3 text-sm sm:text-base text-muted-foreground leading-relaxed">
-              Official RGPV 2022-curriculum subject, listed in the Semester{" "}
-              {semNumber} scheme of {branch.name}.
+              Official RGPV 2022-curriculum subject ({subject.code}), listed in
+              the Semester {semNumber} scheme of {branch.name}. Unit-wise notes
+              for this subject are being authored.
             </p>
           </motion.div>
         </div>

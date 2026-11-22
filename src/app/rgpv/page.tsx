@@ -4,9 +4,10 @@ import { rgpvBranches } from "@/lib/rgpv/branches-data";
 import { FULLY_AUTHORED } from "@/components/library/portal-data";
 
 export const metadata: Metadata = {
-  title: "All 40 Branches · RGPV Digital Library",
+  title: "All 40 RGPV Branches — Subject Codes & Names, Semester-wise",
   description:
-    "Every B.Tech branch of Rajiv Gandhi Proudyogiki Vishwavidyalaya under the 2022 curriculum — 40 branches, 1,578 subjects, semester by semester from the official scheme documents.",
+    "Every B.Tech branch of Rajiv Gandhi Proudyogiki Vishwavidyalaya (RGPV), Bhopal under the 2022 curriculum — 40 branches, 1,578 subjects with subject codes and names, semester by semester from the official scheme documents.",
+  alternates: { canonical: "/rgpv" },
 };
 
 export default function AllBranchesRoute() {

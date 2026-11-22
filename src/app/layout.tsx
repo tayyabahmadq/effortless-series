@@ -22,27 +22,48 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "RGPV Digital Library — Syllabus, Study Content, Certifications & Careers",
+  metadataBase: new URL("https://effortless-series.pages.dev"),
+  title: {
+    default:
+      "RGPV Notes & Syllabus — RGPV Digital Library (All Branches, All Subjects)",
+    template: "%s | RGPV Digital Library",
+  },
   description:
-    "The RGPV Digital Library: the complete RGPV 2022 B.Tech curriculum — 40 branches, 1,578 subjects, organized as syllabus → chapter cards → topic cards → exam-ready content — plus free certifications and live government, PSU and industry career portals.",
+    "Free RGPV notes and syllabus for every B.Tech branch and subject code — unit-wise notes, diagrams, exam questions and study plans for the RGPV 2022 curriculum (Rajiv Gandhi Proudyogiki Vishwavidyalaya, Bhopal). 40 branches, 1,578 subjects, plus free certifications and live career portals.",
   keywords: [
-    "RGPV",
+    "RGPV notes",
     "RGPV syllabus",
-    "RGPV 2022 curriculum",
-    "B.Tech",
-    "academic library",
-    "AI and Data Science",
-    "study content",
-    "exam preparation",
-    "free certifications",
-    "RGPV jobs",
+    "RGPV notes pdf",
+    "RGPV subject notes",
+    "RGPV 2022 syllabus",
+    "RGPV B.Tech notes",
+    "Rajiv Gandhi Proudyogiki Vishwavidyalaya",
+    "RGPV Bhopal",
+    "RGPV previous year questions",
+    "RGPV branch wise syllabus",
+    "RGPV study material",
+    "B.Tech notes",
   ],
   authors: [{ name: "Tayyab Ahmed" }],
+  alternates: { canonical: "/" },
   openGraph: {
-    title: "RGPV Digital Library",
+    title: "RGPV Notes & Syllabus — RGPV Digital Library",
     description:
-      "The complete RGPV 2022 curriculum as an interactive study library — 40 branches, 1,578 subjects, chapter cards → topic cards → content.",
+      "Free unit-wise RGPV notes for every branch and subject code of the RGPV 2022 B.Tech curriculum — 40 branches, 1,578 subjects, chapter cards → topic cards → exam-ready content.",
+    siteName: "RGPV Digital Library",
     type: "website",
+    locale: "en_IN",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "RGPV Notes & Syllabus — RGPV Digital Library",
+    description:
+      "Free unit-wise RGPV notes for every branch and subject code of the RGPV 2022 B.Tech curriculum.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-snippet": -1 },
   },
 };
 

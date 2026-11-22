@@ -3,9 +3,10 @@ import { SiteShell } from "@/components/library/site-shell";
 import { CertificationsPage } from "@/components/library/certifications-page";
 
 export const metadata: Metadata = {
-  title: "Free Certifications · RGPV Digital Library",
+  title: "16 Free Online Certifications for RGPV Students",
   description:
-    "16 free online certifications for RGPV B.Tech students — Harvard CS50, freeCodeCamp, Cisco, IBM, Microsoft, AWS, Google, ISRO and more. Every card opens the official site.",
+    "Free certifications for RGPV B.Tech students — Harvard CS50, freeCodeCamp, Cisco Networking Academy, IBM SkillsBuild, Microsoft Learn, AWS Skill Builder, Google Skillshop, ISRO IIRS and more. Every card opens the official site.",
+  alternates: { canonical: "/certifications" },
 };
 
 export default function CertificationsRoute() {
