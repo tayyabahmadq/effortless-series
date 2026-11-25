@@ -15,8 +15,8 @@ import type {
   ExamQuestion,
   KeyTerm,
 } from "@/lib/academics/types";
-import { ChapterDiagram } from "@/components/effortless/chapter-diagram";
-import { CodeBlock } from "@/components/effortless/code-block";
+import { ChapterDiagram } from "@/components/academics/chapter-diagram";
+import { CodeBlock } from "@/components/academics/code-block";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 

@@ -17,7 +17,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/certifications",
     "/jobs",
     "/rgpv",
-    "/series",
   ].map((p) => ({
     url: `${BASE}${p}`,
     changeFrequency: "weekly" as const,

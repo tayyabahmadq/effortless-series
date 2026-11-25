@@ -5,9 +5,8 @@ import { motion } from "framer-motion";
 import { GraduationCap } from "lucide-react";
 
 /**
- * Site-wide header for the RGPV pages. The Effortless Series is no longer
- * linked from the navigation — it moves to its own surface later, while
- * /series itself stays reachable by URL.
+ * Site-wide header for the RGPV pages. The Effortless Series now lives in its
+ * own repository; this library no longer carries any of its books or routes.
  */
 export function LibraryNav({ active }: { active: "library" | "series" }) {
   return (

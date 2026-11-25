@@ -95,14 +95,6 @@ export function AcademicsNav({
               </span>
             )}
           </nav>
-
-          <Link
-            href="/series"
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs text-muted-foreground hover:text-foreground border border-border/60 rounded-md hover:border-red-600/40 transition-all whitespace-nowrap"
-          >
-            <span className="hidden sm:inline">The Effortless Series</span>
-            <span className="sm:hidden">Series</span>
-          </Link>
         </div>
       </div>
     </header>
